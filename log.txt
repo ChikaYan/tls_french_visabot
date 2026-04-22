@@ -898,3 +898,1121 @@ Stacktrace:
 [2026-04-22 19:17:39] OSError
 [2026-04-22 19:17:39] : 
 [2026-04-22 19:17:39] [WinError 6] The handle is invalid
+
+============================================================
+Session started: 2026-04-22 19:41:57
+============================================================
+[2026-04-22 19:41:57] ============================================================
+[2026-04-22 19:41:57] TLScontact France Visa Slot Checker
+[2026-04-22 19:41:57] URL: https://visas-fr.tlscontact.com/visa/gb/gbLON2fr/home
+[2026-04-22 19:41:57] Check interval: 180s | Headless: False
+[2026-04-22 19:41:57] ============================================================
+[2026-04-22 19:41:57] [TG] 🤖 TLS Visa Bot started! Checking every 180s for France/London slots.
+[2026-04-22 19:41:57] 
+[Check #1 at 19:41:57]
+[2026-04-22 19:42:01]   Loaded 7 cookies from file
+[2026-04-22 19:42:05]   Cloudflare passed.
+[2026-04-22 19:42:05]   Logged in via saved cookies!
+[2026-04-22 19:42:05]   [DEBUG] Screenshot: H:\Workspace\tls_french_visabot\debug_post_login_194205.png
+[2026-04-22 19:42:05]   [DEBUG] Title: Welcome to TLScontact Wandsworth (London) | TLScontact Wandsworth (London) | URL: https://visas-fr.tlscontact.com/en-us/country/gb/vac/gbLON2fr
+[2026-04-22 19:42:05]   Post-login URL: https://visas-fr.tlscontact.com/en-us/country/gb/vac/gbLON2fr
+[2026-04-22 19:42:08]   Cloudflare passed.
+[2026-04-22 19:42:08]   [DEBUG] Screenshot: H:\Workspace\tls_french_visabot\debug_travel_groups_194208.png
+[2026-04-22 19:42:08]   [DEBUG] Title: Applications list | TLScontact | URL: https://visas-fr.tlscontact.com/en-us/travel-groups
+[2026-04-22 19:42:08]   Dismissed cookie banner.
+[2026-04-22 19:42:08]   Clicked 'Select' (text='Select', value=26091640).
+[2026-04-22 19:42:10]   Clicked 'Continue'.
+[2026-04-22 19:42:11]   Cloudflare passed.
+[2026-04-22 19:42:13]   [DEBUG] Screenshot: H:\Workspace\tls_french_visabot\debug_appointment_page_194213.png
+[2026-04-22 19:42:13]   [DEBUG] Title: Appointment Booking | TLScontact | URL: https://visas-fr.tlscontact.com/en-us/26091640/workflow/appointment-booking?loca
+[2026-04-22 19:42:13]   Checking current month...
+[2026-04-22 19:42:13]   No appointments at 19:42:13
+[2026-04-22 19:42:13]   Clicked next month.
+[2026-04-22 19:42:14]   Checking next month...
+[2026-04-22 19:42:14]   No appointments at 19:42:14
+[2026-04-22 19:42:14]   Waiting 180s...
+
+============================================================
+Session started: 2026-04-22 19:41:57
+============================================================
+[2026-04-22 19:44:52] Traceback (most recent call last):
+
+[2026-04-22 19:44:52]   File "H:\Workspace\tls_french_visabot\Dumbh_appointment_bot.py", line 582, in <module>
+
+[2026-04-22 19:44:52] traceback.print_exc()
+[2026-04-22 19:44:52]   File "H:\Workspace\tls_french_visabot\Dumbh_appointment_bot.py", line 578, in main
+
+[2026-04-22 19:44:52] time.sleep(CHECK_INTERVAL)
+[2026-04-22 19:44:52] KeyboardInterrupt
+[2026-04-22 19:44:52] Exception ignored in: 
+[2026-04-22 19:44:52] <function Chrome.__del__ at 0x00000200FA3CBE20>
+[2026-04-22 19:44:52] Traceback (most recent call last):
+
+[2026-04-22 19:44:52]   File "C:\Users\ChikamaYan\anaconda3\envs\tls\Lib\site-packages\undetected_chromedriver\__init__.py", line 843, in __del__
+
+[2026-04-22 19:44:52] self.quit()
+[2026-04-22 19:44:52]   File "C:\Users\ChikamaYan\anaconda3\envs\tls\Lib\site-packages\undetected_chromedriver\__init__.py", line 798, in quit
+
+[2026-04-22 19:44:52] time.sleep(0.1)
+[2026-04-22 19:44:52] OSError
+[2026-04-22 19:44:52] : 
+[2026-04-22 19:44:52] [WinError 6] The handle is invalid
+
+============================================================
+Session started: 2026-04-22 19:44:58
+============================================================
+[2026-04-22 19:44:58] ============================================================
+[2026-04-22 19:44:58] TLScontact France Visa Slot Checker
+[2026-04-22 19:44:58] URL: https://visas-fr.tlscontact.com/visa/gb/gbLON2fr/home
+[2026-04-22 19:44:58] Check interval: 180s | Headless: False
+[2026-04-22 19:44:58] ============================================================
+[2026-04-22 19:44:58] [TG] 🤖 TLS Visa Bot started! Checking every 180s for France/London slots.
+[2026-04-22 19:44:58] 
+[Check #1 at 19:44:58]
+[2026-04-22 19:45:02]   Loaded 7 cookies from file
+[2026-04-22 19:45:05]   Cloudflare passed.
+[2026-04-22 19:45:05]   Logged in via saved cookies!
+[2026-04-22 19:45:06]   [DEBUG] Screenshot: H:\Workspace\tls_french_visabot\debug_post_login_194505.png
+[2026-04-22 19:45:06]   [DEBUG] Title: Welcome to TLScontact Wandsworth (London) | TLScontact Wandsworth (London) | URL: https://visas-fr.tlscontact.com/en-us/country/gb/vac/gbLON2fr
+[2026-04-22 19:45:06]   Post-login URL: https://visas-fr.tlscontact.com/en-us/country/gb/vac/gbLON2fr
+[2026-04-22 19:45:08]   Cloudflare passed.
+[2026-04-22 19:45:08]   [DEBUG] Screenshot: H:\Workspace\tls_french_visabot\debug_travel_groups_194508.png
+[2026-04-22 19:45:08]   [DEBUG] Title: Applications list | TLScontact | URL: https://visas-fr.tlscontact.com/en-us/travel-groups
+[2026-04-22 19:45:08]   Dismissed cookie banner.
+[2026-04-22 19:45:08]   Clicked 'Select' (text='Select', value=26091640).
+[2026-04-22 19:45:10]   Clicked 'Continue'.
+[2026-04-22 19:45:11]   Cloudflare passed.
+[2026-04-22 19:45:13]   [DEBUG] Screenshot: H:\Workspace\tls_french_visabot\debug_appointment_page_194513.png
+[2026-04-22 19:45:13]   [DEBUG] Title: Appointment Booking | TLScontact | URL: https://visas-fr.tlscontact.com/en-us/26091640/workflow/appointment-booking?loca
+[2026-04-22 19:45:13]   Checking current month...
+[2026-04-22 19:45:13]   No appointments at 19:45:13
+[2026-04-22 19:45:13]   Clicked next month.
+[2026-04-22 19:45:14]   Checking next month...
+[2026-04-22 19:45:14]   No appointments at 19:45:14
+[2026-04-22 19:45:14]   Cookies saved (8 cookies)
+[2026-04-22 19:45:14]   Waiting 180s...
+[2026-04-22 19:48:14] 
+[Check #2 at 19:48:14]
+[2026-04-22 19:48:14]   [DEBUG] Screenshot: H:\Workspace\tls_french_visabot\debug_post_login_194814.png
+[2026-04-22 19:48:14]   [DEBUG] Title: Appointment Booking | TLScontact | URL: https://visas-fr.tlscontact.com/en-us/26091640/workflow/appointment-booking?loca
+[2026-04-22 19:48:14]   Post-login URL: https://visas-fr.tlscontact.com/en-us/26091640/workflow/appointment-booking?location=gbLON2fr&month=05-2026
+[2026-04-22 19:48:16]   Cloudflare passed.
+[2026-04-22 19:48:17]   [DEBUG] Screenshot: H:\Workspace\tls_french_visabot\debug_travel_groups_194816.png
+[2026-04-22 19:48:17]   [DEBUG] Title:  | URL: https://visas-fr.tlscontact.com/en-us/expired-session
+[2026-04-22 19:48:17]   ERROR during check: Message: element not interactable
+  (Session info: chrome=147.0.7727.102)
+Stacktrace:
+	undetected_chromedriver!GetHandleVerifier [0xa3b373+10553]
+	undetected_chromedriver!GetHandleVerifier [0xa3b4a4+10684]
+	undetected_chromedriver!(No symbol) [0x841c4e]
+	undetected_chromedriver!(No symbol) [0x88bb24]
+	undetected_chromedriver!(No symbol) [0x881ab8]
+	undetected_chromedriver!(No symbol) [0x8ad86c]
+	undetected_chromedriver!(No symbol) [0x8814f4]
+	undetected_chromedriver!(No symbol) [0x8ada34]
+	undetected_chromedriver!(No symbol) [0x8caa36]
+	undetected_chromedriver!(No symbol) [0x8ad606]
+	undetected_chromedriver!(No symbol) [0x880039]
+	undetected_chromedriver!(No symbol) [0x880df4]
+	undetected_chromedriver!GetHandleVerifier [0xcbddb4+292f94]
+	undetected_chromedriver!GetHandleVerifier [0xcb937d+28e55d]
+	undetected_chromedriver!GetHandleVerifier [0xcd8215+2ad3f5]
+	undetected_chromedriver!GetHandleVerifier [0xa54c18+29df8]
+	undetected_chromedriver!GetHandleVerifier [0xa5c6fd+318dd]
+	undetected_chromedriver!GetHandleVerifier [0xa43c78+18e58]
+	undetected_chromedriver!GetHandleVerifier [0xa43e42+19022]
+	undetected_chromedriver!GetHandleVerifier [0xa2d45f+263f]
+	KERNEL32!BaseThreadInitThunk [0x767c5d49+19]
+	ntdll!RtlInitializeExceptionChain [0x77c5d83b+6b]
+	ntdll!RtlGetAppContainerNamedObjectPath [0x77c5d7c1+231]
+
+
+============================================================
+Session started: 2026-04-22 19:44:58
+============================================================
+[2026-04-22 19:48:17] Traceback (most recent call last):
+
+[2026-04-22 19:48:17]   File "H:\Workspace\tls_french_visabot\Dumbh_appointment_bot.py", line 595, in main
+    found = check_appointments(driver)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[2026-04-22 19:48:17]   File "H:\Workspace\tls_french_visabot\Dumbh_appointment_bot.py", line 413, in check_appointments
+    accept.click()
+
+[2026-04-22 19:48:17]   File "C:\Users\ChikamaYan\anaconda3\envs\tls\Lib\site-packages\selenium\webdriver\remote\webelement.py", line 94, in click
+    self._execute(Command.CLICK_ELEMENT)
+
+[2026-04-22 19:48:17]   File "C:\Users\ChikamaYan\anaconda3\envs\tls\Lib\site-packages\selenium\webdriver\remote\webelement.py", line 395, in _execute
+    return self._parent.execute(command, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[2026-04-22 19:48:17]   File "C:\Users\ChikamaYan\anaconda3\envs\tls\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 354, in execute
+    self.error_handler.check_response(response)
+
+[2026-04-22 19:48:17]   File "C:\Users\ChikamaYan\anaconda3\envs\tls\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 229, in check_response
+    raise exception_class(message, screen, stacktrace)
+
+[2026-04-22 19:48:17] selenium.common.exceptions.ElementNotInteractableException: Message: element not interactable
+  (Session info: chrome=147.0.7727.102)
+Stacktrace:
+	undetected_chromedriver!GetHandleVerifier [0xa3b373+10553]
+	undetected_chromedriver!GetHandleVerifier [0xa3b4a4+10684]
+	undetected_chromedriver!(No symbol) [0x841c4e]
+	undetected_chromedriver!(No symbol) [0x88bb24]
+	undetected_chromedriver!(No symbol) [0x881ab8]
+	undetected_chromedriver!(No symbol) [0x8ad86c]
+	undetected_chromedriver!(No symbol) [0x8814f4]
+	undetected_chromedriver!(No symbol) [0x8ada34]
+	undetected_chromedriver!(No symbol) [0x8caa36]
+	undetected_chromedriver!(No symbol) [0x8ad606]
+	undetected_chromedriver!(No symbol) [0x880039]
+	undetected_chromedriver!(No symbol) [0x880df4]
+	undetected_chromedriver!GetHandleVerifier [0xcbddb4+292f94]
+	undetected_chromedriver!GetHandleVerifier [0xcb937d+28e55d]
+	undetected_chromedriver!GetHandleVerifier [0xcd8215+2ad3f5]
+	undetected_chromedriver!GetHandleVerifier [0xa54c18+29df8]
+	undetected_chromedriver!GetHandleVerifier [0xa5c6fd+318dd]
+	undetected_chromedriver!GetHandleVerifier [0xa43c78+18e58]
+	undetected_chromedriver!GetHandleVerifier [0xa43e42+19022]
+	undetected_chromedriver!GetHandleVerifier [0xa2d45f+263f]
+	KERNEL32!BaseThreadInitThunk [0x767c5d49+19]
+	ntdll!RtlInitializeExceptionChain [0x77c5d83b+6b]
+	ntdll!RtlGetAppContainerNamedObjectPath [0x77c5d7c1+231]
+
+
+[2026-04-22 19:48:17]   [DEBUG] Screenshot: H:\Workspace\tls_french_visabot\debug_error_194817.png
+[2026-04-22 19:48:17]   [DEBUG] Title:  | URL: https://visas-fr.tlscontact.com/en-us/expired-session
+[2026-04-22 19:48:17] [TG] Photo sent: Bot error: Message: element not interactable
+  (Session info
+[2026-04-22 19:48:17]   Waiting 180s...
+[2026-04-22 19:48:29] 
+Stopped by user.
+[2026-04-22 19:48:29] Exception ignored in: 
+[2026-04-22 19:48:29] <function Chrome.__del__ at 0x000001A79CB83E20>
+[2026-04-22 19:48:29] Traceback (most recent call last):
+
+[2026-04-22 19:48:29]   File "C:\Users\ChikamaYan\anaconda3\envs\tls\Lib\site-packages\undetected_chromedriver\__init__.py", line 843, in __del__
+
+[2026-04-22 19:48:29] self.quit()
+[2026-04-22 19:48:29]   File "C:\Users\ChikamaYan\anaconda3\envs\tls\Lib\site-packages\undetected_chromedriver\__init__.py", line 798, in quit
+
+[2026-04-22 19:48:29] time.sleep(0.1)
+[2026-04-22 19:48:29] OSError
+[2026-04-22 19:48:29] : 
+[2026-04-22 19:48:29] [WinError 6] The handle is invalid
+
+============================================================
+Session started: 2026-04-22 19:48:31
+============================================================
+[2026-04-22 19:48:31] ============================================================
+[2026-04-22 19:48:31] TLScontact France Visa Slot Checker
+[2026-04-22 19:48:31] URL: https://visas-fr.tlscontact.com/visa/gb/gbLON2fr/home
+[2026-04-22 19:48:31] Check interval: 180s | Headless: False
+[2026-04-22 19:48:31] ============================================================
+[2026-04-22 19:48:31] [TG] 🤖 TLS Visa Bot started! Checking every 180s for France/London slots.
+[2026-04-22 19:48:31] 
+[Check #1 at 19:48:31]
+[2026-04-22 19:48:35]   Loaded 8 cookies from file
+[2026-04-22 19:48:38]   Cloudflare passed.
+[2026-04-22 19:48:38]   Logged in via saved cookies!
+[2026-04-22 19:48:38]   [DEBUG] Screenshot: H:\Workspace\tls_french_visabot\debug_post_login_194838.png
+[2026-04-22 19:48:38]   [DEBUG] Title: Welcome to TLScontact Wandsworth (London) | TLScontact Wandsworth (London) | URL: https://visas-fr.tlscontact.com/en-us/country/gb/vac/gbLON2fr
+[2026-04-22 19:48:38]   Post-login URL: https://visas-fr.tlscontact.com/en-us/country/gb/vac/gbLON2fr
+[2026-04-22 19:48:40]   Cloudflare passed.
+[2026-04-22 19:48:40]   [DEBUG] Screenshot: H:\Workspace\tls_french_visabot\debug_travel_groups_194840.png
+[2026-04-22 19:48:40]   [DEBUG] Title:  | URL: https://visas-fr.tlscontact.com/en-us/expired-session
+[2026-04-22 19:48:40]   Dismissed cookie banner.
+[2026-04-22 19:48:41]   [DEBUG] Screenshot: H:\Workspace\tls_french_visabot\debug_no_action_btn_194841.png
+[2026-04-22 19:48:41]   [DEBUG] Title:  | URL: https://visas-fr.tlscontact.com/en-us/expired-session
+[2026-04-22 19:48:41]   [DEBUG] Button 1: text='Save' name=''
+[2026-04-22 19:48:41]   [DEBUG] Button 2: text='Accept All' name=''
+[2026-04-22 19:48:41]   [DEBUG] Button 3: text='Reject All' name=''
+[2026-04-22 19:48:41] [TG] Photo sent: Cannot find Select/Book button
+[2026-04-22 19:48:41]   Session expired during check, will re-login next cycle.
+[2026-04-22 19:48:41]   Cookies saved (5 cookies)
+[2026-04-22 19:48:41]   Waiting 180s...
+[2026-04-22 19:48:52] 
+Stopped by user.
+
+============================================================
+Session started: 2026-04-22 19:48:31
+============================================================
+[2026-04-22 19:48:52] Exception ignored in: 
+[2026-04-22 19:48:52] <function Chrome.__del__ at 0x000001CBA01A3E20>
+[2026-04-22 19:48:52] Traceback (most recent call last):
+
+[2026-04-22 19:48:52]   File "C:\Users\ChikamaYan\anaconda3\envs\tls\Lib\site-packages\undetected_chromedriver\__init__.py", line 843, in __del__
+
+[2026-04-22 19:48:52] self.quit()
+[2026-04-22 19:48:52]   File "C:\Users\ChikamaYan\anaconda3\envs\tls\Lib\site-packages\undetected_chromedriver\__init__.py", line 798, in quit
+
+[2026-04-22 19:48:52] time.sleep(0.1)
+[2026-04-22 19:48:52] OSError
+[2026-04-22 19:48:52] : 
+[2026-04-22 19:48:52] [WinError 6] The handle is invalid
+
+============================================================
+Session started: 2026-04-22 19:48:53
+============================================================
+[2026-04-22 19:48:53] ============================================================
+[2026-04-22 19:48:53] TLScontact France Visa Slot Checker
+[2026-04-22 19:48:53] URL: https://visas-fr.tlscontact.com/visa/gb/gbLON2fr/home
+[2026-04-22 19:48:53] Check interval: 180s | Headless: False
+[2026-04-22 19:48:53] ============================================================
+[2026-04-22 19:48:53] [TG] 🤖 TLS Visa Bot started! Checking every 180s for France/London slots.
+[2026-04-22 19:48:53] 
+[Check #1 at 19:48:53]
+[2026-04-22 19:49:00]   Cloudflare passed.
+[2026-04-22 19:49:00]   Cookies accepted.
+[2026-04-22 19:49:01]   Found Login button.
+[2026-04-22 19:49:02]   Clicked Login.
+[2026-04-22 19:49:03]   Cloudflare passed.
+[2026-04-22 19:49:03]   Found Email field (tag=input, id=email-input-field)
+[2026-04-22 19:49:03]   Email entered.
+[2026-04-22 19:49:03]   Password entered.
+[2026-04-22 19:49:08]   Found Submit button via text fallback (tag=button).
+[2026-04-22 19:49:08]   Solving reCAPTCHA...
+[2026-04-22 19:49:09]   Clicked reCAPTCHA checkbox.
+[2026-04-22 19:49:16]   reCAPTCHA needs manual solving!
+[2026-04-22 19:49:16] [TG] ⚠️ reCAPTCHA needs manual solving! Go to your PC and click the CAPTCHA.
+[2026-04-22 19:49:18]   reCAPTCHA solved manually!
+[2026-04-22 19:49:19]   Login submitted.
+[2026-04-22 19:49:21]   Login successful!
+[2026-04-22 19:49:21]   Cookies saved (7 cookies)
+[2026-04-22 19:49:21]   [DEBUG] Screenshot: H:\Workspace\tls_french_visabot\debug_post_login_194921.png
+[2026-04-22 19:49:21]   [DEBUG] Title: Applications list | TLScontact | URL: https://visas-fr.tlscontact.com/en-us/travel-groups
+[2026-04-22 19:49:21]   Post-login URL: https://visas-fr.tlscontact.com/en-us/travel-groups
+[2026-04-22 19:49:21]   [DEBUG] Screenshot: H:\Workspace\tls_french_visabot\debug_travel_groups_194921.png
+[2026-04-22 19:49:21]   [DEBUG] Title: Applications list | TLScontact | URL: https://visas-fr.tlscontact.com/en-us/travel-groups
+[2026-04-22 19:49:21]   ERROR during check: Message: element not interactable
+  (Session info: chrome=147.0.7727.102)
+Stacktrace:
+	undetected_chromedriver!GetHandleVerifier [0xb7b373+10553]
+	undetected_chromedriver!GetHandleVerifier [0xb7b4a4+10684]
+	undetected_chromedriver!(No symbol) [0x981c4e]
+	undetected_chromedriver!(No symbol) [0x9cbb24]
+	undetected_chromedriver!(No symbol) [0x9c1ab8]
+	undetected_chromedriver!(No symbol) [0x9ed86c]
+	undetected_chromedriver!(No symbol) [0x9c14f4]
+	undetected_chromedriver!(No symbol) [0x9eda34]
+	undetected_chromedriver!(No symbol) [0xa0aa36]
+	undetected_chromedriver!(No symbol) [0x9ed606]
+	undetected_chromedriver!(No symbol) [0x9c0039]
+	undetected_chromedriver!(No symbol) [0x9c0df4]
+	undetected_chromedriver!GetHandleVerifier [0xdfddb4+292f94]
+	undetected_chromedriver!GetHandleVerifier [0xdf937d+28e55d]
+	undetected_chromedriver!GetHandleVerifier [0xe18215+2ad3f5]
+	undetected_chromedriver!GetHandleVerifier [0xb94c18+29df8]
+	undetected_chromedriver!GetHandleVerifier [0xb9c6fd+318dd]
+	undetected_chromedriver!GetHandleVerifier [0xb83c78+18e58]
+	undetected_chromedriver!GetHandleVerifier [0xb83e42+19022]
+	undetected_chromedriver!GetHandleVerifier [0xb6d45f+263f]
+	KERNEL32!BaseThreadInitThunk [0x767c5d49+19]
+	ntdll!RtlInitializeExceptionChain [0x77c5d83b+6b]
+	ntdll!RtlGetAppContainerNamedObjectPath [0x77c5d7c1+231]
+
+
+============================================================
+Session started: 2026-04-22 19:48:53
+============================================================
+[2026-04-22 19:49:21] Traceback (most recent call last):
+
+[2026-04-22 19:49:21]   File "H:\Workspace\tls_french_visabot\Dumbh_appointment_bot.py", line 595, in main
+    found = check_appointments(driver)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[2026-04-22 19:49:21]   File "H:\Workspace\tls_french_visabot\Dumbh_appointment_bot.py", line 413, in check_appointments
+    accept.click()
+
+[2026-04-22 19:49:21]   File "C:\Users\ChikamaYan\anaconda3\envs\tls\Lib\site-packages\selenium\webdriver\remote\webelement.py", line 94, in click
+    self._execute(Command.CLICK_ELEMENT)
+
+[2026-04-22 19:49:21]   File "C:\Users\ChikamaYan\anaconda3\envs\tls\Lib\site-packages\selenium\webdriver\remote\webelement.py", line 395, in _execute
+    return self._parent.execute(command, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[2026-04-22 19:49:21]   File "C:\Users\ChikamaYan\anaconda3\envs\tls\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 354, in execute
+    self.error_handler.check_response(response)
+
+[2026-04-22 19:49:21]   File "C:\Users\ChikamaYan\anaconda3\envs\tls\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 229, in check_response
+    raise exception_class(message, screen, stacktrace)
+
+[2026-04-22 19:49:21] selenium.common.exceptions.ElementNotInteractableException: Message: element not interactable
+  (Session info: chrome=147.0.7727.102)
+Stacktrace:
+	undetected_chromedriver!GetHandleVerifier [0xb7b373+10553]
+	undetected_chromedriver!GetHandleVerifier [0xb7b4a4+10684]
+	undetected_chromedriver!(No symbol) [0x981c4e]
+	undetected_chromedriver!(No symbol) [0x9cbb24]
+	undetected_chromedriver!(No symbol) [0x9c1ab8]
+	undetected_chromedriver!(No symbol) [0x9ed86c]
+	undetected_chromedriver!(No symbol) [0x9c14f4]
+	undetected_chromedriver!(No symbol) [0x9eda34]
+	undetected_chromedriver!(No symbol) [0xa0aa36]
+	undetected_chromedriver!(No symbol) [0x9ed606]
+	undetected_chromedriver!(No symbol) [0x9c0039]
+	undetected_chromedriver!(No symbol) [0x9c0df4]
+	undetected_chromedriver!GetHandleVerifier [0xdfddb4+292f94]
+	undetected_chromedriver!GetHandleVerifier [0xdf937d+28e55d]
+	undetected_chromedriver!GetHandleVerifier [0xe18215+2ad3f5]
+	undetected_chromedriver!GetHandleVerifier [0xb94c18+29df8]
+	undetected_chromedriver!GetHandleVerifier [0xb9c6fd+318dd]
+	undetected_chromedriver!GetHandleVerifier [0xb83c78+18e58]
+	undetected_chromedriver!GetHandleVerifier [0xb83e42+19022]
+	undetected_chromedriver!GetHandleVerifier [0xb6d45f+263f]
+	KERNEL32!BaseThreadInitThunk [0x767c5d49+19]
+	ntdll!RtlInitializeExceptionChain [0x77c5d83b+6b]
+	ntdll!RtlGetAppContainerNamedObjectPath [0x77c5d7c1+231]
+
+
+[2026-04-22 19:49:21]   [DEBUG] Screenshot: H:\Workspace\tls_french_visabot\debug_error_194921.png
+[2026-04-22 19:49:21]   [DEBUG] Title: Applications list | TLScontact | URL: https://visas-fr.tlscontact.com/en-us/travel-groups
+[2026-04-22 19:49:22] [TG] Photo sent: Bot error: Message: element not interactable
+  (Session info
+[2026-04-22 19:49:22]   Waiting 180s...
+[2026-04-22 19:49:37] 
+Stopped by user.
+[2026-04-22 19:49:37] Exception ignored in: 
+[2026-04-22 19:49:37] <function Chrome.__del__ at 0x000002174B1B3E20>
+[2026-04-22 19:49:37] Traceback (most recent call last):
+
+[2026-04-22 19:49:37]   File "C:\Users\ChikamaYan\anaconda3\envs\tls\Lib\site-packages\undetected_chromedriver\__init__.py", line 843, in __del__
+
+[2026-04-22 19:49:37] self.quit()
+[2026-04-22 19:49:37]   File "C:\Users\ChikamaYan\anaconda3\envs\tls\Lib\site-packages\undetected_chromedriver\__init__.py", line 798, in quit
+
+[2026-04-22 19:49:37] time.sleep(0.1)
+[2026-04-22 19:49:37] OSError
+[2026-04-22 19:49:37] : 
+[2026-04-22 19:49:37] [WinError 6] The handle is invalid
+
+============================================================
+Session started: 2026-04-22 19:49:39
+============================================================
+[2026-04-22 19:49:39] ============================================================
+[2026-04-22 19:49:39] TLScontact France Visa Slot Checker
+[2026-04-22 19:49:39] URL: https://visas-fr.tlscontact.com/visa/gb/gbLON2fr/home
+[2026-04-22 19:49:39] Check interval: 180s | Headless: False
+[2026-04-22 19:49:39] ============================================================
+[2026-04-22 19:49:39] [TG] 🤖 TLS Visa Bot started! Checking every 180s for France/London slots.
+[2026-04-22 19:49:39] 
+[Check #1 at 19:49:39]
+[2026-04-22 19:49:43]   Loaded 7 cookies from file
+[2026-04-22 19:49:45]   Cloudflare passed.
+[2026-04-22 19:49:45]   Logged in via saved cookies!
+[2026-04-22 19:49:46]   [DEBUG] Screenshot: H:\Workspace\tls_french_visabot\debug_post_login_194945.png
+[2026-04-22 19:49:46]   [DEBUG] Title: Welcome to TLScontact Wandsworth (London) | TLScontact Wandsworth (London) | URL: https://visas-fr.tlscontact.com/en-us/country/gb/vac/gbLON2fr
+[2026-04-22 19:49:46]   Post-login URL: https://visas-fr.tlscontact.com/en-us/country/gb/vac/gbLON2fr
+[2026-04-22 19:49:49]   Cloudflare passed.
+[2026-04-22 19:49:49]   [DEBUG] Screenshot: H:\Workspace\tls_french_visabot\debug_travel_groups_194949.png
+[2026-04-22 19:49:49]   [DEBUG] Title: Applications list | TLScontact | URL: https://visas-fr.tlscontact.com/en-us/travel-groups
+[2026-04-22 19:49:49]   Dismissed cookie banner.
+[2026-04-22 19:49:49]   Clicked 'Select' (text='Select', value=26091640).
+[2026-04-22 19:49:51]   Clicked 'Continue'.
+[2026-04-22 19:49:52]   Cloudflare passed.
+[2026-04-22 19:49:54]   [DEBUG] Screenshot: H:\Workspace\tls_french_visabot\debug_appointment_page_194954.png
+[2026-04-22 19:49:54]   [DEBUG] Title: Appointment Booking | TLScontact | URL: https://visas-fr.tlscontact.com/en-us/26091640/workflow/appointment-booking?loca
+[2026-04-22 19:49:54]   Checking current month...
+[2026-04-22 19:49:54]   No appointments at 19:49:54
+[2026-04-22 19:49:54]   Clicked next month.
+[2026-04-22 19:49:55]   Checking next month...
+[2026-04-22 19:49:55]   No appointments at 19:49:55
+[2026-04-22 19:49:55]   Cookies saved (7 cookies)
+[2026-04-22 19:49:55]   Waiting 180s...
+[2026-04-22 19:52:55] 
+[Check #2 at 19:52:55]
+[2026-04-22 19:52:55]   [DEBUG] Screenshot: H:\Workspace\tls_french_visabot\debug_post_login_195255.png
+[2026-04-22 19:52:55]   [DEBUG] Title: Appointment Booking | TLScontact | URL: https://visas-fr.tlscontact.com/en-us/26091640/workflow/appointment-booking?loca
+[2026-04-22 19:52:55]   Post-login URL: https://visas-fr.tlscontact.com/en-us/26091640/workflow/appointment-booking?location=gbLON2fr&month=05-2026
+[2026-04-22 19:52:57]   Cloudflare passed.
+[2026-04-22 19:52:57]   [DEBUG] Screenshot: H:\Workspace\tls_french_visabot\debug_travel_groups_195257.png
+[2026-04-22 19:52:57]   [DEBUG] Title: Applications list | TLScontact | URL: https://visas-fr.tlscontact.com/en-us/travel-groups
+[2026-04-22 19:52:57]   ERROR during check: Message: element not interactable
+  (Session info: chrome=147.0.7727.102)
+Stacktrace:
+	undetected_chromedriver!GetHandleVerifier [0x107b373+10553]
+	undetected_chromedriver!GetHandleVerifier [0x107b4a4+10684]
+	undetected_chromedriver!(No symbol) [0xe81c4e]
+	undetected_chromedriver!(No symbol) [0xecbb24]
+	undetected_chromedriver!(No symbol) [0xec1ab8]
+	undetected_chromedriver!(No symbol) [0xeed86c]
+	undetected_chromedriver!(No symbol) [0xec14f4]
+	undetected_chromedriver!(No symbol) [0xeeda34]
+	undetected_chromedriver!(No symbol) [0xf0aa36]
+	undetected_chromedriver!(No symbol) [0xeed606]
+	undetected_chromedriver!(No symbol) [0xec0039]
+	undetected_chromedriver!(No symbol) [0xec0df4]
+	undetected_chromedriver!GetHandleVerifier [0x12fddb4+292f94]
+	undetected_chromedriver!GetHandleVerifier [0x12f937d+28e55d]
+	undetected_chromedriver!GetHandleVerifier [0x1318215+2ad3f5]
+	undetected_chromedriver!GetHandleVerifier [0x1094c18+29df8]
+	undetected_chromedriver!GetHandleVerifier [0x109c6fd+318dd]
+	undetected_chromedriver!GetHandleVerifier [0x1083c78+18e58]
+	undetected_chromedriver!GetHandleVerifier [0x1083e42+19022]
+	undetected_chromedriver!GetHandleVerifier [0x106d45f+263f]
+	KERNEL32!BaseThreadInitThunk [0x767c5d49+19]
+	ntdll!RtlInitializeExceptionChain [0x77c5d83b+6b]
+	ntdll!RtlGetAppContainerNamedObjectPath [0x77c5d7c1+231]
+
+
+============================================================
+Session started: 2026-04-22 19:49:39
+============================================================
+[2026-04-22 19:52:57] Traceback (most recent call last):
+
+[2026-04-22 19:52:57]   File "H:\Workspace\tls_french_visabot\Dumbh_appointment_bot.py", line 595, in main
+    found = check_appointments(driver)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[2026-04-22 19:52:57]   File "H:\Workspace\tls_french_visabot\Dumbh_appointment_bot.py", line 413, in check_appointments
+    accept.click()
+
+[2026-04-22 19:52:57]   File "C:\Users\ChikamaYan\anaconda3\envs\tls\Lib\site-packages\selenium\webdriver\remote\webelement.py", line 94, in click
+    self._execute(Command.CLICK_ELEMENT)
+
+[2026-04-22 19:52:57]   File "C:\Users\ChikamaYan\anaconda3\envs\tls\Lib\site-packages\selenium\webdriver\remote\webelement.py", line 395, in _execute
+    return self._parent.execute(command, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[2026-04-22 19:52:57]   File "C:\Users\ChikamaYan\anaconda3\envs\tls\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 354, in execute
+    self.error_handler.check_response(response)
+
+[2026-04-22 19:52:57]   File "C:\Users\ChikamaYan\anaconda3\envs\tls\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 229, in check_response
+    raise exception_class(message, screen, stacktrace)
+
+[2026-04-22 19:52:57] selenium.common.exceptions.ElementNotInteractableException: Message: element not interactable
+  (Session info: chrome=147.0.7727.102)
+Stacktrace:
+	undetected_chromedriver!GetHandleVerifier [0x107b373+10553]
+	undetected_chromedriver!GetHandleVerifier [0x107b4a4+10684]
+	undetected_chromedriver!(No symbol) [0xe81c4e]
+	undetected_chromedriver!(No symbol) [0xecbb24]
+	undetected_chromedriver!(No symbol) [0xec1ab8]
+	undetected_chromedriver!(No symbol) [0xeed86c]
+	undetected_chromedriver!(No symbol) [0xec14f4]
+	undetected_chromedriver!(No symbol) [0xeeda34]
+	undetected_chromedriver!(No symbol) [0xf0aa36]
+	undetected_chromedriver!(No symbol) [0xeed606]
+	undetected_chromedriver!(No symbol) [0xec0039]
+	undetected_chromedriver!(No symbol) [0xec0df4]
+	undetected_chromedriver!GetHandleVerifier [0x12fddb4+292f94]
+	undetected_chromedriver!GetHandleVerifier [0x12f937d+28e55d]
+	undetected_chromedriver!GetHandleVerifier [0x1318215+2ad3f5]
+	undetected_chromedriver!GetHandleVerifier [0x1094c18+29df8]
+	undetected_chromedriver!GetHandleVerifier [0x109c6fd+318dd]
+	undetected_chromedriver!GetHandleVerifier [0x1083c78+18e58]
+	undetected_chromedriver!GetHandleVerifier [0x1083e42+19022]
+	undetected_chromedriver!GetHandleVerifier [0x106d45f+263f]
+	KERNEL32!BaseThreadInitThunk [0x767c5d49+19]
+	ntdll!RtlInitializeExceptionChain [0x77c5d83b+6b]
+	ntdll!RtlGetAppContainerNamedObjectPath [0x77c5d7c1+231]
+
+
+[2026-04-22 19:52:57]   [DEBUG] Screenshot: H:\Workspace\tls_french_visabot\debug_error_195257.png
+[2026-04-22 19:52:57]   [DEBUG] Title: Applications list | TLScontact | URL: https://visas-fr.tlscontact.com/en-us/travel-groups
+[2026-04-22 19:52:58] [TG] Photo sent: Bot error: Message: element not interactable
+  (Session info
+[2026-04-22 19:52:58]   Waiting 180s...
+[2026-04-22 19:55:58] 
+[Check #3 at 19:55:58]
+[2026-04-22 19:55:58]   [DEBUG] Screenshot: H:\Workspace\tls_french_visabot\debug_post_login_195558.png
+[2026-04-22 19:55:58]   [DEBUG] Title: Applications list | TLScontact | URL: https://visas-fr.tlscontact.com/en-us/travel-groups
+[2026-04-22 19:55:58]   Post-login URL: https://visas-fr.tlscontact.com/en-us/travel-groups
+[2026-04-22 19:55:58]   [DEBUG] Screenshot: H:\Workspace\tls_french_visabot\debug_travel_groups_195558.png
+[2026-04-22 19:55:58]   [DEBUG] Title: Applications list | TLScontact | URL: https://visas-fr.tlscontact.com/en-us/travel-groups
+[2026-04-22 19:55:58]   ERROR during check: Message: element not interactable
+  (Session info: chrome=147.0.7727.102)
+Stacktrace:
+	undetected_chromedriver!GetHandleVerifier [0x107b373+10553]
+	undetected_chromedriver!GetHandleVerifier [0x107b4a4+10684]
+	undetected_chromedriver!(No symbol) [0xe81c4e]
+	undetected_chromedriver!(No symbol) [0xecbb24]
+	undetected_chromedriver!(No symbol) [0xec1ab8]
+	undetected_chromedriver!(No symbol) [0xeed86c]
+	undetected_chromedriver!(No symbol) [0xec14f4]
+	undetected_chromedriver!(No symbol) [0xeeda34]
+	undetected_chromedriver!(No symbol) [0xf0aa36]
+	undetected_chromedriver!(No symbol) [0xeed606]
+	undetected_chromedriver!(No symbol) [0xec0039]
+	undetected_chromedriver!(No symbol) [0xec0df4]
+	undetected_chromedriver!GetHandleVerifier [0x12fddb4+292f94]
+	undetected_chromedriver!GetHandleVerifier [0x12f937d+28e55d]
+	undetected_chromedriver!GetHandleVerifier [0x1318215+2ad3f5]
+	undetected_chromedriver!GetHandleVerifier [0x1094c18+29df8]
+	undetected_chromedriver!GetHandleVerifier [0x109c6fd+318dd]
+	undetected_chromedriver!GetHandleVerifier [0x1083c78+18e58]
+	undetected_chromedriver!GetHandleVerifier [0x1083e42+19022]
+	undetected_chromedriver!GetHandleVerifier [0x106d45f+263f]
+	KERNEL32!BaseThreadInitThunk [0x767c5d49+19]
+	ntdll!RtlInitializeExceptionChain [0x77c5d83b+6b]
+	ntdll!RtlGetAppContainerNamedObjectPath [0x77c5d7c1+231]
+
+[2026-04-22 19:55:58] Traceback (most recent call last):
+
+[2026-04-22 19:55:58]   File "H:\Workspace\tls_french_visabot\Dumbh_appointment_bot.py", line 595, in main
+    found = check_appointments(driver)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[2026-04-22 19:55:58]   File "H:\Workspace\tls_french_visabot\Dumbh_appointment_bot.py", line 413, in check_appointments
+    accept.click()
+
+[2026-04-22 19:55:58]   File "C:\Users\ChikamaYan\anaconda3\envs\tls\Lib\site-packages\selenium\webdriver\remote\webelement.py", line 94, in click
+    self._execute(Command.CLICK_ELEMENT)
+
+[2026-04-22 19:55:58]   File "C:\Users\ChikamaYan\anaconda3\envs\tls\Lib\site-packages\selenium\webdriver\remote\webelement.py", line 395, in _execute
+    return self._parent.execute(command, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[2026-04-22 19:55:58]   File "C:\Users\ChikamaYan\anaconda3\envs\tls\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 354, in execute
+    self.error_handler.check_response(response)
+
+[2026-04-22 19:55:58]   File "C:\Users\ChikamaYan\anaconda3\envs\tls\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 229, in check_response
+    raise exception_class(message, screen, stacktrace)
+
+[2026-04-22 19:55:58] selenium.common.exceptions.ElementNotInteractableException: Message: element not interactable
+  (Session info: chrome=147.0.7727.102)
+Stacktrace:
+	undetected_chromedriver!GetHandleVerifier [0x107b373+10553]
+	undetected_chromedriver!GetHandleVerifier [0x107b4a4+10684]
+	undetected_chromedriver!(No symbol) [0xe81c4e]
+	undetected_chromedriver!(No symbol) [0xecbb24]
+	undetected_chromedriver!(No symbol) [0xec1ab8]
+	undetected_chromedriver!(No symbol) [0xeed86c]
+	undetected_chromedriver!(No symbol) [0xec14f4]
+	undetected_chromedriver!(No symbol) [0xeeda34]
+	undetected_chromedriver!(No symbol) [0xf0aa36]
+	undetected_chromedriver!(No symbol) [0xeed606]
+	undetected_chromedriver!(No symbol) [0xec0039]
+	undetected_chromedriver!(No symbol) [0xec0df4]
+	undetected_chromedriver!GetHandleVerifier [0x12fddb4+292f94]
+	undetected_chromedriver!GetHandleVerifier [0x12f937d+28e55d]
+	undetected_chromedriver!GetHandleVerifier [0x1318215+2ad3f5]
+	undetected_chromedriver!GetHandleVerifier [0x1094c18+29df8]
+	undetected_chromedriver!GetHandleVerifier [0x109c6fd+318dd]
+	undetected_chromedriver!GetHandleVerifier [0x1083c78+18e58]
+	undetected_chromedriver!GetHandleVerifier [0x1083e42+19022]
+	undetected_chromedriver!GetHandleVerifier [0x106d45f+263f]
+	KERNEL32!BaseThreadInitThunk [0x767c5d49+19]
+	ntdll!RtlInitializeExceptionChain [0x77c5d83b+6b]
+	ntdll!RtlGetAppContainerNamedObjectPath [0x77c5d7c1+231]
+
+
+[2026-04-22 19:55:58]   [DEBUG] Screenshot: H:\Workspace\tls_french_visabot\debug_error_195558.png
+[2026-04-22 19:55:58]   [DEBUG] Title: Applications list | TLScontact | URL: https://visas-fr.tlscontact.com/en-us/travel-groups
+[2026-04-22 19:55:58] [TG] Photo sent: Bot error: Message: element not interactable
+  (Session info
+[2026-04-22 19:55:58]   Waiting 180s...
+[2026-04-22 19:58:58] 
+[Check #4 at 19:58:58]
+[2026-04-22 19:58:58]   [DEBUG] Screenshot: H:\Workspace\tls_french_visabot\debug_post_login_195858.png
+[2026-04-22 19:58:58]   [DEBUG] Title: Applications list | TLScontact | URL: https://visas-fr.tlscontact.com/en-us/travel-groups
+[2026-04-22 19:58:58]   Post-login URL: https://visas-fr.tlscontact.com/en-us/travel-groups
+[2026-04-22 19:58:58]   [DEBUG] Screenshot: H:\Workspace\tls_french_visabot\debug_travel_groups_195858.png
+[2026-04-22 19:58:58]   [DEBUG] Title: Applications list | TLScontact | URL: https://visas-fr.tlscontact.com/en-us/travel-groups
+[2026-04-22 19:58:58]   ERROR during check: Message: element not interactable
+  (Session info: chrome=147.0.7727.102)
+Stacktrace:
+	undetected_chromedriver!GetHandleVerifier [0x107b373+10553]
+	undetected_chromedriver!GetHandleVerifier [0x107b4a4+10684]
+	undetected_chromedriver!(No symbol) [0xe81c4e]
+	undetected_chromedriver!(No symbol) [0xecbb24]
+	undetected_chromedriver!(No symbol) [0xec1ab8]
+	undetected_chromedriver!(No symbol) [0xeed86c]
+	undetected_chromedriver!(No symbol) [0xec14f4]
+	undetected_chromedriver!(No symbol) [0xeeda34]
+	undetected_chromedriver!(No symbol) [0xf0aa36]
+	undetected_chromedriver!(No symbol) [0xeed606]
+	undetected_chromedriver!(No symbol) [0xec0039]
+	undetected_chromedriver!(No symbol) [0xec0df4]
+	undetected_chromedriver!GetHandleVerifier [0x12fddb4+292f94]
+	undetected_chromedriver!GetHandleVerifier [0x12f937d+28e55d]
+	undetected_chromedriver!GetHandleVerifier [0x1318215+2ad3f5]
+	undetected_chromedriver!GetHandleVerifier [0x1094c18+29df8]
+	undetected_chromedriver!GetHandleVerifier [0x109c6fd+318dd]
+	undetected_chromedriver!GetHandleVerifier [0x1083c78+18e58]
+	undetected_chromedriver!GetHandleVerifier [0x1083e42+19022]
+	undetected_chromedriver!GetHandleVerifier [0x106d45f+263f]
+	KERNEL32!BaseThreadInitThunk [0x767c5d49+19]
+	ntdll!RtlInitializeExceptionChain [0x77c5d83b+6b]
+	ntdll!RtlGetAppContainerNamedObjectPath [0x77c5d7c1+231]
+
+[2026-04-22 19:58:58] Traceback (most recent call last):
+
+[2026-04-22 19:58:58]   File "H:\Workspace\tls_french_visabot\Dumbh_appointment_bot.py", line 595, in main
+    found = check_appointments(driver)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[2026-04-22 19:58:58]   File "H:\Workspace\tls_french_visabot\Dumbh_appointment_bot.py", line 413, in check_appointments
+    accept.click()
+
+[2026-04-22 19:58:58]   File "C:\Users\ChikamaYan\anaconda3\envs\tls\Lib\site-packages\selenium\webdriver\remote\webelement.py", line 94, in click
+    self._execute(Command.CLICK_ELEMENT)
+
+[2026-04-22 19:58:58]   File "C:\Users\ChikamaYan\anaconda3\envs\tls\Lib\site-packages\selenium\webdriver\remote\webelement.py", line 395, in _execute
+    return self._parent.execute(command, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[2026-04-22 19:58:58]   File "C:\Users\ChikamaYan\anaconda3\envs\tls\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 354, in execute
+    self.error_handler.check_response(response)
+
+[2026-04-22 19:58:58]   File "C:\Users\ChikamaYan\anaconda3\envs\tls\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 229, in check_response
+    raise exception_class(message, screen, stacktrace)
+
+[2026-04-22 19:58:58] selenium.common.exceptions.ElementNotInteractableException: Message: element not interactable
+  (Session info: chrome=147.0.7727.102)
+Stacktrace:
+	undetected_chromedriver!GetHandleVerifier [0x107b373+10553]
+	undetected_chromedriver!GetHandleVerifier [0x107b4a4+10684]
+	undetected_chromedriver!(No symbol) [0xe81c4e]
+	undetected_chromedriver!(No symbol) [0xecbb24]
+	undetected_chromedriver!(No symbol) [0xec1ab8]
+	undetected_chromedriver!(No symbol) [0xeed86c]
+	undetected_chromedriver!(No symbol) [0xec14f4]
+	undetected_chromedriver!(No symbol) [0xeeda34]
+	undetected_chromedriver!(No symbol) [0xf0aa36]
+	undetected_chromedriver!(No symbol) [0xeed606]
+	undetected_chromedriver!(No symbol) [0xec0039]
+	undetected_chromedriver!(No symbol) [0xec0df4]
+	undetected_chromedriver!GetHandleVerifier [0x12fddb4+292f94]
+	undetected_chromedriver!GetHandleVerifier [0x12f937d+28e55d]
+	undetected_chromedriver!GetHandleVerifier [0x1318215+2ad3f5]
+	undetected_chromedriver!GetHandleVerifier [0x1094c18+29df8]
+	undetected_chromedriver!GetHandleVerifier [0x109c6fd+318dd]
+	undetected_chromedriver!GetHandleVerifier [0x1083c78+18e58]
+	undetected_chromedriver!GetHandleVerifier [0x1083e42+19022]
+	undetected_chromedriver!GetHandleVerifier [0x106d45f+263f]
+	KERNEL32!BaseThreadInitThunk [0x767c5d49+19]
+	ntdll!RtlInitializeExceptionChain [0x77c5d83b+6b]
+	ntdll!RtlGetAppContainerNamedObjectPath [0x77c5d7c1+231]
+
+
+[2026-04-22 19:58:59]   [DEBUG] Screenshot: H:\Workspace\tls_french_visabot\debug_error_195858.png
+[2026-04-22 19:58:59]   [DEBUG] Title: Applications list | TLScontact | URL: https://visas-fr.tlscontact.com/en-us/travel-groups
+[2026-04-22 19:58:59] [TG] Photo sent: Bot error: Message: element not interactable
+  (Session info
+[2026-04-22 19:58:59]   Waiting 180s...
+[2026-04-22 20:01:59] 
+[Check #5 at 20:01:59]
+[2026-04-22 20:01:59]   [DEBUG] Screenshot: H:\Workspace\tls_french_visabot\debug_post_login_200159.png
+[2026-04-22 20:01:59]   [DEBUG] Title: Applications list | TLScontact | URL: https://visas-fr.tlscontact.com/en-us/travel-groups
+[2026-04-22 20:01:59]   Post-login URL: https://visas-fr.tlscontact.com/en-us/travel-groups
+[2026-04-22 20:01:59]   [DEBUG] Screenshot: H:\Workspace\tls_french_visabot\debug_travel_groups_200159.png
+[2026-04-22 20:01:59]   [DEBUG] Title: Applications list | TLScontact | URL: https://visas-fr.tlscontact.com/en-us/travel-groups
+[2026-04-22 20:01:59]   ERROR during check: Message: element not interactable
+  (Session info: chrome=147.0.7727.102)
+Stacktrace:
+	undetected_chromedriver!GetHandleVerifier [0x107b373+10553]
+	undetected_chromedriver!GetHandleVerifier [0x107b4a4+10684]
+	undetected_chromedriver!(No symbol) [0xe81c4e]
+	undetected_chromedriver!(No symbol) [0xecbb24]
+	undetected_chromedriver!(No symbol) [0xec1ab8]
+	undetected_chromedriver!(No symbol) [0xeed86c]
+	undetected_chromedriver!(No symbol) [0xec14f4]
+	undetected_chromedriver!(No symbol) [0xeeda34]
+	undetected_chromedriver!(No symbol) [0xf0aa36]
+	undetected_chromedriver!(No symbol) [0xeed606]
+	undetected_chromedriver!(No symbol) [0xec0039]
+	undetected_chromedriver!(No symbol) [0xec0df4]
+	undetected_chromedriver!GetHandleVerifier [0x12fddb4+292f94]
+	undetected_chromedriver!GetHandleVerifier [0x12f937d+28e55d]
+	undetected_chromedriver!GetHandleVerifier [0x1318215+2ad3f5]
+	undetected_chromedriver!GetHandleVerifier [0x1094c18+29df8]
+	undetected_chromedriver!GetHandleVerifier [0x109c6fd+318dd]
+	undetected_chromedriver!GetHandleVerifier [0x1083c78+18e58]
+	undetected_chromedriver!GetHandleVerifier [0x1083e42+19022]
+	undetected_chromedriver!GetHandleVerifier [0x106d45f+263f]
+	KERNEL32!BaseThreadInitThunk [0x767c5d49+19]
+	ntdll!RtlInitializeExceptionChain [0x77c5d83b+6b]
+	ntdll!RtlGetAppContainerNamedObjectPath [0x77c5d7c1+231]
+
+[2026-04-22 20:01:59] Traceback (most recent call last):
+
+[2026-04-22 20:01:59]   File "H:\Workspace\tls_french_visabot\Dumbh_appointment_bot.py", line 595, in main
+    found = check_appointments(driver)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[2026-04-22 20:01:59]   File "H:\Workspace\tls_french_visabot\Dumbh_appointment_bot.py", line 413, in check_appointments
+    accept.click()
+
+[2026-04-22 20:01:59]   File "C:\Users\ChikamaYan\anaconda3\envs\tls\Lib\site-packages\selenium\webdriver\remote\webelement.py", line 94, in click
+    self._execute(Command.CLICK_ELEMENT)
+
+[2026-04-22 20:01:59]   File "C:\Users\ChikamaYan\anaconda3\envs\tls\Lib\site-packages\selenium\webdriver\remote\webelement.py", line 395, in _execute
+    return self._parent.execute(command, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[2026-04-22 20:01:59]   File "C:\Users\ChikamaYan\anaconda3\envs\tls\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 354, in execute
+    self.error_handler.check_response(response)
+
+[2026-04-22 20:01:59]   File "C:\Users\ChikamaYan\anaconda3\envs\tls\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 229, in check_response
+    raise exception_class(message, screen, stacktrace)
+
+[2026-04-22 20:01:59] selenium.common.exceptions.ElementNotInteractableException: Message: element not interactable
+  (Session info: chrome=147.0.7727.102)
+Stacktrace:
+	undetected_chromedriver!GetHandleVerifier [0x107b373+10553]
+	undetected_chromedriver!GetHandleVerifier [0x107b4a4+10684]
+	undetected_chromedriver!(No symbol) [0xe81c4e]
+	undetected_chromedriver!(No symbol) [0xecbb24]
+	undetected_chromedriver!(No symbol) [0xec1ab8]
+	undetected_chromedriver!(No symbol) [0xeed86c]
+	undetected_chromedriver!(No symbol) [0xec14f4]
+	undetected_chromedriver!(No symbol) [0xeeda34]
+	undetected_chromedriver!(No symbol) [0xf0aa36]
+	undetected_chromedriver!(No symbol) [0xeed606]
+	undetected_chromedriver!(No symbol) [0xec0039]
+	undetected_chromedriver!(No symbol) [0xec0df4]
+	undetected_chromedriver!GetHandleVerifier [0x12fddb4+292f94]
+	undetected_chromedriver!GetHandleVerifier [0x12f937d+28e55d]
+	undetected_chromedriver!GetHandleVerifier [0x1318215+2ad3f5]
+	undetected_chromedriver!GetHandleVerifier [0x1094c18+29df8]
+	undetected_chromedriver!GetHandleVerifier [0x109c6fd+318dd]
+	undetected_chromedriver!GetHandleVerifier [0x1083c78+18e58]
+	undetected_chromedriver!GetHandleVerifier [0x1083e42+19022]
+	undetected_chromedriver!GetHandleVerifier [0x106d45f+263f]
+	KERNEL32!BaseThreadInitThunk [0x767c5d49+19]
+	ntdll!RtlInitializeExceptionChain [0x77c5d83b+6b]
+	ntdll!RtlGetAppContainerNamedObjectPath [0x77c5d7c1+231]
+
+
+[2026-04-22 20:01:59]   [DEBUG] Screenshot: H:\Workspace\tls_french_visabot\debug_error_200159.png
+[2026-04-22 20:01:59]   [DEBUG] Title: Applications list | TLScontact | URL: https://visas-fr.tlscontact.com/en-us/travel-groups
+[2026-04-22 20:01:59] [TG] Photo sent: Bot error: Message: element not interactable
+  (Session info
+[2026-04-22 20:01:59]   Waiting 180s...
+[2026-04-22 20:04:59] 
+[Check #6 at 20:04:59]
+[2026-04-22 20:04:59]   [DEBUG] Screenshot: H:\Workspace\tls_french_visabot\debug_post_login_200459.png
+[2026-04-22 20:04:59]   [DEBUG] Title: Applications list | TLScontact | URL: https://visas-fr.tlscontact.com/en-us/travel-groups
+[2026-04-22 20:04:59]   Post-login URL: https://visas-fr.tlscontact.com/en-us/travel-groups
+[2026-04-22 20:05:00]   [DEBUG] Screenshot: H:\Workspace\tls_french_visabot\debug_travel_groups_200459.png
+[2026-04-22 20:05:00]   [DEBUG] Title: Applications list | TLScontact | URL: https://visas-fr.tlscontact.com/en-us/travel-groups
+[2026-04-22 20:05:00]   ERROR during check: Message: element not interactable
+  (Session info: chrome=147.0.7727.102)
+Stacktrace:
+	undetected_chromedriver!GetHandleVerifier [0x107b373+10553]
+	undetected_chromedriver!GetHandleVerifier [0x107b4a4+10684]
+	undetected_chromedriver!(No symbol) [0xe81c4e]
+	undetected_chromedriver!(No symbol) [0xecbb24]
+	undetected_chromedriver!(No symbol) [0xec1ab8]
+	undetected_chromedriver!(No symbol) [0xeed86c]
+	undetected_chromedriver!(No symbol) [0xec14f4]
+	undetected_chromedriver!(No symbol) [0xeeda34]
+	undetected_chromedriver!(No symbol) [0xf0aa36]
+	undetected_chromedriver!(No symbol) [0xeed606]
+	undetected_chromedriver!(No symbol) [0xec0039]
+	undetected_chromedriver!(No symbol) [0xec0df4]
+	undetected_chromedriver!GetHandleVerifier [0x12fddb4+292f94]
+	undetected_chromedriver!GetHandleVerifier [0x12f937d+28e55d]
+	undetected_chromedriver!GetHandleVerifier [0x1318215+2ad3f5]
+	undetected_chromedriver!GetHandleVerifier [0x1094c18+29df8]
+	undetected_chromedriver!GetHandleVerifier [0x109c6fd+318dd]
+	undetected_chromedriver!GetHandleVerifier [0x1083c78+18e58]
+	undetected_chromedriver!GetHandleVerifier [0x1083e42+19022]
+	undetected_chromedriver!GetHandleVerifier [0x106d45f+263f]
+	KERNEL32!BaseThreadInitThunk [0x767c5d49+19]
+	ntdll!RtlInitializeExceptionChain [0x77c5d83b+6b]
+	ntdll!RtlGetAppContainerNamedObjectPath [0x77c5d7c1+231]
+
+[2026-04-22 20:05:00] Traceback (most recent call last):
+
+[2026-04-22 20:05:00]   File "H:\Workspace\tls_french_visabot\Dumbh_appointment_bot.py", line 595, in main
+    found = check_appointments(driver)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[2026-04-22 20:05:00]   File "H:\Workspace\tls_french_visabot\Dumbh_appointment_bot.py", line 413, in check_appointments
+    accept.click()
+
+[2026-04-22 20:05:00]   File "C:\Users\ChikamaYan\anaconda3\envs\tls\Lib\site-packages\selenium\webdriver\remote\webelement.py", line 94, in click
+    self._execute(Command.CLICK_ELEMENT)
+
+[2026-04-22 20:05:00]   File "C:\Users\ChikamaYan\anaconda3\envs\tls\Lib\site-packages\selenium\webdriver\remote\webelement.py", line 395, in _execute
+    return self._parent.execute(command, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[2026-04-22 20:05:00]   File "C:\Users\ChikamaYan\anaconda3\envs\tls\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 354, in execute
+    self.error_handler.check_response(response)
+
+[2026-04-22 20:05:00]   File "C:\Users\ChikamaYan\anaconda3\envs\tls\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 229, in check_response
+    raise exception_class(message, screen, stacktrace)
+
+[2026-04-22 20:05:00] selenium.common.exceptions.ElementNotInteractableException: Message: element not interactable
+  (Session info: chrome=147.0.7727.102)
+Stacktrace:
+	undetected_chromedriver!GetHandleVerifier [0x107b373+10553]
+	undetected_chromedriver!GetHandleVerifier [0x107b4a4+10684]
+	undetected_chromedriver!(No symbol) [0xe81c4e]
+	undetected_chromedriver!(No symbol) [0xecbb24]
+	undetected_chromedriver!(No symbol) [0xec1ab8]
+	undetected_chromedriver!(No symbol) [0xeed86c]
+	undetected_chromedriver!(No symbol) [0xec14f4]
+	undetected_chromedriver!(No symbol) [0xeeda34]
+	undetected_chromedriver!(No symbol) [0xf0aa36]
+	undetected_chromedriver!(No symbol) [0xeed606]
+	undetected_chromedriver!(No symbol) [0xec0039]
+	undetected_chromedriver!(No symbol) [0xec0df4]
+	undetected_chromedriver!GetHandleVerifier [0x12fddb4+292f94]
+	undetected_chromedriver!GetHandleVerifier [0x12f937d+28e55d]
+	undetected_chromedriver!GetHandleVerifier [0x1318215+2ad3f5]
+	undetected_chromedriver!GetHandleVerifier [0x1094c18+29df8]
+	undetected_chromedriver!GetHandleVerifier [0x109c6fd+318dd]
+	undetected_chromedriver!GetHandleVerifier [0x1083c78+18e58]
+	undetected_chromedriver!GetHandleVerifier [0x1083e42+19022]
+	undetected_chromedriver!GetHandleVerifier [0x106d45f+263f]
+	KERNEL32!BaseThreadInitThunk [0x767c5d49+19]
+	ntdll!RtlInitializeExceptionChain [0x77c5d83b+6b]
+	ntdll!RtlGetAppContainerNamedObjectPath [0x77c5d7c1+231]
+
+
+[2026-04-22 20:05:00]   [DEBUG] Screenshot: H:\Workspace\tls_french_visabot\debug_error_200500.png
+[2026-04-22 20:05:00]   [DEBUG] Title: Applications list | TLScontact | URL: https://visas-fr.tlscontact.com/en-us/travel-groups
+[2026-04-22 20:05:00] [TG] Photo sent: Bot error: Message: element not interactable
+  (Session info
+[2026-04-22 20:05:00]   Waiting 180s...
+[2026-04-22 20:08:00] 
+[Check #7 at 20:08:00]
+[2026-04-22 20:08:00]   [DEBUG] Screenshot: H:\Workspace\tls_french_visabot\debug_post_login_200800.png
+[2026-04-22 20:08:00]   [DEBUG] Title: Applications list | TLScontact | URL: https://visas-fr.tlscontact.com/en-us/travel-groups
+[2026-04-22 20:08:00]   Post-login URL: https://visas-fr.tlscontact.com/en-us/travel-groups
+[2026-04-22 20:08:00]   [DEBUG] Screenshot: H:\Workspace\tls_french_visabot\debug_travel_groups_200800.png
+[2026-04-22 20:08:00]   [DEBUG] Title: Applications list | TLScontact | URL: https://visas-fr.tlscontact.com/en-us/travel-groups
+[2026-04-22 20:08:00]   ERROR during check: Message: element not interactable
+  (Session info: chrome=147.0.7727.102)
+Stacktrace:
+	undetected_chromedriver!GetHandleVerifier [0x107b373+10553]
+	undetected_chromedriver!GetHandleVerifier [0x107b4a4+10684]
+	undetected_chromedriver!(No symbol) [0xe81c4e]
+	undetected_chromedriver!(No symbol) [0xecbb24]
+	undetected_chromedriver!(No symbol) [0xec1ab8]
+	undetected_chromedriver!(No symbol) [0xeed86c]
+	undetected_chromedriver!(No symbol) [0xec14f4]
+	undetected_chromedriver!(No symbol) [0xeeda34]
+	undetected_chromedriver!(No symbol) [0xf0aa36]
+	undetected_chromedriver!(No symbol) [0xeed606]
+	undetected_chromedriver!(No symbol) [0xec0039]
+	undetected_chromedriver!(No symbol) [0xec0df4]
+	undetected_chromedriver!GetHandleVerifier [0x12fddb4+292f94]
+	undetected_chromedriver!GetHandleVerifier [0x12f937d+28e55d]
+	undetected_chromedriver!GetHandleVerifier [0x1318215+2ad3f5]
+	undetected_chromedriver!GetHandleVerifier [0x1094c18+29df8]
+	undetected_chromedriver!GetHandleVerifier [0x109c6fd+318dd]
+	undetected_chromedriver!GetHandleVerifier [0x1083c78+18e58]
+	undetected_chromedriver!GetHandleVerifier [0x1083e42+19022]
+	undetected_chromedriver!GetHandleVerifier [0x106d45f+263f]
+	KERNEL32!BaseThreadInitThunk [0x767c5d49+19]
+	ntdll!RtlInitializeExceptionChain [0x77c5d83b+6b]
+	ntdll!RtlGetAppContainerNamedObjectPath [0x77c5d7c1+231]
+
+[2026-04-22 20:08:00] Traceback (most recent call last):
+
+[2026-04-22 20:08:00]   File "H:\Workspace\tls_french_visabot\Dumbh_appointment_bot.py", line 595, in main
+    found = check_appointments(driver)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[2026-04-22 20:08:00]   File "H:\Workspace\tls_french_visabot\Dumbh_appointment_bot.py", line 413, in check_appointments
+    accept.click()
+
+[2026-04-22 20:08:00]   File "C:\Users\ChikamaYan\anaconda3\envs\tls\Lib\site-packages\selenium\webdriver\remote\webelement.py", line 94, in click
+    self._execute(Command.CLICK_ELEMENT)
+
+[2026-04-22 20:08:00]   File "C:\Users\ChikamaYan\anaconda3\envs\tls\Lib\site-packages\selenium\webdriver\remote\webelement.py", line 395, in _execute
+    return self._parent.execute(command, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[2026-04-22 20:08:00]   File "C:\Users\ChikamaYan\anaconda3\envs\tls\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 354, in execute
+    self.error_handler.check_response(response)
+
+[2026-04-22 20:08:00]   File "C:\Users\ChikamaYan\anaconda3\envs\tls\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 229, in check_response
+    raise exception_class(message, screen, stacktrace)
+
+[2026-04-22 20:08:00] selenium.common.exceptions.ElementNotInteractableException: Message: element not interactable
+  (Session info: chrome=147.0.7727.102)
+Stacktrace:
+	undetected_chromedriver!GetHandleVerifier [0x107b373+10553]
+	undetected_chromedriver!GetHandleVerifier [0x107b4a4+10684]
+	undetected_chromedriver!(No symbol) [0xe81c4e]
+	undetected_chromedriver!(No symbol) [0xecbb24]
+	undetected_chromedriver!(No symbol) [0xec1ab8]
+	undetected_chromedriver!(No symbol) [0xeed86c]
+	undetected_chromedriver!(No symbol) [0xec14f4]
+	undetected_chromedriver!(No symbol) [0xeeda34]
+	undetected_chromedriver!(No symbol) [0xf0aa36]
+	undetected_chromedriver!(No symbol) [0xeed606]
+	undetected_chromedriver!(No symbol) [0xec0039]
+	undetected_chromedriver!(No symbol) [0xec0df4]
+	undetected_chromedriver!GetHandleVerifier [0x12fddb4+292f94]
+	undetected_chromedriver!GetHandleVerifier [0x12f937d+28e55d]
+	undetected_chromedriver!GetHandleVerifier [0x1318215+2ad3f5]
+	undetected_chromedriver!GetHandleVerifier [0x1094c18+29df8]
+	undetected_chromedriver!GetHandleVerifier [0x109c6fd+318dd]
+	undetected_chromedriver!GetHandleVerifier [0x1083c78+18e58]
+	undetected_chromedriver!GetHandleVerifier [0x1083e42+19022]
+	undetected_chromedriver!GetHandleVerifier [0x106d45f+263f]
+	KERNEL32!BaseThreadInitThunk [0x767c5d49+19]
+	ntdll!RtlInitializeExceptionChain [0x77c5d83b+6b]
+	ntdll!RtlGetAppContainerNamedObjectPath [0x77c5d7c1+231]
+
+
+[2026-04-22 20:08:00]   [DEBUG] Screenshot: H:\Workspace\tls_french_visabot\debug_error_200800.png
+[2026-04-22 20:08:00]   [DEBUG] Title: Applications list | TLScontact | URL: https://visas-fr.tlscontact.com/en-us/travel-groups
+[2026-04-22 20:08:01] [TG] Photo sent: Bot error: Message: element not interactable
+  (Session info
+[2026-04-22 20:08:01]   Waiting 180s...
+[2026-04-22 20:09:34] 
+Stopped by user.
+[2026-04-22 20:09:35] Exception ignored in: 
+[2026-04-22 20:09:35] <function Chrome.__del__ at 0x000001301A9E3E20>
+[2026-04-22 20:09:35] Traceback (most recent call last):
+
+[2026-04-22 20:09:35]   File "C:\Users\ChikamaYan\anaconda3\envs\tls\Lib\site-packages\undetected_chromedriver\__init__.py", line 843, in __del__
+
+[2026-04-22 20:09:35] self.quit()
+[2026-04-22 20:09:35]   File "C:\Users\ChikamaYan\anaconda3\envs\tls\Lib\site-packages\undetected_chromedriver\__init__.py", line 798, in quit
+
+[2026-04-22 20:09:35] time.sleep(0.1)
+[2026-04-22 20:09:35] OSError
+[2026-04-22 20:09:35] : 
+[2026-04-22 20:09:35] [WinError 6] The handle is invalid
+
+============================================================
+Session started: 2026-04-22 20:09:38
+============================================================
+[2026-04-22 20:09:38] ============================================================
+[2026-04-22 20:09:38] TLScontact France Visa Slot Checker
+[2026-04-22 20:09:38] URL: https://visas-fr.tlscontact.com/visa/gb/gbLON2fr/home
+[2026-04-22 20:09:38] Check interval: 180s | Headless: False
+[2026-04-22 20:09:38] ============================================================
+[2026-04-22 20:09:38] [TG] 🤖 TLS Visa Bot started! Checking every 180s for France/London slots.
+[2026-04-22 20:09:38] 
+[Check #1 at 20:09:38]
+[2026-04-22 20:09:43]   Loaded 7 cookies from file
+[2026-04-22 20:09:46]   Cloudflare passed.
+[2026-04-22 20:09:46]   Logged in via saved cookies!
+[2026-04-22 20:09:46]   [DEBUG] Screenshot: H:\Workspace\tls_french_visabot\debug_post_login_200946.png
+[2026-04-22 20:09:46]   [DEBUG] Title: Welcome to TLScontact Wandsworth (London) | TLScontact Wandsworth (London) | URL: https://visas-fr.tlscontact.com/en-us/country/gb/vac/gbLON2fr
+[2026-04-22 20:09:46]   Post-login URL: https://visas-fr.tlscontact.com/en-us/country/gb/vac/gbLON2fr
+[2026-04-22 20:09:49]   Cloudflare passed.
+[2026-04-22 20:09:49]   [DEBUG] Screenshot: H:\Workspace\tls_french_visabot\debug_travel_groups_200949.png
+[2026-04-22 20:09:49]   [DEBUG] Title: Applications list | TLScontact | URL: https://visas-fr.tlscontact.com/en-us/travel-groups
+[2026-04-22 20:09:49]   Dismissed cookie banner.
+[2026-04-22 20:09:50]   Clicked 'Select' (text='Select', value=26091640).
+[2026-04-22 20:09:51]   Clicked 'Continue'.
+[2026-04-22 20:09:52]   Cloudflare passed.
+[2026-04-22 20:09:54]   [DEBUG] Screenshot: H:\Workspace\tls_french_visabot\debug_appointment_page_200954.png
+[2026-04-22 20:09:54]   [DEBUG] Title: Appointment Booking | TLScontact | URL: https://visas-fr.tlscontact.com/en-us/26091640/workflow/appointment-booking?loca
+[2026-04-22 20:09:54]   Checking current month...
+[2026-04-22 20:09:54]   No appointments at 20:09:54
+[2026-04-22 20:09:54]   Clicked next month.
+[2026-04-22 20:09:55]   Checking next month...
+[2026-04-22 20:09:55]   No appointments at 20:09:55
+[2026-04-22 20:09:55]   Cookies saved (8 cookies)
+[2026-04-22 20:09:55]   Waiting 180s...
+[2026-04-22 20:12:55] 
+[Check #2 at 20:12:55]
+[2026-04-22 20:12:55]   [DEBUG] Screenshot: H:\Workspace\tls_french_visabot\debug_post_login_201255.png
+[2026-04-22 20:12:55]   [DEBUG] Title: Appointment Booking | TLScontact | URL: https://visas-fr.tlscontact.com/en-us/26091640/workflow/appointment-booking?loca
+[2026-04-22 20:12:55]   Post-login URL: https://visas-fr.tlscontact.com/en-us/26091640/workflow/appointment-booking?location=gbLON2fr&month=05-2026
+[2026-04-22 20:12:58]   Cloudflare passed.
+[2026-04-22 20:12:58]   [DEBUG] Screenshot: H:\Workspace\tls_french_visabot\debug_travel_groups_201258.png
+[2026-04-22 20:12:58]   [DEBUG] Title: Applications list | TLScontact | URL: https://visas-fr.tlscontact.com/en-us/travel-groups
+[2026-04-22 20:12:58]   ERROR during check: Message: element not interactable
+  (Session info: chrome=147.0.7727.102)
+Stacktrace:
+	undetected_chromedriver!GetHandleVerifier [0x111b373+10553]
+	undetected_chromedriver!GetHandleVerifier [0x111b4a4+10684]
+	undetected_chromedriver!(No symbol) [0xf21c4e]
+	undetected_chromedriver!(No symbol) [0xf6bb24]
+	undetected_chromedriver!(No symbol) [0xf61ab8]
+	undetected_chromedriver!(No symbol) [0xf8d86c]
+	undetected_chromedriver!(No symbol) [0xf614f4]
+	undetected_chromedriver!(No symbol) [0xf8da34]
+	undetected_chromedriver!(No symbol) [0xfaaa36]
+	undetected_chromedriver!(No symbol) [0xf8d606]
+	undetected_chromedriver!(No symbol) [0xf60039]
+	undetected_chromedriver!(No symbol) [0xf60df4]
+	undetected_chromedriver!GetHandleVerifier [0x139ddb4+292f94]
+	undetected_chromedriver!GetHandleVerifier [0x139937d+28e55d]
+	undetected_chromedriver!GetHandleVerifier [0x13b8215+2ad3f5]
+	undetected_chromedriver!GetHandleVerifier [0x1134c18+29df8]
+	undetected_chromedriver!GetHandleVerifier [0x113c6fd+318dd]
+	undetected_chromedriver!GetHandleVerifier [0x1123c78+18e58]
+	undetected_chromedriver!GetHandleVerifier [0x1123e42+19022]
+	undetected_chromedriver!GetHandleVerifier [0x110d45f+263f]
+	KERNEL32!BaseThreadInitThunk [0x767c5d49+19]
+	ntdll!RtlInitializeExceptionChain [0x77c5d83b+6b]
+	ntdll!RtlGetAppContainerNamedObjectPath [0x77c5d7c1+231]
+
+
+============================================================
+Session started: 2026-04-22 20:09:38
+============================================================
+[2026-04-22 20:12:58] Traceback (most recent call last):
+
+[2026-04-22 20:12:58]   File "H:\Workspace\tls_french_visabot\Dumbh_appointment_bot.py", line 595, in main
+    found = check_appointments(driver)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[2026-04-22 20:12:58]   File "H:\Workspace\tls_french_visabot\Dumbh_appointment_bot.py", line 413, in check_appointments
+    accept.click()
+
+[2026-04-22 20:12:58]   File "C:\Users\ChikamaYan\anaconda3\envs\tls\Lib\site-packages\selenium\webdriver\remote\webelement.py", line 94, in click
+    self._execute(Command.CLICK_ELEMENT)
+
+[2026-04-22 20:12:58]   File "C:\Users\ChikamaYan\anaconda3\envs\tls\Lib\site-packages\selenium\webdriver\remote\webelement.py", line 395, in _execute
+    return self._parent.execute(command, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[2026-04-22 20:12:58]   File "C:\Users\ChikamaYan\anaconda3\envs\tls\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 354, in execute
+    self.error_handler.check_response(response)
+
+[2026-04-22 20:12:58]   File "C:\Users\ChikamaYan\anaconda3\envs\tls\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 229, in check_response
+    raise exception_class(message, screen, stacktrace)
+
+[2026-04-22 20:12:58] selenium.common.exceptions.ElementNotInteractableException: Message: element not interactable
+  (Session info: chrome=147.0.7727.102)
+Stacktrace:
+	undetected_chromedriver!GetHandleVerifier [0x111b373+10553]
+	undetected_chromedriver!GetHandleVerifier [0x111b4a4+10684]
+	undetected_chromedriver!(No symbol) [0xf21c4e]
+	undetected_chromedriver!(No symbol) [0xf6bb24]
+	undetected_chromedriver!(No symbol) [0xf61ab8]
+	undetected_chromedriver!(No symbol) [0xf8d86c]
+	undetected_chromedriver!(No symbol) [0xf614f4]
+	undetected_chromedriver!(No symbol) [0xf8da34]
+	undetected_chromedriver!(No symbol) [0xfaaa36]
+	undetected_chromedriver!(No symbol) [0xf8d606]
+	undetected_chromedriver!(No symbol) [0xf60039]
+	undetected_chromedriver!(No symbol) [0xf60df4]
+	undetected_chromedriver!GetHandleVerifier [0x139ddb4+292f94]
+	undetected_chromedriver!GetHandleVerifier [0x139937d+28e55d]
+	undetected_chromedriver!GetHandleVerifier [0x13b8215+2ad3f5]
+	undetected_chromedriver!GetHandleVerifier [0x1134c18+29df8]
+	undetected_chromedriver!GetHandleVerifier [0x113c6fd+318dd]
+	undetected_chromedriver!GetHandleVerifier [0x1123c78+18e58]
+	undetected_chromedriver!GetHandleVerifier [0x1123e42+19022]
+	undetected_chromedriver!GetHandleVerifier [0x110d45f+263f]
+	KERNEL32!BaseThreadInitThunk [0x767c5d49+19]
+	ntdll!RtlInitializeExceptionChain [0x77c5d83b+6b]
+	ntdll!RtlGetAppContainerNamedObjectPath [0x77c5d7c1+231]
+
+
+[2026-04-22 20:12:58]   [DEBUG] Screenshot: H:\Workspace\tls_french_visabot\debug_error_201258.png
+[2026-04-22 20:12:58]   [DEBUG] Title: Applications list | TLScontact | URL: https://visas-fr.tlscontact.com/en-us/travel-groups
+[2026-04-22 20:12:58] [TG] Photo sent: Bot error: Message: element not interactable
+  (Session info
+[2026-04-22 20:12:58]   Waiting 180s...
+[2026-04-22 20:14:24] 
+Stopped by user.
+[2026-04-22 20:14:24] Exception ignored in: 
+[2026-04-22 20:14:24] <function Chrome.__del__ at 0x000001AEE9003E20>
+[2026-04-22 20:14:24] Traceback (most recent call last):
+
+[2026-04-22 20:14:24]   File "C:\Users\ChikamaYan\anaconda3\envs\tls\Lib\site-packages\undetected_chromedriver\__init__.py", line 843, in __del__
+
+[2026-04-22 20:14:24] self.quit()
+[2026-04-22 20:14:24]   File "C:\Users\ChikamaYan\anaconda3\envs\tls\Lib\site-packages\undetected_chromedriver\__init__.py", line 798, in quit
+
+[2026-04-22 20:14:24] time.sleep(0.1)
+[2026-04-22 20:14:24] OSError
+[2026-04-22 20:14:24] : 
+[2026-04-22 20:14:24] [WinError 6] The handle is invalid
