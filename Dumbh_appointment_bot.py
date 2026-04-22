@@ -260,12 +260,15 @@ def do_login(driver):
         driver.get(TLS_URL)
         time.sleep(1)
         wait_for_cloudflare(driver)
-        if "auth" not in driver.current_url and "login" not in driver.current_url:
-            page = driver.page_source.lower()
-            if "login" not in driver.title.lower() and ("appointment" in page or "dashboard" in page or "application" in page):
-                print("  Logged in via saved cookies!")
-                return True
-        print("  Cookies expired, fresh login...")
+        url = driver.current_url.lower()
+        # Detect expired/invalid sessions
+        if "expired" in url or "login" in url or "auth" in url:
+            print(f"  Cookies invalid (landed on {url[:60]}), fresh login...")
+            os.remove(COOKIES_FILE)
+            print("  Deleted stale cookies file.")
+        else:
+            print("  Logged in via saved cookies!")
+            return True
 
     # Fresh login
     driver.get(TLS_URL)
@@ -393,60 +396,63 @@ def do_login(driver):
 def check_appointments(driver):
     """After login, navigate through booking flow and check for slots."""
 
-    # Navigate to travel groups page
-    TLS_TRAVEL_GROUPS = 'https://visas-fr.tlscontact.com/en-us/travel-groups'
+    save_debug(driver, "post_login")
+    print(f"  Post-login URL: {driver.current_url}")
+
+    # Navigate to travel groups if not already there
     if "travel-groups" not in driver.current_url:
-        driver.get(TLS_TRAVEL_GROUPS)
+        driver.get('https://visas-fr.tlscontact.com/en-us/travel-groups')
         time.sleep(2)
         wait_for_cloudflare(driver)
 
     save_debug(driver, "travel_groups")
 
-    # 1. Click "Select" on existing travel group
-    #    Confirmed HTML: <button name="formGroupId" type="submit" value="26091640">Select</button>
+    # Step 1: Get into the application
+    # Try "Select" button first (Manus-verified), then "Book an appointment" (seen in logs)
+    clicked = False
     try:
-        select_btn = WebDriverWait(driver, 10).until(
+        select_btn = WebDriverWait(driver, 5).until(
             EC.element_to_be_clickable((By.XPATH,
                 "//button[@name='formGroupId']")))
-        driver.execute_script("arguments[0].scrollIntoView(true);", select_btn)
         select_btn.click()
         print(f"  Clicked 'Select' (value={select_btn.get_attribute('value')}).")
+        clicked = True
         human_like_delay()
     except TimeoutException:
-        try:
-            select_btn = driver.find_element(By.XPATH,
-                "//button[contains(text(), 'Select')]")
-            select_btn.click()
-            print("  Clicked 'Select' via text fallback.")
-            human_like_delay()
-        except NoSuchElementException:
-            debug_path = save_debug(driver, "no_select_btn")
-            buttons = driver.find_elements(By.TAG_NAME, "button")
-            for i, btn in enumerate(buttons):
-                print(f"  [DEBUG] Button {i}: text='{btn.text}' name='{btn.get_attribute('name')}' type='{btn.get_attribute('type')}'")
-            send_telegram_photo(debug_path, "Cannot find Select button")
-            return False
+        pass
 
-    # 2. Click "Continue" to appointment booking
-    #    Confirmed HTML: <a id="book-appointment-btn">Continue</a>
-    try:
-        continue_btn = WebDriverWait(driver, 10).until(
-            EC.element_to_be_clickable((By.ID, "book-appointment-btn")))
-        driver.execute_script("arguments[0].scrollIntoView(true);", continue_btn)
-        continue_btn.click()
-        print("  Clicked 'Continue' (book-appointment-btn).")
-        human_like_delay()
-    except TimeoutException:
+    if not clicked:
         try:
-            continue_btn = driver.find_element(By.XPATH,
-                "//a[contains(text(), 'Continue')] | //button[contains(text(), 'Continue')]")
-            continue_btn.click()
-            print("  Clicked 'Continue' via text fallback.")
+            book_btn = driver.find_element(By.XPATH,
+                "//button[contains(text(), 'Book an appointment')] | "
+                "//button[contains(text(), 'Book')] | "
+                "//button[contains(text(), 'Select')]")
+            book_btn.click()
+            print(f"  Clicked '{book_btn.text}'.")
+            clicked = True
             human_like_delay()
         except NoSuchElementException:
-            debug_path = save_debug(driver, "no_continue_btn")
-            send_telegram_photo(debug_path, "Cannot find Continue button")
-            return False
+            pass
+
+    if not clicked:
+        debug_path = save_debug(driver, "no_action_btn")
+        buttons = driver.find_elements(By.TAG_NAME, "button")
+        for i, btn in enumerate(buttons):
+            if btn.text.strip():
+                print(f"  [DEBUG] Button {i}: text='{btn.text}' name='{btn.get_attribute('name')}'")
+        send_telegram_photo(debug_path, "Cannot find Select/Book button")
+        return False
+
+    # Step 2: Click "Continue" if present (services page)
+    try:
+        continue_btn = WebDriverWait(driver, 5).until(
+            EC.element_to_be_clickable((By.CSS_SELECTOR,
+                "#book-appointment-btn, [data-testid='btn-book-appointment']")))
+        continue_btn.click()
+        print("  Clicked 'Continue'.")
+        human_like_delay()
+    except TimeoutException:
+        print("  No 'Continue' button — may already be on appointment page.")
 
     wait_for_cloudflare(driver)
     time.sleep(2)
