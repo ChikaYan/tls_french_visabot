@@ -311,3 +311,186 @@ Session started: 2026-04-22 18:57:52
 [2026-04-22 18:58:31] OSError
 [2026-04-22 18:58:31] : 
 [2026-04-22 18:58:31] [WinError 6] The handle is invalid
+
+============================================================
+Session started: 2026-04-22 19:04:02
+============================================================
+[2026-04-22 19:04:02] ============================================================
+[2026-04-22 19:04:02] TLScontact France Visa Slot Checker
+[2026-04-22 19:04:02] Check interval: 300s | Headless: False
+[2026-04-22 19:04:02] ============================================================
+[2026-04-22 19:04:02] [TG] 🤖 TLS Visa Bot started! Checking every 300s.
+[2026-04-22 19:04:02] 
+[Check #1 at 19:04:02]
+[2026-04-22 19:04:06]   Loaded 7 cookies from file
+[2026-04-22 19:04:09]   Cloudflare passed.
+[2026-04-22 19:04:09]   Logged in via saved cookies!
+[2026-04-22 19:04:12]   Cloudflare passed.
+[2026-04-22 19:04:12]   [DEBUG] Screenshot: H:\Workspace\tls_french_visabot\debug_travel_groups_190412.png
+[2026-04-22 19:04:12]   [DEBUG] Title: French visa application centre | TLScontact | URL: https://visas-fr.tlscontact.com/en-us
+[2026-04-22 19:04:22]   [DEBUG] Screenshot: H:\Workspace\tls_french_visabot\debug_no_select_btn_190422.png
+[2026-04-22 19:04:22]   [DEBUG] Title: French visa application centre | TLScontact | URL: https://visas-fr.tlscontact.com/en-us
+[2026-04-22 19:04:22]   [DEBUG] Button 0: text='' name='' type='submit'
+[2026-04-22 19:04:22]   [DEBUG] Button 1: text='' name='' type='submit'
+[2026-04-22 19:04:22]   [DEBUG] Button 2: text='' name='' type='submit'
+[2026-04-22 19:04:22]   [DEBUG] Button 3: text='' name='' type='submit'
+[2026-04-22 19:04:22]   [DEBUG] Button 4: text='' name='' type='submit'
+[2026-04-22 19:04:22]   [DEBUG] Button 5: text='' name='' type='submit'
+[2026-04-22 19:04:22]   [DEBUG] Button 6: text='' name='' type='button'
+[2026-04-22 19:04:22]   [DEBUG] Button 7: text='Book an appointment' name='' type='submit'
+[2026-04-22 19:04:23] [TG] Photo sent: Cannot find Select button on travel groups page
+[2026-04-22 19:04:23]   Waiting 300s...
+
+============================================================
+Session started: 2026-04-22 19:04:02
+============================================================
+[2026-04-22 19:04:41] Traceback (most recent call last):
+
+[2026-04-22 19:04:41]   File "H:\Workspace\tls_french_visabot\Dumbh_appointment_bot.py", line 543, in <module>
+
+[2026-04-22 19:04:41] main()
+[2026-04-22 19:04:41]   File "H:\Workspace\tls_french_visabot\Dumbh_appointment_bot.py", line 539, in main
+
+[2026-04-22 19:04:41] time.sleep(CHECK_INTERVAL)
+[2026-04-22 19:04:41] KeyboardInterrupt
+[2026-04-22 19:04:41] Exception ignored in: 
+[2026-04-22 19:04:41] <function Chrome.__del__ at 0x000001FA92033E20>
+[2026-04-22 19:04:41] Traceback (most recent call last):
+
+[2026-04-22 19:04:41]   File "C:\Users\ChikamaYan\anaconda3\envs\tls\Lib\site-packages\undetected_chromedriver\__init__.py", line 843, in __del__
+
+[2026-04-22 19:04:41] self.quit()
+[2026-04-22 19:04:41]   File "C:\Users\ChikamaYan\anaconda3\envs\tls\Lib\site-packages\undetected_chromedriver\__init__.py", line 798, in quit
+
+[2026-04-22 19:04:41] time.sleep(0.1)
+[2026-04-22 19:04:41] OSError
+[2026-04-22 19:04:41] : 
+[2026-04-22 19:04:41] [WinError 6] The handle is invalid
+
+============================================================
+Session started: 2026-04-22 19:04:43
+============================================================
+[2026-04-22 19:04:43] ============================================================
+[2026-04-22 19:04:43] TLScontact France Visa Slot Checker
+[2026-04-22 19:04:43] Check interval: 300s | Headless: False
+[2026-04-22 19:04:43] ============================================================
+[2026-04-22 19:04:44] [TG] 🤖 TLS Visa Bot started! Checking every 300s.
+[2026-04-22 19:04:44] 
+[Check #1 at 19:04:44]
+[2026-04-22 19:04:48]   Loaded 7 cookies from file
+[2026-04-22 19:04:50]   Cloudflare passed.
+[2026-04-22 19:04:50]   Logged in via saved cookies!
+[2026-04-22 19:04:53]   Cloudflare passed.
+[2026-04-22 19:04:53]   [DEBUG] Screenshot: H:\Workspace\tls_french_visabot\debug_travel_groups_190453.png
+[2026-04-22 19:04:53]   [DEBUG] Title: French visa application centre | TLScontact | URL: https://visas-fr.tlscontact.com/en-us
+[2026-04-22 19:04:58]   ERROR: Message: invalid session id: session deleted as the browser has closed the connection
+from disconnected: not connected to DevTools
+  (Session info: chrome=147.0.7727.102)
+Stacktrace:
+	undetected_chromedriver!GetHandleVerifier [0xd9b373+10553]
+	undetected_chromedriver!GetHandleVerifier [0xd9b4a4+10684]
+	undetected_chromedriver!(No symbol) [0xba1e10]
+	undetected_chromedriver!(No symbol) [0xb90d8e]
+	undetected_chromedriver!(No symbol) [0xbaf8d9]
+	undetected_chromedriver!(No symbol) [0xc13dbc]
+	undetected_chromedriver!(No symbol) [0xc2a3a9]
+	undetected_chromedriver!(No symbol) [0xc0d606]
+	undetected_chromedriver!(No symbol) [0xbe0039]
+	undetected_chromedriver!(No symbol) [0xbe0df4]
+	undetected_chromedriver!GetHandleVerifier [0x101ddb4+292f94]
+	undetected_chromedriver!GetHandleVerifier [0x101937d+28e55d]
+	undetected_chromedriver!GetHandleVerifier [0x1038215+2ad3f5]
+	undetected_chromedriver!GetHandleVerifier [0xdb4c18+29df8]
+	undetected_chromedriver!GetHandleVerifier [0xdbc6fd+318dd]
+	undetected_chromedriver!GetHandleVerifier [0xda3c78+18e58]
+	undetected_chromedriver!GetHandleVerifier [0xda3e42+19022]
+	undetected_chromedriver!GetHandleVerifier [0xd8d45f+263f]
+	KERNEL32!BaseThreadInitThunk [0x767c5d49+19]
+	ntdll!RtlInitializeExceptionChain [0x77c5d83b+6b]
+	ntdll!RtlGetAppContainerNamedObjectPath [0x77c5d7c1+231]
+
+
+============================================================
+Session started: 2026-04-22 19:04:43
+============================================================
+[2026-04-22 19:04:58] Traceback (most recent call last):
+
+[2026-04-22 19:04:58]   File "H:\Workspace\tls_french_visabot\Dumbh_appointment_bot.py", line 501, in check_once
+    return check_appointments(driver)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[2026-04-22 19:04:58]   File "H:\Workspace\tls_french_visabot\Dumbh_appointment_bot.py", line 388, in check_appointments
+    select_btn = WebDriverWait(driver, 10).until(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[2026-04-22 19:04:58]   File "C:\Users\ChikamaYan\anaconda3\envs\tls\Lib\site-packages\selenium\webdriver\support\wait.py", line 96, in until
+    value = method(self._driver)
+            ^^^^^^^^^^^^^^^^^^^^
+
+[2026-04-22 19:04:58]   File "C:\Users\ChikamaYan\anaconda3\envs\tls\Lib\site-packages\selenium\webdriver\support\expected_conditions.py", line 363, in _predicate
+    target = driver.find_element(*target)  # grab element at locator
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[2026-04-22 19:04:58]   File "C:\Users\ChikamaYan\anaconda3\envs\tls\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 748, in find_element
+    return self.execute(Command.FIND_ELEMENT, {"using": by, "value": value})["value"]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[2026-04-22 19:04:58]   File "C:\Users\ChikamaYan\anaconda3\envs\tls\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 354, in execute
+    self.error_handler.check_response(response)
+
+[2026-04-22 19:04:58]   File "C:\Users\ChikamaYan\anaconda3\envs\tls\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 229, in check_response
+    raise exception_class(message, screen, stacktrace)
+
+[2026-04-22 19:04:58] selenium.common.exceptions.InvalidSessionIdException: Message: invalid session id: session deleted as the browser has closed the connection
+from disconnected: not connected to DevTools
+  (Session info: chrome=147.0.7727.102)
+Stacktrace:
+	undetected_chromedriver!GetHandleVerifier [0xd9b373+10553]
+	undetected_chromedriver!GetHandleVerifier [0xd9b4a4+10684]
+	undetected_chromedriver!(No symbol) [0xba1e10]
+	undetected_chromedriver!(No symbol) [0xb90d8e]
+	undetected_chromedriver!(No symbol) [0xbaf8d9]
+	undetected_chromedriver!(No symbol) [0xc13dbc]
+	undetected_chromedriver!(No symbol) [0xc2a3a9]
+	undetected_chromedriver!(No symbol) [0xc0d606]
+	undetected_chromedriver!(No symbol) [0xbe0039]
+	undetected_chromedriver!(No symbol) [0xbe0df4]
+	undetected_chromedriver!GetHandleVerifier [0x101ddb4+292f94]
+	undetected_chromedriver!GetHandleVerifier [0x101937d+28e55d]
+	undetected_chromedriver!GetHandleVerifier [0x1038215+2ad3f5]
+	undetected_chromedriver!GetHandleVerifier [0xdb4c18+29df8]
+	undetected_chromedriver!GetHandleVerifier [0xdbc6fd+318dd]
+	undetected_chromedriver!GetHandleVerifier [0xda3c78+18e58]
+	undetected_chromedriver!GetHandleVerifier [0xda3e42+19022]
+	undetected_chromedriver!GetHandleVerifier [0xd8d45f+263f]
+	KERNEL32!BaseThreadInitThunk [0x767c5d49+19]
+	ntdll!RtlInitializeExceptionChain [0x77c5d83b+6b]
+	ntdll!RtlGetAppContainerNamedObjectPath [0x77c5d7c1+231]
+
+
+[2026-04-22 19:04:58]   [DEBUG] Screenshot failed: Message: invalid session id
+Stacktrace:
+	undetected_chromedriver!GetHandleVerifier [0xd9b373+10553]
+	undetected_chromedriver!GetHandleVerifier [0xd9b4a4+10684]
+	undetected_chromedriver!(No symbol) [0xba1c4e]
+	undetected_chromedriver!(No symbol) [0xbdf2c5]
+	undetected_chromedriver!(No symbol) [0xc0d726]
+	undetected_chromedriver!(No symbol) [0xc08c62]
+	undetected_chromedriver!(No symbol) [0xc08281]
+	undetected_chromedriver!(No symbol) [0xb7501e]
+	undetected_chromedriver!(No symbol) [0xb755be]
+	undetected_chromedriver!(No symbol) [0xb75a9d]
+	undetected_chromedriver!GetHandleVerifier [0x101ddb4+292f94]
+	undetected_chromedriver!GetHandleVerifier [0x101937d+28e55d]
+	undetected_chromedriver!GetHandleVerifier [0x1038215+2ad3f5]
+	undetected_chromedriver!GetHandleVerifier [0xdb4c18+29df8]
+	undetected_chromedriver!GetHandleVerifier [0xdbc6fd+318dd]
+	undetected_chromedriver!(No symbol) [0xb74b99]
+	undetected_chromedriver!(No symbol) [0xb741e0]
+	undetected_chromedriver!GetHandleVerifier [0x1182bef+3f7dcf]
+	KERNEL32!BaseThreadInitThunk [0x767c5d49+19]
+	ntdll!RtlInitializeExceptionChain [0x77c5d83b+6b]
+	ntdll!RtlGetAppContainerNamedObjectPath [0x77c5d7c1+231]
+
+[2026-04-22 19:04:58] Telegram photo send failed: [Errno 2] No such file or directory: 'H:\\Workspace\\tls_french_visabot\\debug_error_190458.png'
+[2026-04-22 19:04:58]   Waiting 300s...
