@@ -299,33 +299,42 @@ def do_login(driver):
     time.sleep(1)
     wait_for_cloudflare(driver)
 
-    # Fill email + password — confirmed selectors: #username, #password
+    # Fill email + password
     try:
-        email_input = WebDriverWait(driver, 10).until(
-            EC.visibility_of_element_located((By.ID, "username")))
+        email_input = WebDriverWait(driver, 15).until(
+            EC.presence_of_element_located((By.CSS_SELECTOR,
+                "#username, input[name='username'], input[type='email']")))
+        print(f"  Found Email field (tag={email_input.tag_name}, id={email_input.get_attribute('id')})")
         email_input.clear()
         email_input.send_keys(TLS_EMAIL)
         print("  Email entered.")
 
-        password_input = driver.find_element(By.ID, "password")
+        password_input = driver.find_element(By.CSS_SELECTOR,
+            "#password, input[name='password'], input[type='password']")
         password_input.clear()
         password_input.send_keys(TLS_PASSWORD)
         print("  Password entered.")
-    except (TimeoutException, NoSuchElementException):
+    except (TimeoutException, NoSuchElementException) as e:
+        print(f"  Login form error: {e}")
         debug_path = save_debug(driver, "login_form_fail")
         send_telegram_photo(debug_path, "Cannot fill login form")
         return False
 
     # Locate submit button FIRST (fast, before reCAPTCHA)
-    # Confirmed selector: //button[text()='Login']
     try:
         submit_button = WebDriverWait(driver, 5).until(
-            EC.element_to_be_clickable((By.XPATH, "//button[text()='Login']")))
-        print("  Found Submit button.")
+            EC.element_to_be_clickable((By.CSS_SELECTOR,
+                "#kc-login, button[type='submit']")))
+        print(f"  Found Submit button (tag={submit_button.tag_name}, text={submit_button.text})")
     except TimeoutException:
-        debug_path = save_debug(driver, "no_submit_btn")
-        send_telegram_photo(debug_path, "Cannot find submit button")
-        return False
+        # Fallback: any button with "Login" text
+        try:
+            submit_button = driver.find_element(By.XPATH, "//button[text()='Login']")
+            print("  Found Submit button via text fallback.")
+        except NoSuchElementException:
+            debug_path = save_debug(driver, "no_submit_btn")
+            send_telegram_photo(debug_path, "Cannot find submit button")
+            return False
 
     # Solve reCAPTCHA right before clicking submit
     if not solve_recaptcha(driver):
