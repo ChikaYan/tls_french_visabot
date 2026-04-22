@@ -278,9 +278,9 @@ def do_login(driver):
     # Accept cookies banner
     try:
         accept = WebDriverWait(driver, 5).until(
-            EC.element_to_be_clickable((By.XPATH,
+            EC.presence_of_element_located((By.XPATH,
                 "//button[contains(@class, 'osano-cm-accept-all')]")))
-        accept.click()
+        driver.execute_script("arguments[0].click();", accept)
         print("  Cookies accepted.")
     except TimeoutException:
         print("  No cookie banner.")
@@ -410,10 +410,10 @@ def check_appointments(driver):
     # Dismiss cookie banner if it reappeared
     try:
         accept = driver.find_element(By.XPATH, "//button[contains(@class, 'osano-cm-accept-all')]")
-        accept.click()
+        driver.execute_script("arguments[0].click();", accept)
         print("  Dismissed cookie banner.")
         time.sleep(0.5)
-    except NoSuchElementException:
+    except (NoSuchElementException, Exception):
         pass
 
     # Step 1: Get into the application
