@@ -324,17 +324,29 @@ def do_login(driver):
     try:
         submit_button = WebDriverWait(driver, 5).until(
             EC.element_to_be_clickable((By.CSS_SELECTOR,
-                "#kc-login, button[type='submit']")))
+                "#kc-login, button[type='submit'], input[type='submit']")))
         print(f"  Found Submit button (tag={submit_button.tag_name}, text={submit_button.text})")
     except TimeoutException:
-        # Fallback: any button with "Login" text
+        # Fallback: any button/a containing "Login" text
         try:
-            submit_button = driver.find_element(By.XPATH, "//button[text()='Login']")
-            print("  Found Submit button via text fallback.")
+            submit_button = driver.find_element(By.XPATH,
+                "//button[contains(text(),'Login')] | //button[contains(text(),'login')] | "
+                "//a[contains(text(),'Login')] | //button[.//span[contains(text(),'Login')]]")
+            print(f"  Found Submit button via text fallback (tag={submit_button.tag_name}).")
         except NoSuchElementException:
-            debug_path = save_debug(driver, "no_submit_btn")
-            send_telegram_photo(debug_path, "Cannot find submit button")
-            return False
+            # Last resort: find the button nearest to the password field
+            try:
+                submit_button = driver.find_element(By.XPATH,
+                    "//form//button | //div[contains(@class,'login')]//button")
+                print(f"  Found Submit button via form fallback (tag={submit_button.tag_name}, text={submit_button.text}).")
+            except NoSuchElementException:
+                debug_path = save_debug(driver, "no_submit_btn")
+                # Dump all buttons on page for debugging
+                buttons = driver.find_elements(By.TAG_NAME, "button")
+                for i, btn in enumerate(buttons):
+                    print(f"  [DEBUG] Button {i}: text='{btn.text}' class='{btn.get_attribute('class')}' type='{btn.get_attribute('type')}' id='{btn.get_attribute('id')}'")
+                send_telegram_photo(debug_path, "Cannot find submit button")
+                return False
 
     # Solve reCAPTCHA right before clicking submit
     if not solve_recaptcha(driver):
