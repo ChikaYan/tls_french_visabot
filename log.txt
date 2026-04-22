@@ -254,3 +254,60 @@ Session started: 2026-04-22 18:35:54
 [2026-04-22 18:36:40] OSError
 [2026-04-22 18:36:40] : 
 [2026-04-22 18:36:40] [WinError 6] The handle is invalid
+
+============================================================
+Session started: 2026-04-22 18:57:52
+============================================================
+[2026-04-22 18:57:52] ============================================================
+[2026-04-22 18:57:52] TLScontact France Visa Slot Checker
+[2026-04-22 18:57:52] URL: https://visas-fr.tlscontact.com/en-us/travel-groups
+[2026-04-22 18:57:52] Check interval: 300s | Headless: False
+[2026-04-22 18:57:52] ============================================================
+[2026-04-22 18:57:52] [TG] 🤖 TLS Visa Bot started! Checking every 300s for France/London slots.
+[2026-04-22 18:57:52] 
+[Check #1 at 18:57:52]
+[2026-04-22 18:57:57]   Loaded 7 cookies from file
+[2026-04-22 18:57:59]   Cloudflare passed.
+[2026-04-22 18:57:59]   Logged in via saved cookies!
+[2026-04-22 18:58:02]   Cloudflare passed.
+[2026-04-22 18:58:02]   [DEBUG] Screenshot: H:\Workspace\tls_french_visabot\debug_travel_groups_185802.png
+[2026-04-22 18:58:02]   [DEBUG] Title: French visa application centre | TLScontact | URL: https://visas-fr.tlscontact.com/en-us
+[2026-04-22 18:58:12]   No 'Select' button found.
+[2026-04-22 18:58:12]   [DEBUG] Screenshot: H:\Workspace\tls_french_visabot\debug_no_select_btn_185812.png
+[2026-04-22 18:58:12]   [DEBUG] Title: French visa application centre | TLScontact | URL: https://visas-fr.tlscontact.com/en-us
+[2026-04-22 18:58:23]   No 'Continue' button found.
+[2026-04-22 18:58:23]   [DEBUG] Screenshot: H:\Workspace\tls_french_visabot\debug_no_continue_btn_185823.png
+[2026-04-22 18:58:23]   [DEBUG] Title: French visa application centre | TLScontact | URL: https://visas-fr.tlscontact.com/en-us
+[2026-04-22 18:58:23]   [DEBUG] Screenshot: H:\Workspace\tls_french_visabot\debug_appointment_page_185823.png
+[2026-04-22 18:58:23]   [DEBUG] Title: French visa application centre | TLScontact | URL: https://visas-fr.tlscontact.com/en-us
+[2026-04-22 18:58:23]   Cloudflare passed.
+[2026-04-22 18:58:25]   Checking current month...
+[2026-04-22 18:58:25]   No available slots in current view.
+[2026-04-22 18:58:30]   No next month button available.
+[2026-04-22 18:58:30]   Waiting 300s...
+
+============================================================
+Session started: 2026-04-22 18:57:52
+============================================================
+[2026-04-22 18:58:31] Traceback (most recent call last):
+
+[2026-04-22 18:58:31]   File "H:\Workspace\tls_french_visabot\Dumbh_appointment_bot.py", line 498, in <module>
+
+[2026-04-22 18:58:31] main()
+[2026-04-22 18:58:31]   File "H:\Workspace\tls_french_visabot\Dumbh_appointment_bot.py", line 494, in main
+
+[2026-04-22 18:58:31] time.sleep(CHECK_INTERVAL)
+[2026-04-22 18:58:31] KeyboardInterrupt
+[2026-04-22 18:58:31] Exception ignored in: 
+[2026-04-22 18:58:31] <function Chrome.__del__ at 0x0000027ED2BFBD80>
+[2026-04-22 18:58:31] Traceback (most recent call last):
+
+[2026-04-22 18:58:31]   File "C:\Users\ChikamaYan\anaconda3\envs\tls\Lib\site-packages\undetected_chromedriver\__init__.py", line 843, in __del__
+
+[2026-04-22 18:58:31] self.quit()
+[2026-04-22 18:58:31]   File "C:\Users\ChikamaYan\anaconda3\envs\tls\Lib\site-packages\undetected_chromedriver\__init__.py", line 798, in quit
+
+[2026-04-22 18:58:31] time.sleep(0.1)
+[2026-04-22 18:58:31] OSError
+[2026-04-22 18:58:31] : 
+[2026-04-22 18:58:31] [WinError 6] The handle is invalid
