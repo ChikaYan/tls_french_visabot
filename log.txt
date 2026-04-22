@@ -37,3 +37,59 @@ Check interval: 180s | Headless: False
   No 'no appointments' popup — checking for slots...
   No available slots on page.
   Waiting 180s...
+
+============================================================
+Session started: 2026-04-22 18:07:38
+============================================================
+[2026-04-22 18:07:38] ============================================================
+[2026-04-22 18:07:38] TLScontact France Visa Slot Checker
+[2026-04-22 18:07:38] URL: https://visas-fr.tlscontact.com/visa/gb/gbLON2fr/home
+[2026-04-22 18:07:38] Check interval: 180s | Headless: False
+[2026-04-22 18:07:38] ============================================================
+[2026-04-22 18:07:38] NOTE: On first run you may need to manually solve a reCAPTCHA
+[2026-04-22 18:07:38] in the browser window. After that, cookies are saved for reuse.
+[2026-04-22 18:07:38] [TG] 🤖 TLS Visa Bot started! Checking every 180s for France/London slots.
+[2026-04-22 18:07:38] 
+[Check #1 at 18:07:38]
+[2026-04-22 18:07:45]   Waiting for Cloudflare challenge...
+[2026-04-22 18:07:45]   Cloudflare passed.
+[2026-04-22 18:07:48]   Cookies accepted.
+[2026-04-22 18:09:08]   Found 'Login button' via: //a[contains(@href, 'login')]
+[2026-04-22 18:09:11]   Clicked Login.
+[2026-04-22 18:09:16]   Waiting for Cloudflare challenge...
+[2026-04-22 18:09:16]   Cloudflare passed.
+[2026-04-22 18:09:36]   Found 'Email field' via: username
+[2026-04-22 18:09:58]   Found 'Password field' via: password
+[2026-04-22 18:10:00]   Attempting to solve reCAPTCHA...
+[2026-04-22 18:10:01]   Clicked reCAPTCHA checkbox.
+[2026-04-22 18:10:05]   reCAPTCHA auto-solved!
+[2026-04-22 18:11:26]   [DEBUG] Screenshot: H:\Workspace\tls_french_visabot\debug_no_submit_btn_181126.png
+[2026-04-22 18:11:26]   [DEBUG] Title: TLScontact Login | URL: https://i2-auth.visas-fr.tlscontact.com/auth/realms/atlas/protocol/openid-connec
+[2026-04-22 18:11:26] [TG] Photo sent: Cannot find submit button
+[2026-04-22 18:11:26]   Waiting 180s...
+
+============================================================
+Session started: 2026-04-22 18:07:38
+============================================================
+[2026-04-22 18:13:53] Traceback (most recent call last):
+
+[2026-04-22 18:13:53]   File "H:\Workspace\tls_french_visabot\Dumbh_appointment_bot.py", line 522, in <module>
+
+[2026-04-22 18:13:53] main()
+[2026-04-22 18:13:53]   File "H:\Workspace\tls_french_visabot\Dumbh_appointment_bot.py", line 518, in main
+
+[2026-04-22 18:13:53] time.sleep(CHECK_INTERVAL)
+[2026-04-22 18:13:53] KeyboardInterrupt
+[2026-04-22 18:13:53] Exception ignored in: 
+[2026-04-22 18:13:53] <function Chrome.__del__ at 0x000001AF6E5F3EC0>
+[2026-04-22 18:13:53] Traceback (most recent call last):
+
+[2026-04-22 18:13:53]   File "C:\Users\ChikamaYan\anaconda3\envs\tls\Lib\site-packages\undetected_chromedriver\__init__.py", line 843, in __del__
+
+[2026-04-22 18:13:53] self.quit()
+[2026-04-22 18:13:53]   File "C:\Users\ChikamaYan\anaconda3\envs\tls\Lib\site-packages\undetected_chromedriver\__init__.py", line 798, in quit
+
+[2026-04-22 18:13:53] time.sleep(0.1)
+[2026-04-22 18:13:53] OSError
+[2026-04-22 18:13:53] : 
+[2026-04-22 18:13:53] [WinError 6] The handle is invalid
