@@ -21,11 +21,11 @@ from selenium.webdriver.support.ui import WebDriverWait
 TELEGRAM_BOT_TOKEN = '8630876891:AAFOL9tMGRhyt8pC1wWlQiGei1aQ-zzMirI'
 TELEGRAM_CHAT_ID = 1044515516
 
-TLS_URL = 'https://visas-fr.tlscontact.com/visa/gb/gbLON2fr/home'
+TLS_URL = 'https://visas-fr.tlscontact.com/en-us/travel-groups'
 TLS_EMAIL = 'walterwuyan@gmail.com'
 TLS_PASSWORD = '998182aA!#'
 
-CHECK_INTERVAL = 180
+CHECK_INTERVAL = 300
 HEADLESS = False
 # ───────────────────────────────────────────────────────────────
 
@@ -59,7 +59,7 @@ sys.stdout = TeeLogger(LOG_FILE, sys.stdout)
 sys.stderr = TeeLogger(LOG_FILE, sys.stderr)
 
 
-def human_like_delay(low=0.5, high=1.2):
+def human_like_delay(low=1.0, high=2.5):
     time.sleep(random.uniform(low, high))
 
 
@@ -101,22 +101,6 @@ def save_debug(driver, label):
     return path
 
 
-def find_first(driver, selectors, description, timeout=8):
-    """Poll all selectors simultaneously until one matches or timeout."""
-    end = time.time() + timeout
-    while time.time() < end:
-        for selector_type, selector_value in selectors:
-            try:
-                elem = driver.find_element(selector_type, selector_value)
-                if elem.is_displayed():
-                    print(f"  Found '{description}' via: {selector_value}")
-                    return elem
-            except (NoSuchElementException, Exception):
-                continue
-        time.sleep(0.3)
-    raise TimeoutException(f"Could not find '{description}'")
-
-
 def save_cookies(driver):
     cookies = driver.get_cookies()
     with open(COOKIES_FILE, 'w') as f:
@@ -146,14 +130,14 @@ def load_cookies(driver):
         return False
 
 
-def wait_for_cloudflare(driver, timeout=15):
+def wait_for_cloudflare(driver, timeout=20):
     start = time.time()
     while time.time() - start < timeout:
         title = driver.title.lower()
         if "just a moment" not in title and "checking" not in title:
             print("  Cloudflare passed.")
             return True
-        time.sleep(0.5)
+        time.sleep(1)
     print("  Cloudflare timeout.")
     return False
 
@@ -258,18 +242,18 @@ def do_login(driver):
     # Try saved cookies first
     if load_cookies(driver):
         driver.get(TLS_URL)
-        time.sleep(1)
+        time.sleep(2)
         wait_for_cloudflare(driver)
         if "auth" not in driver.current_url and "login" not in driver.current_url:
             page = driver.page_source.lower()
-            if "login" not in driver.title.lower() and ("appointment" in page or "dashboard" in page or "application" in page):
+            if "login" not in driver.title.lower() and ("appointment" in page or "dashboard" in page or "application" in page or "travel group" in page):
                 print("  Logged in via saved cookies!")
                 return True
         print("  Cookies expired, fresh login...")
 
     # Fresh login
-    driver.get(TLS_URL)
-    time.sleep(1)
+    driver.get("https://visas-fr.tlscontact.com/en-us/login")
+    time.sleep(2)
     wait_for_cloudflare(driver)
 
     # Accept cookies banner
@@ -284,30 +268,14 @@ def do_login(driver):
 
     human_like_delay()
 
-    # Click Login link — confirmed selector: //a[contains(@href, 'login')]
-    try:
-        login_button = WebDriverWait(driver, 10).until(
-            EC.element_to_be_clickable((By.XPATH, "//a[contains(@href, 'login')]")))
-        print("  Found Login button.")
-        human_like_delay()
-        login_button.click()
-        print("  Clicked Login.")
-    except TimeoutException:
-        save_debug(driver, "no_login_btn")
-        return False
-
-    time.sleep(1)
-    wait_for_cloudflare(driver)
-
     # Fill email + password
     try:
         email_input = WebDriverWait(driver, 15).until(
             EC.presence_of_element_located((By.CSS_SELECTOR,
-                "#username, input[name='username'], input[type='email']")))
-        print(f"  Found Email field (tag={email_input.tag_name}, id={email_input.get_attribute('id')})")
+                "#username, #email-input-field, input[name='username'], input[type='email']")))
         email_input.clear()
         email_input.send_keys(TLS_EMAIL)
-        print("  Email entered.")
+        print(f"  Email entered (id={email_input.get_attribute('id')}).")
 
         password_input = driver.find_element(By.CSS_SELECTOR,
             "#password, input[name='password'], input[type='password']")
@@ -320,33 +288,29 @@ def do_login(driver):
         send_telegram_photo(debug_path, "Cannot fill login form")
         return False
 
-    # Locate submit button FIRST (fast, before reCAPTCHA)
+    # Locate submit button
     try:
         submit_button = WebDriverWait(driver, 5).until(
             EC.element_to_be_clickable((By.CSS_SELECTOR,
                 "#kc-login, button[type='submit'], input[type='submit']")))
-        print(f"  Found Submit button (tag={submit_button.tag_name}, text={submit_button.text})")
     except TimeoutException:
-        # Fallback: any button/a containing "Login" text
         try:
             submit_button = driver.find_element(By.XPATH,
                 "//button[contains(text(),'Login')] | //button[contains(text(),'login')] | "
                 "//a[contains(text(),'Login')] | //button[.//span[contains(text(),'Login')]]")
-            print(f"  Found Submit button via text fallback (tag={submit_button.tag_name}).")
         except NoSuchElementException:
-            # Last resort: find the button nearest to the password field
             try:
                 submit_button = driver.find_element(By.XPATH,
                     "//form//button | //div[contains(@class,'login')]//button")
-                print(f"  Found Submit button via form fallback (tag={submit_button.tag_name}, text={submit_button.text}).")
             except NoSuchElementException:
                 debug_path = save_debug(driver, "no_submit_btn")
-                # Dump all buttons on page for debugging
                 buttons = driver.find_elements(By.TAG_NAME, "button")
                 for i, btn in enumerate(buttons):
                     print(f"  [DEBUG] Button {i}: text='{btn.text}' class='{btn.get_attribute('class')}' type='{btn.get_attribute('type')}' id='{btn.get_attribute('id')}'")
                 send_telegram_photo(debug_path, "Cannot find submit button")
                 return False
+
+    print(f"  Found Submit button (tag={submit_button.tag_name}, text='{submit_button.text}').")
 
     # Solve reCAPTCHA right before clicking submit
     if not solve_recaptcha(driver):
@@ -359,7 +323,7 @@ def do_login(driver):
     driver.execute_script("arguments[0].click();", submit_button)
     print("  Login submitted.")
 
-    time.sleep(1.5)
+    time.sleep(3)
 
     # Verify login
     if "auth" in driver.current_url or "login" in driver.current_url.lower():
@@ -388,64 +352,96 @@ def do_login(driver):
 def check_appointments(driver):
     """After login, navigate to appointments and check. Returns True if slot found."""
 
-    save_debug(driver, "dashboard")
+    # Make sure we are on the travel groups page
+    if "travel-groups" not in driver.current_url:
+        driver.get(TLS_URL)
+        time.sleep(2)
+        wait_for_cloudflare(driver)
 
-    # Click "Enter" button (never found in testing — skip with short timeout)
+    save_debug(driver, "travel_groups")
+
+    # 1. Click "Select" on the existing travel group
     try:
-        enter_button = WebDriverWait(driver, 3).until(
-            EC.element_to_be_clickable((By.XPATH, '//button[contains(@class, "tls-button-primary")]')))
-        ActionChains(driver).move_to_element(enter_button).click().perform()
-        print("  Clicked 'Enter'.")
+        select_btn = WebDriverWait(driver, 10).until(
+            EC.element_to_be_clickable((By.XPATH,
+                "//button[@name='formGroupId' or contains(text(), 'Select')]")))
+        driver.execute_script("arguments[0].scrollIntoView(true);", select_btn)
+        ActionChains(driver).move_to_element(select_btn).click().perform()
+        print(f"  Clicked 'Select' (text='{select_btn.text}').")
         human_like_delay()
     except TimeoutException:
-        print("  No 'Enter' button.")
+        print("  No 'Select' button found.")
+        save_debug(driver, "no_select_btn")
 
-    # Click "Book appointment" — confirmed: //button[contains(@class, "primary")]
+    # 2. Click "Continue" to go to appointment booking
     try:
-        book_btn = WebDriverWait(driver, 5).until(
-            EC.element_to_be_clickable((By.XPATH, '//button[contains(@class, "primary")]')))
-        driver.execute_script("arguments[0].scrollIntoView(true);", book_btn)
-        ActionChains(driver).move_to_element(book_btn).click().perform()
-        print("  Clicked 'Book appointment'.")
+        continue_btn = WebDriverWait(driver, 10).until(
+            EC.element_to_be_clickable((By.ID, "book-appointment-btn")))
+        driver.execute_script("arguments[0].scrollIntoView(true);", continue_btn)
+        ActionChains(driver).move_to_element(continue_btn).click().perform()
+        print("  Clicked 'Continue' (book-appointment-btn).")
         human_like_delay()
     except TimeoutException:
-        print("  No 'Book appointment' button.")
-        save_debug(driver, "no_book_btn")
+        print("  No 'Continue' button found.")
+        save_debug(driver, "no_continue_btn")
 
     save_debug(driver, "appointment_page")
+    wait_for_cloudflare(driver)
+    time.sleep(2)
 
-    # Check for "no appointments" popup
+    def check_current_view():
+        """Check current month view for slots."""
+        try:
+            driver.find_element(By.XPATH,
+                "//p[contains(text(), 'appointment slots available')]")
+            print(f"  No appointments at {datetime.now().strftime('%H:%M:%S')}")
+            return False
+        except NoSuchElementException:
+            pass
+
+        try:
+            available = driver.find_element(By.XPATH,
+                "//button[contains(@class, '-available') or contains(@class, 'slot')]")
+            now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+            msg = f"APPOINTMENT FOUND at {now}!"
+            print(f"  {msg}")
+            send_telegram(f"🚨 {msg}")
+
+            available.click()
+            human_like_delay()
+
+            screenshot_path = os.path.join(SCRIPT_DIR, "appointment_found.png")
+            driver.save_screenshot(screenshot_path)
+            send_telegram_photo(screenshot_path,
+                "Slot clicked! Open TLScontact NOW to finish booking and pay!")
+
+            input(">>> APPOINTMENT FOUND! Press Enter to close browser... <<<")
+            return True
+        except NoSuchElementException:
+            print("  No available slots in current view.")
+            return False
+
+    # 3. Check current month
+    print("  Checking current month...")
+    if check_current_view():
+        return True
+
+    # 4. Check next month
     try:
-        no_appt = WebDriverWait(driver, 5).until(EC.element_to_be_clickable(
-            (By.XPATH, "//button[@class='tls-button-primary -uppercase']")))
-        print(f"  No appointments at {datetime.now().strftime('%H:%M:%S')}")
-        ActionChains(driver).move_to_element(no_appt).click().perform()
-        return False
-    except TimeoutException:
-        print("  No 'no appointments' popup — checking for slots...")
-
-    # Check for available appointment
-    try:
-        available = driver.find_element(
-            By.XPATH, "//button[contains(@class, '-available')]")
-        now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-        msg = f"APPOINTMENT FOUND at {now}!"
-        print(f"  {msg}")
-        send_telegram(f"🚨 {msg}")
-
-        available.click()
+        next_month_btn = WebDriverWait(driver, 5).until(
+            EC.element_to_be_clickable((By.XPATH,
+                "//a[@data-testid='btn-next-month-available']")))
+        ActionChains(driver).move_to_element(next_month_btn).click().perform()
+        print("  Clicked next month.")
         human_like_delay()
 
-        screenshot_path = os.path.join(SCRIPT_DIR, "appointment_found.png")
-        driver.save_screenshot(screenshot_path)
-        send_telegram_photo(screenshot_path,
-            "Slot clicked! Open TLScontact NOW to finish booking and pay!")
+        print("  Checking next month...")
+        if check_current_view():
+            return True
+    except TimeoutException:
+        print("  No next month button available.")
 
-        input(">>> APPOINTMENT FOUND! Press Enter to close browser... <<<")
-        return True
-    except NoSuchElementException:
-        print("  No available slots.")
-        return False
+    return False
 
 
 def check_once():
