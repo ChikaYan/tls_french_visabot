@@ -190,3 +190,67 @@ Session started: 2026-04-22 18:33:50
 [2026-04-22 18:34:14] OSError
 [2026-04-22 18:34:14] : 
 [2026-04-22 18:34:14] [WinError 6] The handle is invalid
+
+============================================================
+Session started: 2026-04-22 18:35:54
+============================================================
+[2026-04-22 18:35:54] ============================================================
+[2026-04-22 18:35:54] TLScontact France Visa Slot Checker
+[2026-04-22 18:35:54] URL: https://visas-fr.tlscontact.com/visa/gb/gbLON2fr/home
+[2026-04-22 18:35:54] Check interval: 180s | Headless: False
+[2026-04-22 18:35:54] ============================================================
+[2026-04-22 18:35:54] [TG] 🤖 TLS Visa Bot started! Checking every 180s for France/London slots.
+[2026-04-22 18:35:54] 
+[Check #1 at 18:35:54]
+[2026-04-22 18:36:00]   Cloudflare passed.
+[2026-04-22 18:36:00]   Cookies accepted.
+[2026-04-22 18:36:01]   Found Login button.
+[2026-04-22 18:36:03]   Clicked Login.
+[2026-04-22 18:36:04]   Cloudflare passed.
+[2026-04-22 18:36:04]   Found Email field (tag=input, id=email-input-field)
+[2026-04-22 18:36:04]   Email entered.
+[2026-04-22 18:36:04]   Password entered.
+[2026-04-22 18:36:09]   Found Submit button via text fallback (tag=button).
+[2026-04-22 18:36:09]   Solving reCAPTCHA...
+[2026-04-22 18:36:10]   Clicked reCAPTCHA checkbox.
+[2026-04-22 18:36:17]   reCAPTCHA needs manual solving!
+[2026-04-22 18:36:17] [TG] ⚠️ reCAPTCHA needs manual solving! Go to your PC and click the CAPTCHA.
+[2026-04-22 18:36:19]   reCAPTCHA solved manually!
+[2026-04-22 18:36:20]   Login submitted.
+[2026-04-22 18:36:22]   Login successful!
+[2026-04-22 18:36:22]   Cookies saved (7 cookies)
+[2026-04-22 18:36:22]   [DEBUG] Screenshot: H:\Workspace\tls_french_visabot\debug_dashboard_183622.png
+[2026-04-22 18:36:22]   [DEBUG] Title: Applications list | TLScontact | URL: https://visas-fr.tlscontact.com/en-us/travel-groups
+[2026-04-22 18:36:25]   No 'Enter' button.
+[2026-04-22 18:36:25]   Clicked 'Book appointment'.
+[2026-04-22 18:36:26]   [DEBUG] Screenshot: H:\Workspace\tls_french_visabot\debug_appointment_page_183626.png
+[2026-04-22 18:36:26]   [DEBUG] Title: Applications list | TLScontact | URL: https://visas-fr.tlscontact.com/en-us/travel-groups
+[2026-04-22 18:36:31]   No 'no appointments' popup — checking for slots...
+[2026-04-22 18:36:31]   No available slots.
+[2026-04-22 18:36:31]   Waiting 180s...
+
+============================================================
+Session started: 2026-04-22 18:35:54
+============================================================
+[2026-04-22 18:36:40] Traceback (most recent call last):
+
+[2026-04-22 18:36:40]   File "H:\Workspace\tls_french_visabot\Dumbh_appointment_bot.py", line 502, in <module>
+
+[2026-04-22 18:36:40] main()
+[2026-04-22 18:36:40]   File "H:\Workspace\tls_french_visabot\Dumbh_appointment_bot.py", line 498, in main
+
+[2026-04-22 18:36:40] time.sleep(CHECK_INTERVAL)
+[2026-04-22 18:36:40] KeyboardInterrupt
+[2026-04-22 18:36:40] Exception ignored in: 
+[2026-04-22 18:36:40] <function Chrome.__del__ at 0x0000026C41887E20>
+[2026-04-22 18:36:40] Traceback (most recent call last):
+
+[2026-04-22 18:36:40]   File "C:\Users\ChikamaYan\anaconda3\envs\tls\Lib\site-packages\undetected_chromedriver\__init__.py", line 843, in __del__
+
+[2026-04-22 18:36:40] self.quit()
+[2026-04-22 18:36:40]   File "C:\Users\ChikamaYan\anaconda3\envs\tls\Lib\site-packages\undetected_chromedriver\__init__.py", line 798, in quit
+
+[2026-04-22 18:36:40] time.sleep(0.1)
+[2026-04-22 18:36:40] OSError
+[2026-04-22 18:36:40] : 
+[2026-04-22 18:36:40] [WinError 6] The handle is invalid
