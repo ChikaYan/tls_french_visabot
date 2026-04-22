@@ -1,166 +1,325 @@
 import os
-import pickle
 import random
 import time
+import traceback
 from datetime import datetime
 
+import requests
 from selenium.common.exceptions import (ElementClickInterceptedException,
+                                        NoSuchElementException,
                                         TimeoutException)
 from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
-from telegram import Update
-from telegram.ext import (Application, CallbackContext, CommandHandler,
-                          MessageHandler, filters)
 
 from selenium import webdriver
 
-# API token for the telegram channel
-API_TOKEN = ''
+# ── Configuration ──────────────────────────────────────────────
+TELEGRAM_BOT_TOKEN = '8630876891:AAFOL9tMGRhyt8pC1wWlQiGei1aQ-zzMirI'
+TELEGRAM_CHAT_ID = 1044515516
+
+TLS_URL = 'https://visas-fr.tlscontact.com/visa/gb/gbLON2fr/home'
+TLS_EMAIL = 'walterwuyan@gmail.com'
+TLS_PASSWORD = '998182aA!#'
+
+CHECK_INTERVAL = 60
+HEADLESS = False  # Keep False until login flow is confirmed working
+# ───────────────────────────────────────────────────────────────
+
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+
+
 def human_like_delay():
-    time.sleep(random.uniform(1.5, 3.0))  # Random delay
+    time.sleep(random.uniform(1.5, 3.0))
 
-async def start(update: Update, context: CallbackContext) -> None:
-    """Send a message when the command /start is issued."""
-    await update.message.reply_text('Hello! I can help you find visa appointments.')
 
-async def info(update: Update, context: CallbackContext) -> None:
-    """Send a message when the command /info is issued."""
-    await update.message.reply_text('This is a simple Telegram bot implemented in Python.')
+def send_telegram(message):
+    try:
+        requests.post(
+            f'https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage',
+            json={'chat_id': TELEGRAM_CHAT_ID, 'text': message},
+            timeout=10
+        )
+        print(f"[TG] {message[:100]}")
+    except Exception as e:
+        print(f"Telegram send failed: {e}")
 
-async def echo(update: Update, context: CallbackContext) -> None:
-    """Echo the user message."""
-    await update.message.reply_text(update.message.text)
 
-async def search_appointments(update: Update, context: CallbackContext) -> None:
-    result = ''
-    driver= None
-    while True:
+def send_telegram_photo(photo_path, caption=""):
+    try:
+        with open(photo_path, 'rb') as f:
+            requests.post(
+                f'https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendPhoto',
+                data={'chat_id': TELEGRAM_CHAT_ID, 'caption': caption},
+                files={'photo': f},
+                timeout=30
+            )
+        print(f"[TG] Photo sent: {caption[:60]}")
+    except Exception as e:
+        print(f"Telegram photo send failed: {e}")
+
+
+def save_debug(driver, label):
+    """Save screenshot + page title for debugging."""
+    ts = datetime.now().strftime('%H%M%S')
+    path = os.path.join(SCRIPT_DIR, f"debug_{label}_{ts}.png")
+    try:
+        driver.save_screenshot(path)
+        print(f"  [DEBUG] Screenshot saved: {path}")
+        print(f"  [DEBUG] Page title: {driver.title}")
+        print(f"  [DEBUG] Current URL: {driver.current_url}")
+    except Exception as e:
+        print(f"  [DEBUG] Screenshot failed: {e}")
+    return path
+
+
+def find_element_flexible(driver, wait, selectors, description):
+    """Try multiple selectors, return first match. Raises TimeoutException if none found."""
+    for selector_type, selector_value in selectors:
         try:
-            # Setup WebDriver
-            chrome_options = Options()
-            chrome_options.add_argument("--incognito")
-            chrome_options.add_argument('--headless=new')
-            chrome_options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36")
+            elem = wait.until(EC.element_to_be_clickable((selector_type, selector_value)))
+            print(f"  Found '{description}' via: {selector_value}")
+            return elem
+        except TimeoutException:
+            continue
+    raise TimeoutException(f"Could not find '{description}' with any selector")
 
-            webdriver_service = Service('/chromedriver.exe')  # Ensure this path is correct
-            driver = webdriver.Chrome(service=webdriver_service, options=chrome_options)
 
-            # Open the website
-            driver.get('https://visas-de.tlscontact.com/visa/gb/gbEDI2de/home') #Use the link for whatever centre you want
-            human_like_delay()
+def create_driver():
+    chrome_options = Options()
+    chrome_options.add_argument("--incognito")
+    if HEADLESS:
+        chrome_options.add_argument('--headless=new')
+    chrome_options.add_argument("--no-sandbox")
+    chrome_options.add_argument("--disable-dev-shm-usage")
+    chrome_options.add_argument("--disable-gpu")
+    chrome_options.add_argument("--window-size=1920,1080")
+    chrome_options.add_argument("--disable-blink-features=AutomationControlled")
+    chrome_options.add_argument(
+        "user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+        "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36"
+    )
+    chrome_options.add_experimental_option("excludeSwitches", ["enable-automation"])
+    driver = webdriver.Chrome(options=chrome_options)
+    driver.execute_cdp_cmd("Page.addScriptToEvaluateOnNewDocument", {
+        "source": "Object.defineProperty(navigator, 'webdriver', {get: () => undefined})"
+    })
+    return driver
 
-            # Accept cookies
-            accept_button = WebDriverWait(driver, 10).until(
-                EC.element_to_be_clickable((By.XPATH, "//button[contains(@class, 'osano-cm-accept-all') and text()='Accept All']"))
+
+def check_once():
+    """Run one full check cycle. Returns True if appointment found and clicked."""
+    driver = None
+    try:
+        driver = create_driver()
+        wait = WebDriverWait(driver, 20)
+        short_wait = WebDriverWait(driver, 10)
+
+        # ── Step 1: Open website ──
+        print("  Opening TLScontact...")
+        driver.get(TLS_URL)
+        human_like_delay()
+        save_debug(driver, "01_home")
+
+        # ── Step 2: Accept cookies (optional) ──
+        try:
+            accept_button = short_wait.until(
+                EC.element_to_be_clickable((By.XPATH,
+                    "//button[contains(@class, 'osano-cm-accept-all')]"))
             )
             driver.execute_script("arguments[0].scrollIntoView(true);", accept_button)
             human_like_delay()
             accept_button.click()
-            print("Cookies accepted.")
+            print("  Cookies accepted.")
+        except TimeoutException:
+            print("  No cookie banner, continuing...")
 
-            wait = WebDriverWait(driver, 20)
-            login_button = wait.until(EC.element_to_be_clickable((By.XPATH, "//a[contains(@class, 'tls-button-link') and text()='Login']")))
+        # ── Step 3: Click Login ──
+        try:
+            login_button = find_element_flexible(driver, wait, [
+                (By.XPATH, "//a[contains(@class, 'tls-button-link') and contains(text(),'Login')]"),
+                (By.XPATH, "//a[contains(@class, 'tls-button-link') and contains(text(),'log in')]"),
+                (By.XPATH, "//a[contains(@class, 'tls-button') and contains(text(),'Login')]"),
+                (By.XPATH, "//button[contains(text(),'Login')]"),
+                (By.XPATH, "//a[contains(text(),'Login')]"),
+                (By.XPATH, "//a[contains(text(),'Log in')]"),
+                (By.XPATH, "//a[contains(@href, 'login')]"),
+            ], "Login button")
             human_like_delay()
             login_button.click()
-            print("Clicked on the Login button.")
+            print("  Clicked Login.")
+        except TimeoutException:
+            debug_path = save_debug(driver, "02_no_login_btn")
+            send_telegram_photo(debug_path, "❌ Can't find Login button — page screenshot attached")
+            return False
 
-            email_input = wait.until(EC.visibility_of_element_located((By.ID, "username")))
-            email = ""  # Replace this with the actual email
-            email_input.send_keys(email)
+        human_like_delay()
+        save_debug(driver, "03_login_page")
+
+        # ── Step 4: Fill credentials ──
+        try:
+            email_input = find_element_flexible(driver, wait, [
+                (By.ID, "username"),
+                (By.NAME, "username"),
+                (By.CSS_SELECTOR, "input[type='email']"),
+                (By.CSS_SELECTOR, "input[name='email']"),
+                (By.CSS_SELECTOR, "input[id*='email']"),
+                (By.CSS_SELECTOR, "input[id*='user']"),
+            ], "Email field")
+            email_input.clear()
+            email_input.send_keys(TLS_EMAIL)
             human_like_delay()
 
-            password_input = wait.until(EC.visibility_of_element_located((By.ID, "password")))
-            password = ""  # Replace this with the actual password
-            password_input.send_keys(password)
+            password_input = find_element_flexible(driver, wait, [
+                (By.ID, "password"),
+                (By.NAME, "password"),
+                (By.CSS_SELECTOR, "input[type='password']"),
+            ], "Password field")
+            password_input.clear()
+            password_input.send_keys(TLS_PASSWORD)
             human_like_delay()
 
-            submit_button = wait.until(EC.element_to_be_clickable((By.ID, "kc-login")))
+            submit_button = find_element_flexible(driver, wait, [
+                (By.ID, "kc-login"),
+                (By.CSS_SELECTOR, "button[type='submit']"),
+                (By.CSS_SELECTOR, "input[type='submit']"),
+                (By.XPATH, "//button[contains(text(),'Log')]"),
+                (By.XPATH, "//button[contains(text(),'Sign')]"),
+            ], "Submit button")
             driver.execute_script("arguments[0].scrollIntoView(true);", submit_button)
             driver.execute_script("arguments[0].click();", submit_button)
             human_like_delay()
+            print("  Login submitted.")
+        except TimeoutException:
+            debug_path = save_debug(driver, "04_login_form_fail")
+            send_telegram_photo(debug_path, "❌ Can't fill login form — screenshot attached")
+            return False
 
-            print("Login form submitted successfully.")
-            pickle.dump(driver.get_cookies(), open("cookies.pkl", "wb"))
+        save_debug(driver, "05_after_login")
 
-            # Click "Enter" button
-            driver.execute_script("window.scrollTo(0, 500)")
+        # Check if login failed
+        if "login" in driver.current_url.lower() and "error" in driver.page_source.lower():
+            debug_path = save_debug(driver, "05_login_failed")
+            send_telegram_photo(debug_path, "❌ Login failed — wrong credentials?")
+            return False
+
+        print("  Login successful.")
+
+        # ── Step 5: Click "Enter" button ──
+        human_like_delay()
+        driver.execute_script("window.scrollTo(0, 500)")
+        try:
+            enter_button = find_element_flexible(driver, short_wait, [
+                (By.XPATH, '//button[@class="tls-button-primary button-neo-inside"]'),
+                (By.XPATH, '//button[contains(@class, "tls-button-primary")]'),
+                (By.XPATH, '//button[contains(@class, "button-neo-inside")]'),
+                (By.XPATH, '//button[contains(text(), "Enter")]'),
+                (By.XPATH, '//button[contains(text(), "Continue")]'),
+                (By.XPATH, '//a[contains(text(), "Enter")]'),
+            ], "Enter button")
+            ActionChains(driver).move_to_element(enter_button).click().perform()
+            print("  Clicked 'Enter'.")
+        except TimeoutException:
+            print("  No 'Enter' button found, may already be on dashboard.")
+            save_debug(driver, "06_no_enter")
+
+        human_like_delay()
+
+        # ── Step 6: Click "Book appointment" ──
+        driver.execute_script("window.scrollTo(0, 3000)")
+        try:
+            book_btn = find_element_flexible(driver, short_wait, [
+                (By.XPATH, '//button[@class="button-neo-inside -primary"]'),
+                (By.XPATH, '//button[contains(@class, "-primary") and contains(@class, "button-neo")]'),
+                (By.XPATH, '//button[contains(text(), "Book")]'),
+                (By.XPATH, '//button[contains(text(), "Appointment")]'),
+                (By.XPATH, '//a[contains(text(), "Book")]'),
+                (By.XPATH, '//button[contains(@class, "primary")]'),
+            ], "Book appointment button")
+            driver.execute_script("arguments[0].scrollIntoView(true);", book_btn)
+            ActionChains(driver).move_to_element(book_btn).click().perform()
+            print("  Clicked 'Book appointment'.")
+        except TimeoutException:
+            print("  No 'Book appointment' button found.")
+            save_debug(driver, "07_no_book")
+
+        human_like_delay()
+        save_debug(driver, "08_appointment_page")
+
+        # ── Step 7: Check for "no appointments" popup ──
+        try:
+            no_appt = short_wait.until(EC.element_to_be_clickable(
+                (By.XPATH, "//button[@class='tls-button-primary -uppercase']")))
+            print(f"  No appointments available at {datetime.now().strftime('%H:%M:%S')}")
+            ActionChains(driver).move_to_element(no_appt).click().perform()
+            return False
+        except TimeoutException:
+            print("  No 'no appointments' popup — checking for slots...")
+
+        # ── Step 8: Check for available appointment ──
+        try:
+            available = driver.find_element(
+                By.XPATH, "//button[contains(@class, '-available')]")
+            now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+            msg = f"APPOINTMENT FOUND at {now}!"
+            print(f"  {msg}")
+            send_telegram(f"🚨 {msg}")
+
+            available.click()
+            human_like_delay()
+
+            screenshot_path = os.path.join(SCRIPT_DIR, "appointment_found.png")
+            driver.save_screenshot(screenshot_path)
+            send_telegram_photo(screenshot_path,
+                "✅ Slot clicked! Open TLScontact NOW to finish booking and pay!")
+
+            input(">>> APPOINTMENT FOUND! Press Enter to close browser... <<<")
+            return True
+        except NoSuchElementException:
+            print("  No available slots on page.")
+            return False
+
+    except Exception as e:
+        print(f"  ERROR: {e}")
+        traceback.print_exc()
+        if driver:
+            debug_path = save_debug(driver, "error")
+            send_telegram_photo(debug_path, f"⚠️ Bot error: {str(e)[:200]}")
+        else:
+            send_telegram(f"⚠️ Bot error (no browser): {str(e)[:200]}")
+        return False
+    finally:
+        if driver is not None:
             try:
-                enter_button = driver.find_element(By.XPATH, '//button[@class="tls-button-primary button-neo-inside"]')
-                enter_button.click()
-                print("Clicked on the 'Enter' button successfully using custom JavaScript.")
-            except:
-                enter_button = wait.until(EC.element_to_be_clickable((By.XPATH, "//button[@class='tls-button-primary button-neo-inside']")))
-                actions = ActionChains(driver)
-                actions.move_to_element(enter_button).click().perform()
-                print("Clicked on the 'Enter' button successfully using Action Chains.")
+                driver.quit()
+            except Exception:
+                pass
 
-            # Click "Book appointment" button
-            try:
-                human_like_delay()
-                driver.execute_script("window.scrollTo(0, 3000)")
-                book_appointment_button = driver.find_element(By.XPATH, '//button[@class="button-neo-inside -primary"]')
-                driver.execute_script("arguments[0].scrollIntoView(true);", book_appointment_button)
-                book_appointment_button.click()
-                human_like_delay()
-            except:
-                enter_button = wait.until(EC.element_to_be_clickable((By.XPATH, "//button[@class='button-neo-inside -primary']")))
-                actions = ActionChains(driver)
-                actions.move_to_element(enter_button).click().perform()
-                print("Clicked on the 'Book appointment' button successfully using Action Chains.")
-                human_like_delay()
-
-            # Check for available appointments
-            try:
-                no_appointments_popup = wait.until(EC.element_to_be_clickable((By.XPATH, "//button[@class='tls-button-primary -uppercase']")))
-                print("No appointments available until: ", datetime.now().time())
-                actions = ActionChains(driver)
-                actions.move_to_element(no_appointments_popup).click().perform()
-                # await update.message.reply_text("No appointments available. Retrying...")
-                time.sleep(300) # Wait 10 minutes before trying again
-                continue  # Restart the loop and reinitialize WebDriver
-            except:
-                print("Checking for available appointments...")
-
-            # If appointment is available
-            try:
-                available_appointment = driver.find_element(By.XPATH, "//button[contains(@class, '-available')]")
-                if available_appointment:
-                    print("Available appointment found!")
-                    current_time = datetime.now().time()
-                    result = f'Available appointment found at London {current_time}'
-                    await update.message.reply_text(result)
-                    available_appointment.click()
-                    return True
-            except:
-                result = 'Please login to find manual appointment'
-                print(result)
-                await update.message.reply_text(result)
-                time.sleep(60)
-                continue
-                
-        except Exception as e:
-            await update.message.reply_text(f"An error occurred: {e}")
-
-        finally:
-            if driver is not None:
-                driver.quit()  # Ensure driver quits to reset the session and prevent errors when retrying
 
 def main():
-    """Start the bot."""
-    application = Application.builder().token(API_TOKEN).build()
+    print("=" * 60)
+    print("TLScontact France Visa Slot Checker")
+    print(f"URL: {TLS_URL}")
+    print(f"Check interval: {CHECK_INTERVAL}s | Headless: {HEADLESS}")
+    print("=" * 60)
 
-    # Register handlers
-    application.add_handler(CommandHandler("start", start))
-    application.add_handler(CommandHandler("info", info))
-    application.add_handler(CommandHandler("search", search_appointments))  # New command to trigger Selenium task
-    application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, echo))
+    send_telegram("🤖 TLS Visa Bot started! Checking every 60s for France/London slots.")
 
-    # Start the Bot
-    application.run_polling()
+    check_count = 0
+    while True:
+        check_count += 1
+        print(f"\n[Check #{check_count} at {datetime.now().strftime('%H:%M:%S')}]")
+
+        found = check_once()
+        if found:
+            send_telegram("🎉 Appointment process started. Bot stopping.")
+            break
+
+        print(f"  Waiting {CHECK_INTERVAL}s...")
+        time.sleep(CHECK_INTERVAL)
+
 
 if __name__ == '__main__':
     main()
