@@ -22,7 +22,7 @@ TLS_URL = 'https://visas-fr.tlscontact.com/visa/gb/gbLON2fr/home'
 TLS_EMAIL = 'walterwuyan@gmail.com'
 TLS_PASSWORD = '998182aA!#'
 
-CHECK_INTERVAL = 60
+CHECK_INTERVAL = 180
 HEADLESS = False  # Keep False until login flow is confirmed working
 # ───────────────────────────────────────────────────────────────
 
