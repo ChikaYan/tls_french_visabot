@@ -528,31 +528,15 @@ def check_appointments(driver):
     return False
 
 
-def check_once():
-    driver = None
+def is_session_alive(driver):
+    """Check if the current browser session is still logged in."""
     try:
-        driver = create_driver()
-
-        if not do_login(driver):
+        url = driver.current_url.lower()
+        if "expired" in url or "login" in url or "auth" in url:
             return False
-
-        return check_appointments(driver)
-
-    except Exception as e:
-        print(f"  ERROR: {e}")
-        traceback.print_exc()
-        if driver:
-            debug_path = save_debug(driver, "error")
-            send_telegram_photo(debug_path, f"Bot error: {str(e)[:200]}")
-        else:
-            send_telegram(f"Bot error: {str(e)[:200]}")
+        return True
+    except Exception:
         return False
-    finally:
-        if driver:
-            try:
-                driver.quit()
-            except Exception:
-                pass
 
 
 def main():
@@ -564,18 +548,96 @@ def main():
 
     send_telegram(f"🤖 TLS Visa Bot started! Checking every {CHECK_INTERVAL}s for France/London slots.")
 
+    driver = None
+    logged_in = False
     check_count = 0
-    while True:
-        check_count += 1
-        print(f"\n[Check #{check_count} at {datetime.now().strftime('%H:%M:%S')}]")
 
-        found = check_once()
-        if found:
-            send_telegram("🎉 Appointment process started. Bot stopping.")
-            break
+    try:
+        while True:
+            check_count += 1
+            print(f"\n[Check #{check_count} at {datetime.now().strftime('%H:%M:%S')}]")
 
-        print(f"  Waiting {CHECK_INTERVAL}s...")
-        time.sleep(CHECK_INTERVAL)
+            # Create driver if we don't have one (first run or after crash)
+            if driver is None:
+                try:
+                    driver = create_driver()
+                    logged_in = False
+                except Exception as e:
+                    print(f"  Failed to create driver: {e}")
+                    send_telegram(f"⚠️ Failed to create browser: {str(e)[:100]}")
+                    time.sleep(CHECK_INTERVAL)
+                    continue
+
+            # Login if needed
+            if not logged_in:
+                try:
+                    if do_login(driver):
+                        logged_in = True
+                    else:
+                        print("  Login failed, will retry next cycle.")
+                        time.sleep(CHECK_INTERVAL)
+                        continue
+                except Exception as e:
+                    print(f"  Login error: {e}")
+                    traceback.print_exc()
+                    # Browser may have crashed, recreate next cycle
+                    try:
+                        driver.quit()
+                    except Exception:
+                        pass
+                    driver = None
+                    logged_in = False
+                    time.sleep(CHECK_INTERVAL)
+                    continue
+
+            # Check appointments using the live session
+            try:
+                found = check_appointments(driver)
+
+                if found:
+                    send_telegram("🎉 Appointment process started. Bot stopping.")
+                    break
+
+                # After checking, verify session is still alive
+                if not is_session_alive(driver):
+                    print("  Session expired during check, will re-login next cycle.")
+                    logged_in = False
+
+                # Save fresh cookies after each successful check
+                save_cookies(driver)
+
+            except Exception as e:
+                print(f"  ERROR during check: {e}")
+                traceback.print_exc()
+                try:
+                    debug_path = save_debug(driver, "error")
+                    send_telegram_photo(debug_path, f"Bot error: {str(e)[:200]}")
+                except Exception:
+                    send_telegram(f"⚠️ Bot error: {str(e)[:150]}")
+
+                # Check if browser died
+                try:
+                    _ = driver.current_url
+                except Exception:
+                    print("  Browser crashed, will recreate next cycle.")
+                    driver = None
+                    logged_in = False
+
+                # Session might have expired
+                if driver and not is_session_alive(driver):
+                    logged_in = False
+
+            print(f"  Waiting {CHECK_INTERVAL}s...")
+            time.sleep(CHECK_INTERVAL)
+
+    except KeyboardInterrupt:
+        print("\nStopped by user.")
+    finally:
+        if driver:
+            try:
+                driver.quit()
+            except Exception:
+                pass
 
 
 if __name__ == '__main__':
