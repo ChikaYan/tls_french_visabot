@@ -2,19 +2,38 @@
 ============================================================
 TLScontact France Visa Slot Checker
 URL: https://visas-fr.tlscontact.com/visa/gb/gbLON2fr/home
-Check interval: 60s | Headless: False
+Check interval: 180s | Headless: False
 ============================================================
 [TG] 🤖 TLS Visa Bot started! Checking every 60s for France/London slots.
 
-[Check #1 at 17:48:08]
+[Check #1 at 17:52:50]
   Opening TLScontact...
-  [DEBUG] Screenshot saved: H:\Workspace\tls_french_visabot\debug_01_home_174813.png
-  [DEBUG] Page title: Welcome to TLScontact Wandsworth (London) | TLScontact Wandsworth (London)
-  [DEBUG] Current URL: https://visas-fr.tlscontact.com/en-us/country/gb/vac/gbLON2fr
+  [DEBUG] Screenshot saved: H:\Workspace\tls_french_visabot\debug_01_home_175256.png
+  [DEBUG] Page title: Just a moment...
+  [DEBUG] Current URL: https://visas-fr.tlscontact.com/visa/gb/gbLON2fr/home
   Cookies accepted.
-  Found 'Login button' via: //button[contains(text(),'Login')]
+  Found 'Login button' via: //a[contains(@href, 'login')]
   Clicked Login.
-  [DEBUG] Screenshot saved: H:\Workspace\tls_french_visabot\debug_03_login_page_174933.png
+  [DEBUG] Screenshot saved: H:\Workspace\tls_french_visabot\debug_03_login_page_175514.png
   [DEBUG] Page title: TLScontact Login
-  [DEBUG] Current URL: https://i2-auth.visas-fr.tlscontact.com/auth/realms/atlas/protocol/openid-connect/auth?client_id=tlscitizen&redirect_uri=https%3A%2F%2Fvisas-fr.tlscontact.com%2Fen-us%2Fauth-callback&state=%257B%2522csrf%2522%253A%25229e32efec-d1b7-4354-9970-4e9931aae942%2522%257D&response_mode=query&response_type=code&scope=openid&nonce=f56b83c9-a09f-48ab-b68e-8b08ed5d6c57&ui_locales=en
+  [DEBUG] Current URL: https://i2-auth.visas-fr.tlscontact.com/auth/realms/atlas/protocol/openid-connect/auth?client_id=tlscitizen&redirect_uri=https%3A%2F%2Fvisas-fr.tlscontact.com%2Fen-us%2Fauth-callback&state=%257B%2522csrf%2522%253A%25225a362c7f-ed8f-4d8f-8a49-b7a52ab1ff72%2522%257D&response_mode=query&response_type=code&scope=openid&nonce=eb8c16d3-74f5-4465-b8bd-89425d891029&ui_locales=en
   Found 'Email field' via: username
+  Found 'Password field' via: password
+  Found 'Submit button' via: //button[contains(text(),'Log')]
+  Login submitted.
+  [DEBUG] Screenshot saved: H:\Workspace\tls_french_visabot\debug_05_after_login_175702.png
+  [DEBUG] Page title: TLScontact Login
+  [DEBUG] Current URL: https://i2-auth.visas-fr.tlscontact.com/auth/realms/atlas/protocol/openid-connect/auth?client_id=tlscitizen&redirect_uri=https%3A%2F%2Fvisas-fr.tlscontact.com%2Fen-us%2Fauth-callback&state=%257B%2522csrf%2522%253A%25225a362c7f-ed8f-4d8f-8a49-b7a52ab1ff72%2522%257D&response_mode=query&response_type=code&scope=openid&nonce=eb8c16d3-74f5-4465-b8bd-89425d891029&ui_locales=en
+  Login successful.
+  No 'Enter' button found, may already be on dashboard.
+  [DEBUG] Screenshot saved: H:\Workspace\tls_french_visabot\debug_06_no_enter_175805.png
+  [DEBUG] Page title: TLScontact Login
+  [DEBUG] Current URL: https://i2-auth.visas-fr.tlscontact.com/auth/realms/atlas/protocol/openid-connect/auth?client_id=tlscitizen&redirect_uri=https%3A%2F%2Fvisas-fr.tlscontact.com%2Fen-us%2Fauth-callback&state=%257B%2522csrf%2522%253A%25225a362c7f-ed8f-4d8f-8a49-b7a52ab1ff72%2522%257D&response_mode=query&response_type=code&scope=openid&nonce=eb8c16d3-74f5-4465-b8bd-89425d891029&ui_locales=en
+  Found 'Book appointment button' via: //button[contains(@class, "primary")]
+  Clicked 'Book appointment'.
+  [DEBUG] Screenshot saved: H:\Workspace\tls_french_visabot\debug_08_appointment_page_175907.png
+  [DEBUG] Page title: TLScontact Login
+  [DEBUG] Current URL: https://i2-auth.visas-fr.tlscontact.com/auth/realms/atlas/protocol/openid-connect/auth?client_id=tlscitizen&redirect_uri=https%3A%2F%2Fvisas-fr.tlscontact.com%2Fen-us%2Fauth-callback&state=%257B%2522csrf%2522%253A%25225a362c7f-ed8f-4d8f-8a49-b7a52ab1ff72%2522%257D&response_mode=query&response_type=code&scope=openid&nonce=eb8c16d3-74f5-4465-b8bd-89425d891029&ui_locales=en
+  No 'no appointments' popup — checking for slots...
+  No available slots on page.
+  Waiting 180s...
