@@ -140,3 +140,53 @@ Session started: 2026-04-22 18:23:44
 [2026-04-22 18:24:13] OSError
 [2026-04-22 18:24:13] : 
 [2026-04-22 18:24:13] [WinError 6] The handle is invalid
+
+============================================================
+Session started: 2026-04-22 18:33:50
+============================================================
+[2026-04-22 18:33:50] ============================================================
+[2026-04-22 18:33:50] TLScontact France Visa Slot Checker
+[2026-04-22 18:33:50] URL: https://visas-fr.tlscontact.com/visa/gb/gbLON2fr/home
+[2026-04-22 18:33:50] Check interval: 180s | Headless: False
+[2026-04-22 18:33:50] ============================================================
+[2026-04-22 18:33:50] [TG] 🤖 TLS Visa Bot started! Checking every 180s for France/London slots.
+[2026-04-22 18:33:50] 
+[Check #1 at 18:33:50]
+[2026-04-22 18:33:56]   Cloudflare passed.
+[2026-04-22 18:33:56]   Cookies accepted.
+[2026-04-22 18:33:56]   Found Login button.
+[2026-04-22 18:33:58]   Clicked Login.
+[2026-04-22 18:33:59]   Cloudflare passed.
+[2026-04-22 18:33:59]   Found Email field (tag=input, id=email-input-field)
+[2026-04-22 18:33:59]   Email entered.
+[2026-04-22 18:33:59]   Password entered.
+[2026-04-22 18:34:04]   [DEBUG] Screenshot: H:\Workspace\tls_french_visabot\debug_no_submit_btn_183404.png
+[2026-04-22 18:34:04]   [DEBUG] Title: TLScontact Login | URL: https://i2-auth.visas-fr.tlscontact.com/auth/realms/atlas/protocol/openid-connec
+[2026-04-22 18:34:05] [TG] Photo sent: Cannot find submit button
+[2026-04-22 18:34:05]   Waiting 180s...
+
+============================================================
+Session started: 2026-04-22 18:33:50
+============================================================
+[2026-04-22 18:34:14] Traceback (most recent call last):
+
+[2026-04-22 18:34:14]   File "H:\Workspace\tls_french_visabot\Dumbh_appointment_bot.py", line 490, in <module>
+
+[2026-04-22 18:34:14] main()
+[2026-04-22 18:34:14]   File "H:\Workspace\tls_french_visabot\Dumbh_appointment_bot.py", line 486, in main
+
+[2026-04-22 18:34:14] time.sleep(CHECK_INTERVAL)
+[2026-04-22 18:34:14] KeyboardInterrupt
+[2026-04-22 18:34:14] Exception ignored in: 
+[2026-04-22 18:34:14] <function Chrome.__del__ at 0x0000023E9F433E20>
+[2026-04-22 18:34:14] Traceback (most recent call last):
+
+[2026-04-22 18:34:14]   File "C:\Users\ChikamaYan\anaconda3\envs\tls\Lib\site-packages\undetected_chromedriver\__init__.py", line 843, in __del__
+
+[2026-04-22 18:34:14] self.quit()
+[2026-04-22 18:34:14]   File "C:\Users\ChikamaYan\anaconda3\envs\tls\Lib\site-packages\undetected_chromedriver\__init__.py", line 798, in quit
+
+[2026-04-22 18:34:14] time.sleep(0.1)
+[2026-04-22 18:34:14] OSError
+[2026-04-22 18:34:14] : 
+[2026-04-22 18:34:14] [WinError 6] The handle is invalid
