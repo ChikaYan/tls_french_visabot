@@ -257,18 +257,23 @@ def do_login(driver):
 
     # Try saved cookies first
     if load_cookies(driver):
-        driver.get(TLS_URL)
-        time.sleep(1)
+        # Test cookies by navigating to the page we actually need
+        driver.get('https://visas-fr.tlscontact.com/en-us/travel-groups')
+        time.sleep(2)
         wait_for_cloudflare(driver)
         url = driver.current_url.lower()
-        # Detect expired/invalid sessions
         if "expired" in url or "login" in url or "auth" in url:
             print(f"  Cookies invalid (landed on {url[:60]}), fresh login...")
-            os.remove(COOKIES_FILE)
+            try:
+                os.remove(COOKIES_FILE)
+            except Exception:
+                pass
             print("  Deleted stale cookies file.")
-        else:
+        elif "travel-groups" in url:
             print("  Logged in via saved cookies!")
             return True
+        else:
+            print(f"  Unexpected URL after cookie load: {url[:60]}, fresh login...")
 
     # Fresh login
     driver.get(TLS_URL)
@@ -532,7 +537,10 @@ def is_session_alive(driver):
     """Check if the current browser session is still logged in."""
     try:
         url = driver.current_url.lower()
+        title = driver.title.lower()
         if "expired" in url or "login" in url or "auth" in url:
+            return False
+        if "expired" in title or "login" in title:
             return False
         return True
     except Exception:
@@ -602,9 +610,9 @@ def main():
                 if not is_session_alive(driver):
                     print("  Session expired during check, will re-login next cycle.")
                     logged_in = False
-
-                # Save fresh cookies after each successful check
-                save_cookies(driver)
+                else:
+                    # Only save cookies if session is still valid
+                    save_cookies(driver)
 
             except Exception as e:
                 print(f"  ERROR during check: {e}")
