@@ -407,18 +407,29 @@ def check_appointments(driver):
 
     save_debug(driver, "travel_groups")
 
+    # Dismiss cookie banner if it reappeared
+    try:
+        accept = driver.find_element(By.XPATH, "//button[contains(@class, 'osano-cm-accept-all')]")
+        accept.click()
+        print("  Dismissed cookie banner.")
+        time.sleep(0.5)
+    except NoSuchElementException:
+        pass
+
     # Step 1: Get into the application
     # Try "Select" button first (Manus-verified), then "Book an appointment" (seen in logs)
     clicked = False
     try:
-        select_btn = WebDriverWait(driver, 5).until(
-            EC.element_to_be_clickable((By.XPATH,
-                "//button[@name='formGroupId']")))
-        select_btn.click()
-        print(f"  Clicked 'Select' (value={select_btn.get_attribute('value')}).")
-        clicked = True
-        human_like_delay()
-    except TimeoutException:
+        select_btns = driver.find_elements(By.XPATH, "//button[@name='formGroupId']")
+        for btn in select_btns:
+            if btn.is_displayed() and btn.text.strip():
+                driver.execute_script("arguments[0].scrollIntoView(true);", btn)
+                driver.execute_script("arguments[0].click();", btn)
+                print(f"  Clicked 'Select' (text='{btn.text}', value={btn.get_attribute('value')}).")
+                clicked = True
+                human_like_delay()
+                break
+    except Exception:
         pass
 
     if not clicked:
@@ -448,9 +459,11 @@ def check_appointments(driver):
     # Step 2: Click "Continue" if present (services page)
     try:
         continue_btn = WebDriverWait(driver, 5).until(
-            EC.element_to_be_clickable((By.CSS_SELECTOR,
+            EC.presence_of_element_located((By.CSS_SELECTOR,
                 "#book-appointment-btn, [data-testid='btn-book-appointment']")))
-        continue_btn.click()
+        driver.execute_script("arguments[0].scrollIntoView(true);", continue_btn)
+        time.sleep(0.5)
+        driver.execute_script("arguments[0].click();", continue_btn)
         print("  Clicked 'Continue'.")
         human_like_delay()
     except TimeoutException:
