@@ -5,16 +5,14 @@ import traceback
 from datetime import datetime
 
 import requests
+import undetected_chromedriver as uc
 from selenium.common.exceptions import (ElementClickInterceptedException,
                                         NoSuchElementException,
                                         TimeoutException)
-from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
-
-from selenium import webdriver
 
 # ── Configuration ──────────────────────────────────────────────
 TELEGRAM_BOT_TOKEN = '8630876891:AAFOL9tMGRhyt8pC1wWlQiGei1aQ-zzMirI'
@@ -88,24 +86,14 @@ def find_element_flexible(driver, wait, selectors, description):
 
 
 def create_driver():
-    chrome_options = Options()
-    chrome_options.add_argument("--incognito")
+    options = uc.ChromeOptions()
     if HEADLESS:
-        chrome_options.add_argument('--headless=new')
-    chrome_options.add_argument("--no-sandbox")
-    chrome_options.add_argument("--disable-dev-shm-usage")
-    chrome_options.add_argument("--disable-gpu")
-    chrome_options.add_argument("--window-size=1920,1080")
-    chrome_options.add_argument("--disable-blink-features=AutomationControlled")
-    chrome_options.add_argument(
-        "user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-        "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36"
-    )
-    chrome_options.add_experimental_option("excludeSwitches", ["enable-automation"])
-    driver = webdriver.Chrome(options=chrome_options)
-    driver.execute_cdp_cmd("Page.addScriptToEvaluateOnNewDocument", {
-        "source": "Object.defineProperty(navigator, 'webdriver', {get: () => undefined})"
-    })
+        options.add_argument('--headless=new')
+    options.add_argument("--no-sandbox")
+    options.add_argument("--disable-dev-shm-usage")
+    options.add_argument("--disable-gpu")
+    options.add_argument("--window-size=1920,1080")
+    driver = uc.Chrome(options=options, version_main=None)
     return driver
 
 
