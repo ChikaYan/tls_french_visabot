@@ -763,3 +763,138 @@ Stacktrace:
 [2026-04-22 19:14:51] OSError
 [2026-04-22 19:14:51] : 
 [2026-04-22 19:14:51] [WinError 6] The handle is invalid
+
+============================================================
+Session started: 2026-04-22 19:17:07
+============================================================
+[2026-04-22 19:17:07] ============================================================
+[2026-04-22 19:17:07] TLScontact France Visa Slot Checker
+[2026-04-22 19:17:07] URL: https://visas-fr.tlscontact.com/visa/gb/gbLON2fr/home
+[2026-04-22 19:17:07] Check interval: 180s | Headless: False
+[2026-04-22 19:17:07] ============================================================
+[2026-04-22 19:17:07] [TG] 🤖 TLS Visa Bot started! Checking every 180s for France/London slots.
+[2026-04-22 19:17:07] 
+[Check #1 at 19:17:07]
+[2026-04-22 19:17:11]   Loaded 7 cookies from file
+[2026-04-22 19:17:13]   Cloudflare passed.
+[2026-04-22 19:17:13]   Logged in via saved cookies!
+[2026-04-22 19:17:13]   [DEBUG] Screenshot: H:\Workspace\tls_french_visabot\debug_post_login_191713.png
+[2026-04-22 19:17:13]   [DEBUG] Title: Welcome to TLScontact Wandsworth (London) | TLScontact Wandsworth (London) | URL: https://visas-fr.tlscontact.com/en-us/country/gb/vac/gbLON2fr
+[2026-04-22 19:17:13]   Post-login URL: https://visas-fr.tlscontact.com/en-us/country/gb/vac/gbLON2fr
+[2026-04-22 19:17:16]   Cloudflare passed.
+[2026-04-22 19:17:16]   [DEBUG] Screenshot: H:\Workspace\tls_french_visabot\debug_travel_groups_191716.png
+[2026-04-22 19:17:16]   [DEBUG] Title: Applications list | TLScontact | URL: https://visas-fr.tlscontact.com/en-us/travel-groups
+[2026-04-22 19:17:22]   Clicked ''.
+[2026-04-22 19:17:24]   ERROR: Message: element click intercepted: Element <a id="book-appointment-btn" data-testid="btn-book-appointment" class="mb-4 rounded-full bg-surface-container px-4 py-2 text-lg font-semibold text-on-surface-variant lg:mb-0 lg:px-8 lg:py-3 lg:text-xl" href="/en-us/26091640/workflow/appointment-booking?location=gbLON2fr">...</a> is not clickable at point (1596, 871). Other element would receive the click: <button class=" osano-cm-save osano-cm-buttons__button osano-cm-button osano-cm-button--type_save " tabindex="0">...</button>
+  (Session info: chrome=147.0.7727.102)
+Stacktrace:
+	undetected_chromedriver!GetHandleVerifier [0x98b373+10553]
+	undetected_chromedriver!GetHandleVerifier [0x98b4a4+10684]
+	undetected_chromedriver!(No symbol) [0x791e10]
+	undetected_chromedriver!(No symbol) [0x7e10c8]
+	undetected_chromedriver!(No symbol) [0x7df2d9]
+	undetected_chromedriver!(No symbol) [0x7dcc92]
+	undetected_chromedriver!(No symbol) [0x7dbea4]
+	undetected_chromedriver!(No symbol) [0x7d1ab8]
+	undetected_chromedriver!(No symbol) [0x7fd86c]
+	undetected_chromedriver!(No symbol) [0x7d14f4]
+	undetected_chromedriver!(No symbol) [0x7fda34]
+	undetected_chromedriver!(No symbol) [0x81aa36]
+	undetected_chromedriver!(No symbol) [0x7fd606]
+	undetected_chromedriver!(No symbol) [0x7d0039]
+	undetected_chromedriver!(No symbol) [0x7d0df4]
+	undetected_chromedriver!GetHandleVerifier [0xc0ddb4+292f94]
+	undetected_chromedriver!GetHandleVerifier [0xc0937d+28e55d]
+	undetected_chromedriver!GetHandleVerifier [0xc28215+2ad3f5]
+	undetected_chromedriver!GetHandleVerifier [0x9a4c18+29df8]
+	undetected_chromedriver!GetHandleVerifier [0x9ac6fd+318dd]
+	undetected_chromedriver!GetHandleVerifier [0x993c78+18e58]
+	undetected_chromedriver!GetHandleVerifier [0x993e42+19022]
+	undetected_chromedriver!GetHandleVerifier [0x97d45f+263f]
+	KERNEL32!BaseThreadInitThunk [0x767c5d49+19]
+	ntdll!RtlInitializeExceptionChain [0x77c5d83b+6b]
+	ntdll!RtlGetAppContainerNamedObjectPath [0x77c5d7c1+231]
+
+
+============================================================
+Session started: 2026-04-22 19:17:07
+============================================================
+[2026-04-22 19:17:24] Traceback (most recent call last):
+
+[2026-04-22 19:17:24]   File "H:\Workspace\tls_french_visabot\Dumbh_appointment_bot.py", line 526, in check_once
+    return check_appointments(driver)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[2026-04-22 19:17:24]   File "H:\Workspace\tls_french_visabot\Dumbh_appointment_bot.py", line 453, in check_appointments
+    continue_btn.click()
+
+[2026-04-22 19:17:24]   File "C:\Users\ChikamaYan\anaconda3\envs\tls\Lib\site-packages\selenium\webdriver\remote\webelement.py", line 94, in click
+    self._execute(Command.CLICK_ELEMENT)
+
+[2026-04-22 19:17:24]   File "C:\Users\ChikamaYan\anaconda3\envs\tls\Lib\site-packages\selenium\webdriver\remote\webelement.py", line 395, in _execute
+    return self._parent.execute(command, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[2026-04-22 19:17:24]   File "C:\Users\ChikamaYan\anaconda3\envs\tls\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 354, in execute
+    self.error_handler.check_response(response)
+
+[2026-04-22 19:17:24]   File "C:\Users\ChikamaYan\anaconda3\envs\tls\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 229, in check_response
+    raise exception_class(message, screen, stacktrace)
+
+[2026-04-22 19:17:24] selenium.common.exceptions.ElementClickInterceptedException: Message: element click intercepted: Element <a id="book-appointment-btn" data-testid="btn-book-appointment" class="mb-4 rounded-full bg-surface-container px-4 py-2 text-lg font-semibold text-on-surface-variant lg:mb-0 lg:px-8 lg:py-3 lg:text-xl" href="/en-us/26091640/workflow/appointment-booking?location=gbLON2fr">...</a> is not clickable at point (1596, 871). Other element would receive the click: <button class=" osano-cm-save osano-cm-buttons__button osano-cm-button osano-cm-button--type_save " tabindex="0">...</button>
+  (Session info: chrome=147.0.7727.102)
+Stacktrace:
+	undetected_chromedriver!GetHandleVerifier [0x98b373+10553]
+	undetected_chromedriver!GetHandleVerifier [0x98b4a4+10684]
+	undetected_chromedriver!(No symbol) [0x791e10]
+	undetected_chromedriver!(No symbol) [0x7e10c8]
+	undetected_chromedriver!(No symbol) [0x7df2d9]
+	undetected_chromedriver!(No symbol) [0x7dcc92]
+	undetected_chromedriver!(No symbol) [0x7dbea4]
+	undetected_chromedriver!(No symbol) [0x7d1ab8]
+	undetected_chromedriver!(No symbol) [0x7fd86c]
+	undetected_chromedriver!(No symbol) [0x7d14f4]
+	undetected_chromedriver!(No symbol) [0x7fda34]
+	undetected_chromedriver!(No symbol) [0x81aa36]
+	undetected_chromedriver!(No symbol) [0x7fd606]
+	undetected_chromedriver!(No symbol) [0x7d0039]
+	undetected_chromedriver!(No symbol) [0x7d0df4]
+	undetected_chromedriver!GetHandleVerifier [0xc0ddb4+292f94]
+	undetected_chromedriver!GetHandleVerifier [0xc0937d+28e55d]
+	undetected_chromedriver!GetHandleVerifier [0xc28215+2ad3f5]
+	undetected_chromedriver!GetHandleVerifier [0x9a4c18+29df8]
+	undetected_chromedriver!GetHandleVerifier [0x9ac6fd+318dd]
+	undetected_chromedriver!GetHandleVerifier [0x993c78+18e58]
+	undetected_chromedriver!GetHandleVerifier [0x993e42+19022]
+	undetected_chromedriver!GetHandleVerifier [0x97d45f+263f]
+	KERNEL32!BaseThreadInitThunk [0x767c5d49+19]
+	ntdll!RtlInitializeExceptionChain [0x77c5d83b+6b]
+	ntdll!RtlGetAppContainerNamedObjectPath [0x77c5d7c1+231]
+
+
+[2026-04-22 19:17:24]   [DEBUG] Screenshot: H:\Workspace\tls_french_visabot\debug_error_191724.png
+[2026-04-22 19:17:24]   [DEBUG] Title:  | URL: https://visas-fr.tlscontact.com/en-us/26091640/workflow/service-level
+[2026-04-22 19:17:24] [TG] Photo sent: Bot error: Message: element click intercepted: Element <a id
+[2026-04-22 19:17:24]   Waiting 180s...
+[2026-04-22 19:17:39] Traceback (most recent call last):
+
+[2026-04-22 19:17:39]   File "H:\Workspace\tls_french_visabot\Dumbh_appointment_bot.py", line 569, in <module>
+
+[2026-04-22 19:17:39] main()
+[2026-04-22 19:17:39]   File "H:\Workspace\tls_french_visabot\Dumbh_appointment_bot.py", line 565, in main
+
+[2026-04-22 19:17:39] time.sleep(CHECK_INTERVAL)
+[2026-04-22 19:17:39] KeyboardInterrupt
+[2026-04-22 19:17:39] Exception ignored in: 
+[2026-04-22 19:17:39] <function Chrome.__del__ at 0x000001DFA70B3E20>
+[2026-04-22 19:17:39] Traceback (most recent call last):
+
+[2026-04-22 19:17:39]   File "C:\Users\ChikamaYan\anaconda3\envs\tls\Lib\site-packages\undetected_chromedriver\__init__.py", line 843, in __del__
+
+[2026-04-22 19:17:39] self.quit()
+[2026-04-22 19:17:39]   File "C:\Users\ChikamaYan\anaconda3\envs\tls\Lib\site-packages\undetected_chromedriver\__init__.py", line 798, in quit
+
+[2026-04-22 19:17:39] time.sleep(0.1)
+[2026-04-22 19:17:39] OSError
+[2026-04-22 19:17:39] : 
+[2026-04-22 19:17:39] [WinError 6] The handle is invalid
