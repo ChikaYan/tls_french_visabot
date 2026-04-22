@@ -427,7 +427,9 @@ def check_appointments(driver):
                 "//button[contains(text(), 'Book an appointment')] | "
                 "//button[contains(text(), 'Book')] | "
                 "//button[contains(text(), 'Select')]")
-            book_btn.click()
+            driver.execute_script("arguments[0].scrollIntoView(true);", book_btn)
+            time.sleep(0.5)
+            driver.execute_script("arguments[0].click();", book_btn)
             print(f"  Clicked '{book_btn.text}'.")
             clicked = True
             human_like_delay()
