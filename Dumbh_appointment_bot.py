@@ -21,12 +21,11 @@ from selenium.webdriver.support.ui import WebDriverWait
 TELEGRAM_BOT_TOKEN = '8630876891:AAFOL9tMGRhyt8pC1wWlQiGei1aQ-zzMirI'
 TELEGRAM_CHAT_ID = 1044515516
 
-TLS_HOME = 'https://visas-fr.tlscontact.com/visa/gb/gbLON2fr/home'
-TLS_TRAVEL_GROUPS = 'https://visas-fr.tlscontact.com/en-us/travel-groups'
+TLS_URL = 'https://visas-fr.tlscontact.com/visa/gb/gbLON2fr/home'
 TLS_EMAIL = 'walterwuyan@gmail.com'
 TLS_PASSWORD = '998182aA!#'
 
-CHECK_INTERVAL = 300
+CHECK_INTERVAL = 180
 HEADLESS = False
 # ───────────────────────────────────────────────────────────────
 
@@ -60,7 +59,7 @@ sys.stdout = TeeLogger(LOG_FILE, sys.stdout)
 sys.stderr = TeeLogger(LOG_FILE, sys.stderr)
 
 
-def human_like_delay(low=1.0, high=2.5):
+def human_like_delay(low=0.5, high=1.2):
     time.sleep(random.uniform(low, high))
 
 
@@ -102,6 +101,22 @@ def save_debug(driver, label):
     return path
 
 
+def find_first(driver, selectors, description, timeout=8):
+    """Poll all selectors simultaneously until one matches or timeout."""
+    end = time.time() + timeout
+    while time.time() < end:
+        for selector_type, selector_value in selectors:
+            try:
+                elem = driver.find_element(selector_type, selector_value)
+                if elem.is_displayed():
+                    print(f"  Found '{description}' via: {selector_value}")
+                    return elem
+            except (NoSuchElementException, Exception):
+                continue
+        time.sleep(0.3)
+    raise TimeoutException(f"Could not find '{description}'")
+
+
 def save_cookies(driver):
     cookies = driver.get_cookies()
     with open(COOKIES_FILE, 'w') as f:
@@ -115,7 +130,7 @@ def load_cookies(driver):
     try:
         with open(COOKIES_FILE, 'r') as f:
             cookies = json.load(f)
-        driver.get(TLS_HOME)
+        driver.get(TLS_URL)
         time.sleep(1)
         for cookie in cookies:
             cookie.pop('sameSite', None)
@@ -131,20 +146,22 @@ def load_cookies(driver):
         return False
 
 
-def wait_for_cloudflare(driver, timeout=20):
+def wait_for_cloudflare(driver, timeout=15):
     start = time.time()
     while time.time() - start < timeout:
         title = driver.title.lower()
         if "just a moment" not in title and "checking" not in title:
             print("  Cloudflare passed.")
             return True
-        time.sleep(1)
+        time.sleep(0.5)
     print("  Cloudflare timeout.")
     return False
 
 
 def solve_recaptcha(driver, timeout=60):
+    """Click reCAPTCHA checkbox. If manual solve needed, wait for user."""
     print("  Solving reCAPTCHA...")
+
     try:
         iframes = driver.find_elements(By.TAG_NAME, "iframe")
         recaptcha_frame = None
@@ -155,7 +172,7 @@ def solve_recaptcha(driver, timeout=60):
                 break
 
         if not recaptcha_frame:
-            print("  No reCAPTCHA found.")
+            print("  No reCAPTCHA found — not required.")
             return True
 
         driver.switch_to.frame(recaptcha_frame)
@@ -163,7 +180,8 @@ def solve_recaptcha(driver, timeout=60):
 
         try:
             checkbox = WebDriverWait(driver, 5).until(
-                EC.element_to_be_clickable((By.CSS_SELECTOR, ".recaptcha-checkbox-border, #recaptcha-anchor")))
+                EC.element_to_be_clickable((By.CSS_SELECTOR, ".recaptcha-checkbox-border, #recaptcha-anchor"))
+            )
             checkbox.click()
             print("  Clicked reCAPTCHA checkbox.")
         except Exception as e:
@@ -172,6 +190,7 @@ def solve_recaptcha(driver, timeout=60):
         driver.switch_to.default_content()
         time.sleep(2)
 
+        # Quick check if auto-solved
         driver.switch_to.frame(recaptcha_frame)
         for _ in range(5):
             try:
@@ -185,11 +204,12 @@ def solve_recaptcha(driver, timeout=60):
             time.sleep(1)
         driver.switch_to.default_content()
 
+        # Manual solve needed
         print("  reCAPTCHA needs manual solving!")
         send_telegram("⚠️ reCAPTCHA needs manual solving! Go to your PC and click the CAPTCHA.")
 
-        start_t = time.time()
-        while time.time() - start_t < timeout:
+        start = time.time()
+        while time.time() - start < timeout:
             try:
                 if "auth" not in driver.current_url and "login" not in driver.current_url:
                     print("  Page changed — reCAPTCHA solved!")
@@ -213,6 +233,7 @@ def solve_recaptcha(driver, timeout=60):
 
         print("  reCAPTCHA timeout.")
         return False
+
     except Exception as e:
         print(f"  reCAPTCHA error: {e}")
         driver.switch_to.default_content()
@@ -231,31 +252,24 @@ def create_driver():
     return driver
 
 
-# ─────────────────────────────────────────────────────────────
-# LOGIN — proven working flow from 18:35:54 session
-# Home page → click Login link → fill form → reCAPTCHA → submit
-# ─────────────────────────────────────────────────────────────
-
 def do_login(driver):
+    """Full login flow. Returns True if logged in."""
+
     # Try saved cookies first
     if load_cookies(driver):
-        driver.get(TLS_TRAVEL_GROUPS)
-        time.sleep(2)
+        driver.get(TLS_URL)
+        time.sleep(1)
         wait_for_cloudflare(driver)
-        if "travel-groups" in driver.current_url:
-            print("  Logged in via saved cookies!")
-            return True
-        # Maybe redirected but still logged in
         if "auth" not in driver.current_url and "login" not in driver.current_url:
             page = driver.page_source.lower()
-            if "application" in page or "travel" in page:
+            if "login" not in driver.title.lower() and ("appointment" in page or "dashboard" in page or "application" in page):
                 print("  Logged in via saved cookies!")
                 return True
         print("  Cookies expired, fresh login...")
 
-    # Start from home page (proven working)
-    driver.get(TLS_HOME)
-    time.sleep(2)
+    # Fresh login
+    driver.get(TLS_URL)
+    time.sleep(1)
     wait_for_cloudflare(driver)
 
     # Accept cookies banner
@@ -270,7 +284,7 @@ def do_login(driver):
 
     human_like_delay()
 
-    # Click Login link — confirmed: //a[contains(@href, 'login')]
+    # Click Login link — confirmed selector: //a[contains(@href, 'login')]
     try:
         login_button = WebDriverWait(driver, 10).until(
             EC.element_to_be_clickable((By.XPATH, "//a[contains(@href, 'login')]")))
@@ -289,10 +303,11 @@ def do_login(driver):
     try:
         email_input = WebDriverWait(driver, 15).until(
             EC.presence_of_element_located((By.CSS_SELECTOR,
-                "#username, #email-input-field, input[name='username'], input[type='email']")))
+                "#username, input[name='username'], input[type='email']")))
+        print(f"  Found Email field (tag={email_input.tag_name}, id={email_input.get_attribute('id')})")
         email_input.clear()
         email_input.send_keys(TLS_EMAIL)
-        print(f"  Email entered (id={email_input.get_attribute('id')}).")
+        print("  Email entered.")
 
         password_input = driver.find_element(By.CSS_SELECTOR,
             "#password, input[name='password'], input[type='password']")
@@ -305,52 +320,54 @@ def do_login(driver):
         send_telegram_photo(debug_path, "Cannot fill login form")
         return False
 
-    # Find submit button BEFORE reCAPTCHA
-    submit_button = None
+    # Locate submit button FIRST (fast, before reCAPTCHA)
     try:
         submit_button = WebDriverWait(driver, 5).until(
             EC.element_to_be_clickable((By.CSS_SELECTOR,
                 "#kc-login, button[type='submit'], input[type='submit']")))
-        print(f"  Found Submit button via CSS (text='{submit_button.text}').")
+        print(f"  Found Submit button (tag={submit_button.tag_name}, text={submit_button.text})")
     except TimeoutException:
+        # Fallback: any button/a containing "Login" text
         try:
             submit_button = driver.find_element(By.XPATH,
                 "//button[contains(text(),'Login')] | //button[contains(text(),'login')] | "
                 "//a[contains(text(),'Login')] | //button[.//span[contains(text(),'Login')]]")
-            print(f"  Found Submit button via text (text='{submit_button.text}').")
+            print(f"  Found Submit button via text fallback (tag={submit_button.tag_name}).")
         except NoSuchElementException:
+            # Last resort: find the button nearest to the password field
             try:
                 submit_button = driver.find_element(By.XPATH,
                     "//form//button | //div[contains(@class,'login')]//button")
-                print(f"  Found Submit button via form (text='{submit_button.text}').")
+                print(f"  Found Submit button via form fallback (tag={submit_button.tag_name}, text={submit_button.text}).")
             except NoSuchElementException:
                 debug_path = save_debug(driver, "no_submit_btn")
+                # Dump all buttons on page for debugging
                 buttons = driver.find_elements(By.TAG_NAME, "button")
                 for i, btn in enumerate(buttons):
                     print(f"  [DEBUG] Button {i}: text='{btn.text}' class='{btn.get_attribute('class')}' type='{btn.get_attribute('type')}' id='{btn.get_attribute('id')}'")
                 send_telegram_photo(debug_path, "Cannot find submit button")
                 return False
 
-    # Solve reCAPTCHA right before submit
+    # Solve reCAPTCHA right before clicking submit
     if not solve_recaptcha(driver):
         debug_path = save_debug(driver, "recaptcha_fail")
         send_telegram_photo(debug_path, "reCAPTCHA failed")
         return False
 
-    # Click submit IMMEDIATELY
+    # Click submit IMMEDIATELY after reCAPTCHA
     driver.execute_script("arguments[0].scrollIntoView(true);", submit_button)
     driver.execute_script("arguments[0].click();", submit_button)
     print("  Login submitted.")
 
-    time.sleep(3)
+    time.sleep(1.5)
 
     # Verify login
     if "auth" in driver.current_url or "login" in driver.current_url.lower():
         debug_path = save_debug(driver, "login_stuck")
         page_lower = driver.page_source.lower()
         if "recaptcha" in page_lower or "captcha" in page_lower:
-            print("  Still on login — waiting for manual reCAPTCHA solve...")
-            send_telegram("⚠️ Still on login page. Solve reCAPTCHA on your PC!")
+            print("  Still on login — reCAPTCHA may have expired. Waiting for manual solve...")
+            send_telegram("⚠️ Still on login page. reCAPTCHA may have expired — solve it on your PC!")
             start = time.time()
             while time.time() - start < 60:
                 if "auth" not in driver.current_url and "login" not in driver.current_url.lower():
@@ -369,12 +386,15 @@ def do_login(driver):
 
 
 # ─────────────────────────────────────────────────────────────
-# APPOINTMENT CHECK — Manus flow with verified selectors
-# travel-groups → Select → Continue → check slots
+# POST-LOGIN: Manus-verified flow
+# travel-groups → Select existing group → Continue → check slots
 # ─────────────────────────────────────────────────────────────
 
 def check_appointments(driver):
+    """After login, navigate through booking flow and check for slots."""
+
     # Navigate to travel groups page
+    TLS_TRAVEL_GROUPS = 'https://visas-fr.tlscontact.com/en-us/travel-groups'
     if "travel-groups" not in driver.current_url:
         driver.get(TLS_TRAVEL_GROUPS)
         time.sleep(2)
@@ -383,7 +403,7 @@ def check_appointments(driver):
     save_debug(driver, "travel_groups")
 
     # 1. Click "Select" on existing travel group
-    #    Confirmed: <button name="formGroupId" type="submit" value="26091640">Select</button>
+    #    Confirmed HTML: <button name="formGroupId" type="submit" value="26091640">Select</button>
     try:
         select_btn = WebDriverWait(driver, 10).until(
             EC.element_to_be_clickable((By.XPATH,
@@ -393,7 +413,6 @@ def check_appointments(driver):
         print(f"  Clicked 'Select' (value={select_btn.get_attribute('value')}).")
         human_like_delay()
     except TimeoutException:
-        # Fallback: any button with "Select" text
         try:
             select_btn = driver.find_element(By.XPATH,
                 "//button[contains(text(), 'Select')]")
@@ -402,15 +421,14 @@ def check_appointments(driver):
             human_like_delay()
         except NoSuchElementException:
             debug_path = save_debug(driver, "no_select_btn")
-            # Dump buttons for debugging
             buttons = driver.find_elements(By.TAG_NAME, "button")
             for i, btn in enumerate(buttons):
                 print(f"  [DEBUG] Button {i}: text='{btn.text}' name='{btn.get_attribute('name')}' type='{btn.get_attribute('type')}'")
-            send_telegram_photo(debug_path, "Cannot find Select button on travel groups page")
+            send_telegram_photo(debug_path, "Cannot find Select button")
             return False
 
-    # 2. Click "Continue" to go to appointment booking
-    #    Confirmed: <a id="book-appointment-btn">Continue</a>
+    # 2. Click "Continue" to appointment booking
+    #    Confirmed HTML: <a id="book-appointment-btn">Continue</a>
     try:
         continue_btn = WebDriverWait(driver, 10).until(
             EC.element_to_be_clickable((By.ID, "book-appointment-btn")))
@@ -419,7 +437,6 @@ def check_appointments(driver):
         print("  Clicked 'Continue' (book-appointment-btn).")
         human_like_delay()
     except TimeoutException:
-        # Fallback
         try:
             continue_btn = driver.find_element(By.XPATH,
                 "//a[contains(text(), 'Continue')] | //button[contains(text(), 'Continue')]")
@@ -435,9 +452,9 @@ def check_appointments(driver):
     time.sleep(2)
     save_debug(driver, "appointment_page")
 
-    # 3. Check for slots
+    # 3. Check for available slots
     def check_current_view():
-        # "No slots" is a <p> tag, NOT a popup button
+        # "No slots" is a <p> tag: "We currently don't have any appointment slots available."
         try:
             driver.find_element(By.XPATH,
                 "//p[contains(text(), 'appointment slots available')]")
@@ -520,10 +537,11 @@ def check_once():
 def main():
     print("=" * 60)
     print("TLScontact France Visa Slot Checker")
+    print(f"URL: {TLS_URL}")
     print(f"Check interval: {CHECK_INTERVAL}s | Headless: {HEADLESS}")
     print("=" * 60)
 
-    send_telegram(f"🤖 TLS Visa Bot started! Checking every {CHECK_INTERVAL}s.")
+    send_telegram(f"🤖 TLS Visa Bot started! Checking every {CHECK_INTERVAL}s for France/London slots.")
 
     check_count = 0
     while True:
