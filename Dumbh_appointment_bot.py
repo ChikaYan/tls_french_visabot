@@ -241,6 +241,14 @@ def solve_recaptcha(driver, timeout=60):
 
 
 def create_driver():
+    # IMPORTANT: Close all Chrome windows before running this script!
+    # The bot uses your real Chrome profile so reCAPTCHA trusts the browser.
+    # Chrome only allows one instance per profile.
+    CHROME_PROFILE = os.path.expandvars(r'%LOCALAPPDATA%\Google\Chrome\User Data')
+    # Fallback for non-Windows
+    if not os.path.exists(CHROME_PROFILE):
+        CHROME_PROFILE = os.path.expanduser('~/AppData/Local/Google/Chrome/User Data')
+
     options = uc.ChromeOptions()
     if HEADLESS:
         options.add_argument('--headless=new')
@@ -248,6 +256,14 @@ def create_driver():
     options.add_argument("--disable-dev-shm-usage")
     options.add_argument("--disable-gpu")
     options.add_argument("--window-size=1920,1080")
+
+    if os.path.exists(CHROME_PROFILE):
+        options.add_argument(f"--user-data-dir={CHROME_PROFILE}")
+        options.add_argument("--profile-directory=Default")
+        print(f"  Using Chrome profile: {CHROME_PROFILE}")
+    else:
+        print(f"  Chrome profile not found at {CHROME_PROFILE}, using fresh profile.")
+
     driver = uc.Chrome(options=options, version_main=None)
     return driver
 
@@ -550,9 +566,12 @@ def is_session_alive(driver):
 def main():
     print("=" * 60)
     print("TLScontact France Visa Slot Checker")
-    print(f"URL: {TLS_URL}")
     print(f"Check interval: {CHECK_INTERVAL}s | Headless: {HEADLESS}")
     print("=" * 60)
+    print()
+    print("⚠️  CLOSE ALL CHROME WINDOWS before running!")
+    print("   The bot uses your real Chrome profile to avoid reCAPTCHA.")
+    print()
 
     send_telegram(f"🤖 TLS Visa Bot started! Checking every {CHECK_INTERVAL}s for France/London slots.")
 
