@@ -2016,3 +2016,53 @@ Stopped by user.
 [2026-04-22 20:14:24] OSError
 [2026-04-22 20:14:24] : 
 [2026-04-22 20:14:24] [WinError 6] The handle is invalid
+
+============================================================
+Session started: 2026-04-22 20:21:37
+============================================================
+[2026-04-22 20:21:37] ============================================================
+[2026-04-22 20:21:37] TLScontact France Visa Slot Checker
+[2026-04-22 20:21:37] URL: https://visas-fr.tlscontact.com/visa/gb/gbLON2fr/home
+[2026-04-22 20:21:37] Check interval: 180s | Headless: False
+[2026-04-22 20:21:37] ============================================================
+[2026-04-22 20:21:38] [TG] 🤖 TLS Visa Bot started! Checking every 180s for France/London slots.
+[2026-04-22 20:21:38] 
+[Check #1 at 20:21:38]
+[2026-04-22 20:21:43]   Loaded 8 cookies from file
+[2026-04-22 20:21:46]   Cloudflare passed.
+[2026-04-22 20:21:46]   Logged in via saved cookies!
+[2026-04-22 20:21:46]   [DEBUG] Screenshot: H:\Workspace\tls_french_visabot\debug_post_login_202146.png
+[2026-04-22 20:21:46]   [DEBUG] Title: Welcome to TLScontact Wandsworth (London) | TLScontact Wandsworth (London) | URL: https://visas-fr.tlscontact.com/en-us/country/gb/vac/gbLON2fr
+[2026-04-22 20:21:46]   Post-login URL: https://visas-fr.tlscontact.com/en-us/country/gb/vac/gbLON2fr
+[2026-04-22 20:21:48]   Cloudflare passed.
+[2026-04-22 20:21:48]   [DEBUG] Screenshot: H:\Workspace\tls_french_visabot\debug_travel_groups_202148.png
+[2026-04-22 20:21:49]   [DEBUG] Title:  | URL: https://visas-fr.tlscontact.com/en-us/expired-session
+[2026-04-22 20:21:49]   Dismissed cookie banner.
+[2026-04-22 20:21:49]   [DEBUG] Screenshot: H:\Workspace\tls_french_visabot\debug_no_action_btn_202149.png
+[2026-04-22 20:21:49]   [DEBUG] Title:  | URL: https://visas-fr.tlscontact.com/en-us/expired-session
+[2026-04-22 20:21:49]   [DEBUG] Button 1: text='Save' name=''
+[2026-04-22 20:21:49]   [DEBUG] Button 2: text='Accept All' name=''
+[2026-04-22 20:21:49]   [DEBUG] Button 3: text='Reject All' name=''
+[2026-04-22 20:21:49] [TG] Photo sent: Cannot find Select/Book button
+[2026-04-22 20:21:49]   Session expired during check, will re-login next cycle.
+[2026-04-22 20:21:49]   Cookies saved (7 cookies)
+[2026-04-22 20:21:49]   Waiting 180s...
+[2026-04-22 20:22:12] 
+Stopped by user.
+
+============================================================
+Session started: 2026-04-22 20:21:37
+============================================================
+[2026-04-22 20:22:12] Exception ignored in: 
+[2026-04-22 20:22:12] <function Chrome.__del__ at 0x00000253BEB73E20>
+[2026-04-22 20:22:12] Traceback (most recent call last):
+
+[2026-04-22 20:22:12]   File "C:\Users\ChikamaYan\anaconda3\envs\tls\Lib\site-packages\undetected_chromedriver\__init__.py", line 843, in __del__
+
+[2026-04-22 20:22:12] self.quit()
+[2026-04-22 20:22:12]   File "C:\Users\ChikamaYan\anaconda3\envs\tls\Lib\site-packages\undetected_chromedriver\__init__.py", line 798, in quit
+
+[2026-04-22 20:22:12] time.sleep(0.1)
+[2026-04-22 20:22:12] OSError
+[2026-04-22 20:22:12] : 
+[2026-04-22 20:22:12] [WinError 6] The handle is invalid
