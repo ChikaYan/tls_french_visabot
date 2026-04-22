@@ -93,3 +93,50 @@ Session started: 2026-04-22 18:07:38
 [2026-04-22 18:13:53] OSError
 [2026-04-22 18:13:53] : 
 [2026-04-22 18:13:53] [WinError 6] The handle is invalid
+
+============================================================
+Session started: 2026-04-22 18:23:44
+============================================================
+[2026-04-22 18:23:44] ============================================================
+[2026-04-22 18:23:44] TLScontact France Visa Slot Checker
+[2026-04-22 18:23:44] URL: https://visas-fr.tlscontact.com/visa/gb/gbLON2fr/home
+[2026-04-22 18:23:44] Check interval: 180s | Headless: False
+[2026-04-22 18:23:44] ============================================================
+[2026-04-22 18:23:44] [TG] 🤖 TLS Visa Bot started! Checking every 180s for France/London slots.
+[2026-04-22 18:23:44] 
+[Check #1 at 18:23:44]
+[2026-04-22 18:23:50]   Cloudflare passed.
+[2026-04-22 18:23:50]   Cookies accepted.
+[2026-04-22 18:23:51]   Found Login button.
+[2026-04-22 18:23:52]   Clicked Login.
+[2026-04-22 18:23:53]   Cloudflare passed.
+[2026-04-22 18:24:04]   [DEBUG] Screenshot: H:\Workspace\tls_french_visabot\debug_login_form_fail_182403.png
+[2026-04-22 18:24:04]   [DEBUG] Title: TLScontact Login | URL: https://i2-auth.visas-fr.tlscontact.com/auth/realms/atlas/protocol/openid-connec
+[2026-04-22 18:24:04] [TG] Photo sent: Cannot fill login form
+[2026-04-22 18:24:04]   Waiting 180s...
+
+============================================================
+Session started: 2026-04-22 18:23:44
+============================================================
+[2026-04-22 18:24:13] Traceback (most recent call last):
+
+[2026-04-22 18:24:13]   File "H:\Workspace\tls_french_visabot\Dumbh_appointment_bot.py", line 481, in <module>
+
+[2026-04-22 18:24:13] main()
+[2026-04-22 18:24:13]   File "H:\Workspace\tls_french_visabot\Dumbh_appointment_bot.py", line 477, in main
+
+[2026-04-22 18:24:13] time.sleep(CHECK_INTERVAL)
+[2026-04-22 18:24:13] KeyboardInterrupt
+[2026-04-22 18:24:13] Exception ignored in: 
+[2026-04-22 18:24:13] <function Chrome.__del__ at 0x00000267494D3D80>
+[2026-04-22 18:24:13] Traceback (most recent call last):
+
+[2026-04-22 18:24:13]   File "C:\Users\ChikamaYan\anaconda3\envs\tls\Lib\site-packages\undetected_chromedriver\__init__.py", line 843, in __del__
+
+[2026-04-22 18:24:13] self.quit()
+[2026-04-22 18:24:13]   File "C:\Users\ChikamaYan\anaconda3\envs\tls\Lib\site-packages\undetected_chromedriver\__init__.py", line 798, in quit
+
+[2026-04-22 18:24:13] time.sleep(0.1)
+[2026-04-22 18:24:13] OSError
+[2026-04-22 18:24:13] : 
+[2026-04-22 18:24:13] [WinError 6] The handle is invalid
