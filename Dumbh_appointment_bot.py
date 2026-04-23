@@ -241,11 +241,7 @@ def solve_recaptcha(driver, timeout=60):
 
 
 def create_driver():
-    # IMPORTANT: Close all Chrome windows before running this script!
-    # The bot uses your real Chrome profile so reCAPTCHA trusts the browser.
-    # Chrome only allows one instance per profile.
     CHROME_PROFILE = os.path.expandvars(r'%LOCALAPPDATA%\Google\Chrome\User Data')
-    # Fallback for non-Windows
     if not os.path.exists(CHROME_PROFILE):
         CHROME_PROFILE = os.path.expanduser('~/AppData/Local/Google/Chrome/User Data')
 
@@ -257,14 +253,28 @@ def create_driver():
     options.add_argument("--disable-gpu")
     options.add_argument("--window-size=1920,1080")
 
+    # Try with real Chrome profile first (better reCAPTCHA pass rate)
     if os.path.exists(CHROME_PROFILE):
         options.add_argument(f"--user-data-dir={CHROME_PROFILE}")
         options.add_argument("--profile-directory=Default")
-        print(f"  Using Chrome profile: {CHROME_PROFILE}")
-    else:
-        print(f"  Chrome profile not found at {CHROME_PROFILE}, using fresh profile.")
+        try:
+            driver = uc.Chrome(options=options, version_main=None)
+            print(f"  Using Chrome profile: {CHROME_PROFILE}")
+            return driver
+        except Exception as e:
+            print(f"  Chrome profile failed ({e}), falling back to fresh profile.")
+            print("  TIP: Close all Chrome windows and retry for better reCAPTCHA pass rate.")
+            # Recreate options without profile
+            options = uc.ChromeOptions()
+            if HEADLESS:
+                options.add_argument('--headless=new')
+            options.add_argument("--no-sandbox")
+            options.add_argument("--disable-dev-shm-usage")
+            options.add_argument("--disable-gpu")
+            options.add_argument("--window-size=1920,1080")
 
     driver = uc.Chrome(options=options, version_main=None)
+    print("  Using fresh Chrome profile.")
     return driver
 
 
@@ -494,6 +504,12 @@ def check_appointments(driver):
     time.sleep(2)
     save_debug(driver, "appointment_page")
 
+    # Verify we actually reached the appointment page
+    if "appointment-booking" not in driver.current_url:
+        print(f"  Not on appointment page (URL: {driver.current_url[:60]}). Session likely expired.")
+        send_telegram("⚠️ Session expired — could not reach appointment page. Will re-login.")
+        return "session_expired"
+
     # 3. Check for available slots
     def check_current_view():
         # "No slots" is a <p> tag: "We currently don't have any appointment slots available."
@@ -619,18 +635,19 @@ def main():
 
             # Check appointments using the live session
             try:
-                found = check_appointments(driver)
+                result = check_appointments(driver)
 
-                if found:
+                if result == True:
                     send_telegram("🎉 Appointment process started. Bot stopping.")
                     break
 
-                # After checking, verify session is still alive
-                if not is_session_alive(driver):
+                if result == "session_expired":
+                    print("  Will re-login next cycle.")
+                    logged_in = False
+                elif not is_session_alive(driver):
                     print("  Session expired during check, will re-login next cycle.")
                     logged_in = False
                 else:
-                    # Only save cookies if session is still valid
                     save_cookies(driver)
 
             except Exception as e:
