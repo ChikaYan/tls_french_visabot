@@ -2907,3 +2907,71 @@ Stopped by user.
 [2026-04-23 09:50:36] OSError
 [2026-04-23 09:50:36] : 
 [2026-04-23 09:50:36] [WinError 6] The handle is invalid
+
+============================================================
+Session started: 2026-04-23 09:52:17
+============================================================
+[2026-04-23 09:52:17] ============================================================
+[2026-04-23 09:52:17] TLScontact France Visa Slot Checker
+[2026-04-23 09:52:17] Check interval: 180s | Headless: False
+[2026-04-23 09:52:17] ============================================================
+[2026-04-23 09:52:17] [TG] 🤖 TLS Visa Bot started! Checking every 180s for France/London slots.
+[2026-04-23 09:52:17] 
+[Check #1 at 09:52:17]
+[2026-04-23 09:52:19]   Chrome started.
+[2026-04-23 09:52:23]   Cloudflare passed.
+[2026-04-23 09:52:23]   Cookies accepted.
+[2026-04-23 09:52:24]   Found Login button.
+[2026-04-23 09:52:25]   Clicked Login.
+[2026-04-23 09:52:26]   Cloudflare passed.
+[2026-04-23 09:52:26]   Found Email field (tag=input, id=email)
+[2026-04-23 09:52:26]   Email entered.
+[2026-04-23 09:52:26]   Password entered.
+[2026-04-23 09:52:26]   Found Submit button (tag=button, text=Login)
+[2026-04-23 09:52:26]   Solving reCAPTCHA...
+[2026-04-23 09:52:32]   Could not click reCAPTCHA: Message: 
+Stacktrace:
+	undetected_chromedriver!GetHandleVerifier [0xb5b373+10553]
+	undetected_chromedriver!GetHandleVerifier [0xb5b4a4+10684]
+	undetected_chromedriver!(No symbol) [0x961e10]
+	undetected_chromedriver!(No symbol) [0x9aa9da]
+	undetected_chromedriver!(No symbol) [0x9aac7b]
+	undetected_chromedriver!(No symbol) [0x9ed162]
+	undetected_chromedriver!(No symbol) [0x9cd8b4]
+	undetected_chromedriver!(No symbol) [0x9eaa36]
+	undetected_chromedriver!(No symbol) [0x9cd606]
+	undetected_chromedriver!(No symbol) [0x9a0039]
+	undetected_chromedriver!(No symbol) [0x9a0df4]
+	undetected_chromedriver!GetHandleVerifier [0xddddb4+292f94]
+	undetected_chromedriver!GetHandleVerifier [0xdd937d+28e55d]
+	undetected_chromedriver!GetHandleVerifier [0xdf8215+2ad3f5]
+	undetected_chromedriver!GetHandleVerifier [0xb74c18+29df8]
+	undetected_chromedriver!GetHandleVerifier [0xb7c6fd+318dd]
+	undetected_chromedriver!GetHandleVerifier [0xb63c78+18e58]
+	undetected_chromedriver!GetHandleVerifier [0xb63e42+19022]
+	undetected_chromedriver!GetHandleVerifier [0xb4d45f+263f]
+	KERNEL32!BaseThreadInitThunk [0x75ce5d49+19]
+	ntdll!RtlInitializeExceptionChain [0x76fed83b+6b]
+	ntdll!RtlGetAppContainerNamedObjectPath [0x76fed7c1+231]
+
+[2026-04-23 09:52:39]   reCAPTCHA needs manual solving!
+[2026-04-23 09:52:39] [TG] ⚠️ reCAPTCHA needs manual solving! Go to your PC and click the CAPTCHA.
+[2026-04-23 09:52:44] 
+Stopped by user.
+
+============================================================
+Session started: 2026-04-23 09:52:17
+============================================================
+[2026-04-23 09:52:45] Exception ignored in: 
+[2026-04-23 09:52:45] <function Chrome.__del__ at 0x0000022D93ECBEC0>
+[2026-04-23 09:52:45] Traceback (most recent call last):
+
+[2026-04-23 09:52:45]   File "C:\Users\ChikamaYan\anaconda3\envs\tls\Lib\site-packages\undetected_chromedriver\__init__.py", line 843, in __del__
+
+[2026-04-23 09:52:45] self.quit()
+[2026-04-23 09:52:45]   File "C:\Users\ChikamaYan\anaconda3\envs\tls\Lib\site-packages\undetected_chromedriver\__init__.py", line 798, in quit
+
+[2026-04-23 09:52:45] time.sleep(0.1)
+[2026-04-23 09:52:45] OSError
+[2026-04-23 09:52:45] : 
+[2026-04-23 09:52:45] [WinError 6] The handle is invalid
