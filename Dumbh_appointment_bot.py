@@ -178,17 +178,27 @@ def solve_recaptcha(driver, timeout=60):
         driver.switch_to.frame(recaptcha_frame)
         time.sleep(0.5)
 
+        checkbox_clicked = False
         try:
             checkbox = WebDriverWait(driver, 5).until(
                 EC.element_to_be_clickable((By.CSS_SELECTOR, ".recaptcha-checkbox-border, #recaptcha-anchor"))
             )
             checkbox.click()
             print("  Clicked reCAPTCHA checkbox.")
-        except Exception as e:
-            print(f"  Could not click reCAPTCHA: {e}")
+            checkbox_clicked = True
+        except Exception:
+            print("  Could not click reCAPTCHA checkbox — may not be required.")
+            driver.switch_to.default_content()
+            # reCAPTCHA exists but isn't interactable — try submitting without it
+            return True
 
         driver.switch_to.default_content()
         time.sleep(2)
+
+        # Check if already navigated away (login auto-completed)
+        if "auth" not in driver.current_url and "login" not in driver.current_url:
+            print("  Login already completed!")
+            return True
 
         # Quick check if auto-solved
         driver.switch_to.frame(recaptcha_frame)
@@ -204,12 +214,17 @@ def solve_recaptcha(driver, timeout=60):
             time.sleep(1)
         driver.switch_to.default_content()
 
+        # Check again if page changed during auto-solve wait
+        if "auth" not in driver.current_url and "login" not in driver.current_url:
+            print("  Login completed during reCAPTCHA wait!")
+            return True
+
         # Manual solve needed
         print("  reCAPTCHA needs manual solving!")
         send_telegram("⚠️ reCAPTCHA needs manual solving! Go to your PC and click the CAPTCHA.")
 
-        start = time.time()
-        while time.time() - start < timeout:
+        start_t = time.time()
+        while time.time() - start_t < timeout:
             try:
                 if "auth" not in driver.current_url and "login" not in driver.current_url:
                     print("  Page changed — reCAPTCHA solved!")
