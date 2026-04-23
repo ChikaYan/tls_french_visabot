@@ -257,9 +257,16 @@ def create_driver():
     if os.path.exists(CHROME_PROFILE):
         options.add_argument(f"--user-data-dir={CHROME_PROFILE}")
         options.add_argument("--profile-directory=Default")
+        options.add_argument("--no-first-run")
+        options.add_argument("--no-default-browser-check")
+        options.add_argument("--disable-extensions")
         try:
+            print(f"  Opening Chrome with profile: {CHROME_PROFILE}")
             driver = uc.Chrome(options=options, version_main=None)
-            print(f"  Using Chrome profile: {CHROME_PROFILE}")
+            print(f"  Chrome started. Navigating to TLS...")
+            driver.get(TLS_URL)
+            time.sleep(3)
+            print(f"  Navigated to: {driver.current_url[:60]}")
             return driver
         except Exception as e:
             print(f"  Chrome profile failed ({e}), falling back to fresh profile.")
