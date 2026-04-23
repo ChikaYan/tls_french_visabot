@@ -363,10 +363,26 @@ def do_login(driver):
         send_telegram_photo(debug_path, "reCAPTCHA failed")
         return False
 
+    # Check if login already happened during reCAPTCHA (page navigated away)
+    if "auth" not in driver.current_url and "login" not in driver.current_url.lower():
+        print("  Login already completed during reCAPTCHA!")
+        save_cookies(driver)
+        return True
+
     # Click submit IMMEDIATELY after reCAPTCHA
-    driver.execute_script("arguments[0].scrollIntoView(true);", submit_button)
-    driver.execute_script("arguments[0].click();", submit_button)
-    print("  Login submitted.")
+    try:
+        driver.execute_script("arguments[0].scrollIntoView(true);", submit_button)
+        driver.execute_script("arguments[0].click();", submit_button)
+        print("  Login submitted.")
+    except Exception:
+        # Submit button may be stale if page changed
+        if "auth" not in driver.current_url and "login" not in driver.current_url.lower():
+            print("  Login completed (page changed).")
+            save_cookies(driver)
+            return True
+        print("  Submit button stale and still on login page.")
+        save_debug(driver, "submit_stale")
+        return False
 
     time.sleep(1.5)
 
