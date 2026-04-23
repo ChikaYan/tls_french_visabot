@@ -241,10 +241,6 @@ def solve_recaptcha(driver, timeout=60):
 
 
 def create_driver():
-    CHROME_PROFILE = os.path.expandvars(r'%LOCALAPPDATA%\Google\Chrome\User Data')
-    if not os.path.exists(CHROME_PROFILE):
-        CHROME_PROFILE = os.path.expanduser('~/AppData/Local/Google/Chrome/User Data')
-
     options = uc.ChromeOptions()
     if HEADLESS:
         options.add_argument('--headless=new')
@@ -252,36 +248,8 @@ def create_driver():
     options.add_argument("--disable-dev-shm-usage")
     options.add_argument("--disable-gpu")
     options.add_argument("--window-size=1920,1080")
-
-    # Try with real Chrome profile first (better reCAPTCHA pass rate)
-    if os.path.exists(CHROME_PROFILE):
-        options.add_argument(f"--user-data-dir={CHROME_PROFILE}")
-        options.add_argument("--profile-directory=Default")
-        options.add_argument("--no-first-run")
-        options.add_argument("--no-default-browser-check")
-        options.add_argument("--disable-extensions")
-        try:
-            print(f"  Opening Chrome with profile: {CHROME_PROFILE}")
-            driver = uc.Chrome(options=options, version_main=None)
-            print(f"  Chrome started. Navigating to TLS...")
-            driver.get(TLS_URL)
-            time.sleep(3)
-            print(f"  Navigated to: {driver.current_url[:60]}")
-            return driver
-        except Exception as e:
-            print(f"  Chrome profile failed ({e}), falling back to fresh profile.")
-            print("  TIP: Close all Chrome windows and retry for better reCAPTCHA pass rate.")
-            # Recreate options without profile
-            options = uc.ChromeOptions()
-            if HEADLESS:
-                options.add_argument('--headless=new')
-            options.add_argument("--no-sandbox")
-            options.add_argument("--disable-dev-shm-usage")
-            options.add_argument("--disable-gpu")
-            options.add_argument("--window-size=1920,1080")
-
     driver = uc.Chrome(options=options, version_main=None)
-    print("  Using fresh Chrome profile.")
+    print("  Chrome started.")
     return driver
 
 
@@ -591,10 +559,6 @@ def main():
     print("TLScontact France Visa Slot Checker")
     print(f"Check interval: {CHECK_INTERVAL}s | Headless: {HEADLESS}")
     print("=" * 60)
-    print()
-    print("⚠️  CLOSE ALL CHROME WINDOWS before running!")
-    print("   The bot uses your real Chrome profile to avoid reCAPTCHA.")
-    print()
 
     send_telegram(f"🤖 TLS Visa Bot started! Checking every {CHECK_INTERVAL}s for France/London slots.")
 
