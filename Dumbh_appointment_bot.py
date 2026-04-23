@@ -168,11 +168,12 @@ def solve_recaptcha(driver, timeout=60):
         for iframe in iframes:
             src = iframe.get_attribute("src") or ""
             if "recaptcha" in src or "google.com/recaptcha" in src:
-                recaptcha_frame = iframe
-                break
+                if iframe.is_displayed() and iframe.size['height'] > 0:
+                    recaptcha_frame = iframe
+                    break
 
         if not recaptcha_frame:
-            print("  No reCAPTCHA found — not required.")
+            print("  No visible reCAPTCHA found — not required.")
             return True
 
         driver.switch_to.frame(recaptcha_frame)
