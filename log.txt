@@ -4092,3 +4092,158 @@ Session started: 2026-04-24 14:53:38
 [2026-04-24 14:53:46] OSError
 [2026-04-24 14:53:46] : 
 [2026-04-24 14:53:46] [WinError 6] The handle is invalid
+
+============================================================
+Session started: 2026-04-24 14:56:46
+============================================================
+[2026-04-24 14:56:46] ============================================================
+[2026-04-24 14:56:46] TLScontact France Visa Slot Checker
+[2026-04-24 14:56:46] Check interval: 300s | Headless: False
+[2026-04-24 14:56:46] ============================================================
+[2026-04-24 14:56:46] [TG] 🤖 TLS Visa Bot started! Checking every 300s for France/London slots.
+[2026-04-24 14:56:46] 
+[Check #1 at 14:56:46]
+[2026-04-24 14:56:49]   Chrome started.
+[2026-04-24 14:56:50]   Loaded 11 cookies from file
+[2026-04-24 14:56:53]   Cloudflare passed.
+[2026-04-24 14:56:53]   Unexpected URL after cookie load: https://visas-fr.tlscontact.com/en-us, fresh login...
+[2026-04-24 14:56:55]   Cloudflare passed.
+[2026-04-24 14:56:55]   Cookies accepted.
+[2026-04-24 14:56:56]   Found Login button.
+[2026-04-24 14:56:57]   Clicked Login.
+[2026-04-24 14:56:58]   Cloudflare passed.
+[2026-04-24 14:56:58]   Found Email field (tag=input, id=email)
+[2026-04-24 14:56:58]   Email entered.
+[2026-04-24 14:56:59]   Password entered.
+[2026-04-24 14:56:59]   Found Submit button (tag=button, text=Login)
+[2026-04-24 14:56:59]   Solving reCAPTCHA...
+[2026-04-24 14:57:04]   Could not click reCAPTCHA checkbox — may not be required.
+[2026-04-24 14:57:04]   Login submitted.
+[2026-04-24 14:57:06]   [DEBUG] Screenshot: H:\Workspace\tls_french_visabot\debug_login_stuck_145706.png
+[2026-04-24 14:57:06]   [DEBUG] Title: TLScontact | Login | URL: https://visas-fr.tlscontact.com/en-us/login
+[2026-04-24 14:57:06]   Still on login — reCAPTCHA may have expired. Waiting for manual solve...
+[2026-04-24 14:57:06] [TG] ⚠️ Still on login page. reCAPTCHA may have expired — solve it on your PC!
+[2026-04-24 14:57:06]   Login successful!
+[2026-04-24 14:57:06]   Cookies saved (10 cookies)
+[2026-04-24 14:57:06]   [DEBUG] Screenshot: H:\Workspace\tls_french_visabot\debug_post_login_145706.png
+[2026-04-24 14:57:06]   [DEBUG] Title:  | URL: https://visas-fr.tlscontact.com/en-us/26091640/workflow/current-step
+[2026-04-24 14:57:06]   Post-login URL: https://visas-fr.tlscontact.com/en-us/26091640/workflow/current-step
+[2026-04-24 14:57:09]   Cloudflare passed.
+[2026-04-24 14:57:09]   [DEBUG] Screenshot: H:\Workspace\tls_french_visabot\debug_travel_groups_145709.png
+[2026-04-24 14:57:09]   [DEBUG] Title: Applications list | TLScontact | URL: https://visas-fr.tlscontact.com/en-us/travel-groups
+[2026-04-24 14:57:09]   Dismissed cookie banner.
+[2026-04-24 14:57:09]   Clicked 'Select' (text='Select', value=26091640).
+[2026-04-24 14:57:11]   Clicked 'Continue'.
+[2026-04-24 14:57:11]   Cloudflare passed.
+[2026-04-24 14:57:14]   [DEBUG] Screenshot: H:\Workspace\tls_french_visabot\debug_appointment_page_145713.png
+[2026-04-24 14:57:14]   [DEBUG] Title: Appointment Booking | TLScontact | URL: https://visas-fr.tlscontact.com/en-us/26091640/workflow/appointment-booking?loca
+[2026-04-24 14:57:14]   Checking current month...
+[2026-04-24 14:57:14]   No appointments at 14:57:14
+[2026-04-24 14:57:14]   Clicked next month.
+[2026-04-24 14:57:15]   Checking next month...
+[2026-04-24 14:57:15]   No appointments at 14:57:15
+[2026-04-24 14:57:15]   Cookies saved (10 cookies)
+[2026-04-24 14:57:15]   Waiting 300s...
+[2026-04-24 15:02:15] 
+[Check #2 at 15:02:15]
+[2026-04-24 15:02:15]   [DEBUG] Screenshot: H:\Workspace\tls_french_visabot\debug_post_login_150215.png
+[2026-04-24 15:02:15]   [DEBUG] Title: Appointment Booking | TLScontact | URL: https://visas-fr.tlscontact.com/en-us/26091640/workflow/appointment-booking?loca
+[2026-04-24 15:02:15]   Post-login URL: https://visas-fr.tlscontact.com/en-us/26091640/workflow/appointment-booking?location=gbLON2fr&month=05-2026
+[2026-04-24 15:02:17]   Cloudflare passed.
+[2026-04-24 15:02:17]   [DEBUG] Screenshot: H:\Workspace\tls_french_visabot\debug_travel_groups_150217.png
+[2026-04-24 15:02:17]   [DEBUG] Title: Applications list | TLScontact | URL: https://visas-fr.tlscontact.com/en-us/travel-groups
+[2026-04-24 15:02:17]   Dismissed cookie banner.
+[2026-04-24 15:02:18]   Clicked 'Select' (text='Select', value=26091640).
+[2026-04-24 15:02:19]   Clicked 'Continue'.
+[2026-04-24 15:02:20]   Cloudflare passed.
+[2026-04-24 15:02:22]   [DEBUG] Screenshot: H:\Workspace\tls_french_visabot\debug_appointment_page_150222.png
+[2026-04-24 15:02:22]   [DEBUG] Title: Appointment Booking | TLScontact | URL: https://visas-fr.tlscontact.com/en-us/26091640/workflow/appointment-booking?loca
+[2026-04-24 15:02:22]   Checking current month...
+[2026-04-24 15:02:22]   No appointments at 15:02:22
+[2026-04-24 15:02:22]   Clicked next month.
+[2026-04-24 15:02:23]   Checking next month...
+[2026-04-24 15:02:23]   No appointments at 15:02:23
+[2026-04-24 15:02:23]   Cookies saved (10 cookies)
+[2026-04-24 15:02:23]   Waiting 300s...
+[2026-04-24 15:07:23] 
+[Check #3 at 15:07:23]
+[2026-04-24 15:07:23]   [DEBUG] Screenshot: H:\Workspace\tls_french_visabot\debug_post_login_150723.png
+[2026-04-24 15:07:23]   [DEBUG] Title: Appointment Booking | TLScontact | URL: https://visas-fr.tlscontact.com/en-us/26091640/workflow/appointment-booking?loca
+[2026-04-24 15:07:23]   Post-login URL: https://visas-fr.tlscontact.com/en-us/26091640/workflow/appointment-booking?location=gbLON2fr&month=05-2026
+[2026-04-24 15:07:25]   Cloudflare passed.
+[2026-04-24 15:07:25]   [DEBUG] Screenshot: H:\Workspace\tls_french_visabot\debug_travel_groups_150725.png
+[2026-04-24 15:07:25]   [DEBUG] Title: Applications list | TLScontact | URL: https://visas-fr.tlscontact.com/en-us/travel-groups
+[2026-04-24 15:07:26]   Dismissed cookie banner.
+[2026-04-24 15:07:26]   Clicked 'Select' (text='Select', value=26091640).
+[2026-04-24 15:07:28]   Clicked 'Continue'.
+[2026-04-24 15:07:28]   Cloudflare passed.
+[2026-04-24 15:07:31]   [DEBUG] Screenshot: H:\Workspace\tls_french_visabot\debug_appointment_page_150730.png
+[2026-04-24 15:07:31]   [DEBUG] Title: Appointment Booking | TLScontact | URL: https://visas-fr.tlscontact.com/en-us/26091640/workflow/appointment-booking?loca
+[2026-04-24 15:07:31]   Checking current month...
+[2026-04-24 15:07:31]   No appointments at 15:07:31
+[2026-04-24 15:07:31]   Clicked next month.
+[2026-04-24 15:07:32]   Checking next month...
+[2026-04-24 15:07:32]   No appointments at 15:07:32
+[2026-04-24 15:07:32]   Cookies saved (10 cookies)
+[2026-04-24 15:07:32]   Waiting 300s...
+[2026-04-24 15:12:32] 
+[Check #4 at 15:12:32]
+[2026-04-24 15:12:32]   [DEBUG] Screenshot: H:\Workspace\tls_french_visabot\debug_post_login_151232.png
+[2026-04-24 15:12:32]   [DEBUG] Title: Appointment Booking | TLScontact | URL: https://visas-fr.tlscontact.com/en-us/26091640/workflow/appointment-booking?loca
+[2026-04-24 15:12:32]   Post-login URL: https://visas-fr.tlscontact.com/en-us/26091640/workflow/appointment-booking?location=gbLON2fr&month=05-2026
+[2026-04-24 15:12:35]   Cloudflare passed.
+[2026-04-24 15:12:35]   [DEBUG] Screenshot: H:\Workspace\tls_french_visabot\debug_travel_groups_151235.png
+[2026-04-24 15:12:35]   [DEBUG] Title: Applications list | TLScontact | URL: https://visas-fr.tlscontact.com/en-us/travel-groups
+[2026-04-24 15:12:35]   Dismissed cookie banner.
+[2026-04-24 15:12:35]   Clicked 'Select' (text='Select', value=26091640).
+[2026-04-24 15:12:37]   Clicked 'Continue'.
+[2026-04-24 15:12:38]   Cloudflare passed.
+[2026-04-24 15:12:40]   [DEBUG] Screenshot: H:\Workspace\tls_french_visabot\debug_appointment_page_151240.png
+[2026-04-24 15:12:40]   [DEBUG] Title: Appointment Booking | TLScontact | URL: https://visas-fr.tlscontact.com/en-us/26091640/workflow/appointment-booking?loca
+[2026-04-24 15:12:40]   Checking current month...
+[2026-04-24 15:12:40]   No appointments at 15:12:40
+[2026-04-24 15:12:40]   Clicked next month.
+[2026-04-24 15:12:41]   Checking next month...
+[2026-04-24 15:12:41]   No appointments at 15:12:41
+[2026-04-24 15:12:41]   Cookies saved (10 cookies)
+[2026-04-24 15:12:41]   Waiting 300s...
+[2026-04-24 15:17:41] 
+[Check #5 at 15:17:41]
+[2026-04-24 15:17:41]   [DEBUG] Screenshot: H:\Workspace\tls_french_visabot\debug_post_login_151741.png
+[2026-04-24 15:17:41]   [DEBUG] Title: Appointment Booking | TLScontact | URL: https://visas-fr.tlscontact.com/en-us/26091640/workflow/appointment-booking?loca
+[2026-04-24 15:17:41]   Post-login URL: https://visas-fr.tlscontact.com/en-us/26091640/workflow/appointment-booking?location=gbLON2fr&month=05-2026
+[2026-04-24 15:17:44]   Cloudflare passed.
+[2026-04-24 15:17:44]   [DEBUG] Screenshot: H:\Workspace\tls_french_visabot\debug_travel_groups_151744.png
+[2026-04-24 15:17:44]   [DEBUG] Title: Applications list | TLScontact | URL: https://visas-fr.tlscontact.com/en-us/travel-groups
+[2026-04-24 15:17:44]   Dismissed cookie banner.
+[2026-04-24 15:17:44]   Clicked 'Select' (text='Select', value=26091640).
+[2026-04-24 15:17:46]   Clicked 'Continue'.
+[2026-04-24 15:17:47]   Cloudflare passed.
+[2026-04-24 15:17:49]   [DEBUG] Screenshot: H:\Workspace\tls_french_visabot\debug_appointment_page_151749.png
+[2026-04-24 15:17:49]   [DEBUG] Title: Appointment Booking | TLScontact | URL: https://visas-fr.tlscontact.com/en-us/26091640/workflow/appointment-booking?loca
+[2026-04-24 15:17:49]   Checking current month...
+[2026-04-24 15:17:49]   No appointments at 15:17:49
+[2026-04-24 15:17:49]   Clicked next month.
+[2026-04-24 15:17:50]   Checking next month...
+[2026-04-24 15:17:50]   No slots in current view.
+[2026-04-24 15:17:50]   Cookies saved (10 cookies)
+[2026-04-24 15:17:50]   Waiting 300s...
+[2026-04-24 15:21:38] 
+Stopped by user.
+
+============================================================
+Session started: 2026-04-24 14:56:46
+============================================================
+[2026-04-24 15:21:42] Exception ignored in: 
+[2026-04-24 15:21:42] <function Chrome.__del__ at 0x0000016108C5BF60>
+[2026-04-24 15:21:42] Traceback (most recent call last):
+
+[2026-04-24 15:21:42]   File "C:\Users\ChikamaYan\anaconda3\envs\tls\Lib\site-packages\undetected_chromedriver\__init__.py", line 843, in __del__
+
+[2026-04-24 15:21:42] self.quit()
+[2026-04-24 15:21:42]   File "C:\Users\ChikamaYan\anaconda3\envs\tls\Lib\site-packages\undetected_chromedriver\__init__.py", line 798, in quit
+
+[2026-04-24 15:21:42] time.sleep(0.1)
+[2026-04-24 15:21:42] OSError
+[2026-04-24 15:21:42] : 
+[2026-04-24 15:21:42] [WinError 6] The handle is invalid
