@@ -27,6 +27,7 @@ TLS_PASSWORD = '998182aA!#'
 
 CHECK_INTERVAL = 300
 HEADLESS = False
+MAX_LOGINS = 3  # Stop after this many logins to avoid reCAPTCHA lockout
 # ───────────────────────────────────────────────────────────────
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -597,6 +598,7 @@ def main():
     driver = None
     logged_in = False
     check_count = 0
+    login_count = 0
 
     try:
         while True:
@@ -616,6 +618,14 @@ def main():
 
             # Login if needed
             if not logged_in:
+                if login_count >= MAX_LOGINS:
+                    msg = f"Reached max login limit ({MAX_LOGINS}). Stopping to avoid reCAPTCHA lockout."
+                    print(f"  {msg}")
+                    send_telegram(f"🛑 {msg}")
+                    break
+
+                login_count += 1
+                print(f"  Login attempt {login_count}/{MAX_LOGINS}")
                 try:
                     if do_login(driver):
                         logged_in = True
