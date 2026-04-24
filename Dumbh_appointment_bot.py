@@ -519,40 +519,77 @@ def check_appointments(driver):
         return "session_expired"
 
     # 3. Check for available slots
-    def check_current_view():
-        # "No slots" is a <p> tag: "We currently don't have any appointment slots available."
+    def check_current_view(month_label=""):
+        save_debug(driver, f"month_view_{month_label}")
+
+        # Check for slot elements FIRST (before "no slots" text)
+        # Dump all interactive elements on the appointment area for debugging
+        all_buttons = driver.find_elements(By.XPATH,
+            "//div[contains(@data-testid, 'appointment') or contains(@class, 'appointment') or contains(@class, 'calendar')]//button | "
+            "//div[contains(@data-testid, 'appointment') or contains(@class, 'appointment') or contains(@class, 'calendar')]//a")
+        if all_buttons:
+            for i, btn in enumerate(all_buttons[:10]):
+                print(f"  [SLOT_DEBUG] Element {i}: tag={btn.tag_name} text='{btn.text[:30]}' class='{btn.get_attribute('class') or ''}' data-testid='{btn.get_attribute('data-testid') or ''}'")
+
+        # Broad search for any clickable slot/day element
+        slot_selectors = [
+            "//button[contains(@class, 'available')]",
+            "//button[contains(@class, '-available')]",
+            "//button[contains(@class, 'slot')]",
+            "//a[contains(@class, 'available')]",
+            "//div[contains(@class, 'available')]",
+            "//td[contains(@class, 'available')]",
+            "//*[contains(@data-testid, 'slot')]",
+            "//*[contains(@data-testid, 'available')]",
+            "//*[contains(@data-testid, 'day') and contains(@class, 'active')]",
+            "//button[contains(@class, 'day') and not(contains(@class, 'disabled'))]",
+            "//button[contains(@class, 'active') and not(contains(@class, 'nav'))]",
+        ]
+
+        for selector in slot_selectors:
+            try:
+                elements = driver.find_elements(By.XPATH, selector)
+                for available in elements:
+                    if available.is_displayed() and available.text.strip():
+                        now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+                        msg = f"APPOINTMENT FOUND at {now}! (via {selector}, text='{available.text.strip()}')"
+                        print(f"  {msg}")
+                        send_telegram(f"🚨 {msg}")
+
+                        screenshot_path = os.path.join(SCRIPT_DIR, "appointment_found.png")
+                        driver.save_screenshot(screenshot_path)
+                        send_telegram_photo(screenshot_path,
+                            "Slot found! Open TLScontact NOW to finish booking!")
+
+                        try:
+                            driver.execute_script("arguments[0].scrollIntoView(true);", available)
+                            driver.execute_script("arguments[0].click();", available)
+                            print("  Clicked the slot!")
+                            human_like_delay()
+                            driver.save_screenshot(os.path.join(SCRIPT_DIR, "after_slot_click.png"))
+                        except Exception as e:
+                            print(f"  Could not click slot: {e}")
+
+                        input(">>> APPOINTMENT FOUND! Press Enter to close browser... <<<")
+                        return True
+            except NoSuchElementException:
+                continue
+
+        # Check for "no slots" text
         try:
-            driver.find_element(By.XPATH,
+            no_slots_el = driver.find_element(By.XPATH,
                 "//p[contains(text(), 'appointment slots available')]")
-            print(f"  No appointments at {datetime.now().strftime('%H:%M:%S')}")
-            return False
+            if no_slots_el.is_displayed():
+                print(f"  No appointments at {datetime.now().strftime('%H:%M:%S')}")
+                return False
         except NoSuchElementException:
             pass
 
-        try:
-            available = driver.find_element(By.XPATH,
-                "//button[contains(@class, '-available') or contains(@class, 'slot')]")
-            now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-            msg = f"APPOINTMENT FOUND at {now}!"
-            print(f"  {msg}")
-            send_telegram(f"🚨 {msg}")
-
-            available.click()
-            human_like_delay()
-
-            screenshot_path = os.path.join(SCRIPT_DIR, "appointment_found.png")
-            driver.save_screenshot(screenshot_path)
-            send_telegram_photo(screenshot_path,
-                "Slot clicked! Open TLScontact NOW to finish booking!")
-
-            input(">>> APPOINTMENT FOUND! Press Enter to close browser... <<<")
-            return True
-        except NoSuchElementException:
-            print("  No slots in current view.")
-            return False
+        print("  No slots in current view.")
+        return False
 
     print("  Checking current month...")
-    if check_current_view():
+    if check_current_view("current"):
         return True
 
     # 4. Try next month
@@ -563,9 +600,10 @@ def check_appointments(driver):
         next_month.click()
         print("  Clicked next month.")
         human_like_delay()
+        time.sleep(1)
 
         print("  Checking next month...")
-        if check_current_view():
+        if check_current_view("next"):
             return True
     except TimeoutException:
         print("  No next month button.")
